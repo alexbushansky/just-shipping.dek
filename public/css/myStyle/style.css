@@ -1,0 +1,174 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+body
+{
+    font-family: "roboto-regular";
+}
+
+
+
+:root{
+    --dark-blue:#34495E;
+    --d-green:#01A185;
+    --grey:#BEC3C7;
+}
+
+img
+{
+    width: auto;
+    height: auto;
+}
+fieldset {
+    border:2px solid var(--grey);
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+legend {
+    width: max-content;
+    font-size: 15px;
+}
+
+.t1 {
+    background: var(--d-green) ;
+    min-height: 100px;
+}
+.t2
+{
+    background: var(--dark-blue);
+    min-height: 100px;
+}
+
+.orders
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.orders > div
+{
+    width: 31% !important;
+    margin-bottom: 20px;
+}
+
+.page-content
+{
+    margin-top: 40px;
+}
+
+
+p.card-text
+{
+    font-size: 15px;
+}
+
+.card-body
+{
+    background: var(--dark-blue);
+    color: white;
+
+}
+
+.card
+{
+    opacity: 0.9;
+    transition: opacity .3s;
+}
+
+.card:hover
+{
+    opacity: 1;
+}
+
+.card-body ul
+{
+    font-size: 16px;
+    font-family: "roboto-thin"!important;
+}
+
+
+
+.filter
+{
+    background: whitesmoke;
+}
+
+.menu
+{
+
+    color:white;
+    background: var(--dark-blue);
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 8px 8px 0 rgba(0,0,0,0.3);
+    height: 80px;
+
+}
+
+.menu a
+{
+    color: white;
+    font-size: 18px;
+}
+
+.dropdown-menu
+{
+    background: var(--dark-blue);
+}
+
+.navbar-toggler-icon
+{
+    color: white;
+}
+
+.navbar-toggler
+{
+    color: white;
+}
+
+.login
+{
+    margin-left: auto!important;
+}
+
+
+
+.my-btn
+{
+    margin-top: 80px;
+    background: var(--dark-blue);
+}
+
+
+.showPrice
+{
+    position: absolute;
+
+    width: 50px;
+    height: 20px;
+    right: 10px;
+    top: -23px;
+    font-size: 16px!important;
+    text-align: center;
+}
+
+.slidecontainer
+{
+    position: relative;
+}
+
+.filter-btn
+{
+    position: absolute;
+    font-size: 14px;
+    box-shadow: 0 0 15px grey;
+    opacity: 0;
+}
