@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('css/myStyle/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/myStyle/fonts.css')}}">
 
+
     <!-- Styles -->
 
     @yield('styles')
@@ -26,17 +27,17 @@
 <body>
 
 <nav class="navbar navbar-expand-lg menu">
-    <a class="navbar-brand" href="#">Just Shipping</a>
+    <a class="navbar-brand" href="/">Just Shipping</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Заказы <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{route('customer-offers.index')}}">Заказы <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('customer-offers.index')}}">Перевозчики</a>
+                <a class="nav-link" href="{{route('driver-offers.index')}}">Предложения</a>
             </li>
             @auth
                 <li class="nav-item dropdown">
@@ -47,7 +48,14 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="1">Активные заказы</a>
                         <a class="dropdown-item" href="2">Выполненные заказы</a>
-                        <a class="dropdown-item" href="3">Добавить заказ</a>
+
+                        <a class="dropdown-item" href="{{route('driver-offers.create')}}">Добавить заказ</a>
+                        <a class="dropdown-item" href="{{route('customer-offers.create')}}">Добавить заказ2</a>
+
+
+{{--                            <a class="dropdown-item" href="{{route('driver-offers.create')}}">Добавить заказ</a>--}}
+
+
                         <a class="dropdown-item" href="4">Предложения</a>
                     </div>
 
@@ -81,8 +89,10 @@
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Выйти') }}
                         </a>
+
                         <a class="dropdown-item" href="{{route('admin')}}">Админ Панель</a>
-                        <a class="dropdown-item" href="#">Личный кабинет</a>
+
+                        <a class="dropdown-item" href="{{route('users.show',['user'=>auth()->user()->id])}}">Личный кабинет</a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -98,6 +108,33 @@
 </nav>
 
     <main class="py-4">
+        @if (session('status'))
+
+            <div
+                class="alert @if(session('alert'))alert-{{session('alert')}} @else alert-success @endif alert-dismissible fade show"
+                role="alert">
+                {{ session('status') }}
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
+
+        @if ($errors->any())
+
+            <div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
+
+
         @yield('content')
     </main>
     <!-- Scripts -->

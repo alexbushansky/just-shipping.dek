@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCarsTable extends Migration
+class CreateDialogablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cars', function (Blueprint $table) {
+        Schema::create('dialogables', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->integer('user_id');
-            $table->string('description')->nullable();
-            $table->timestamps();
+            $table->integer('dialog_id');
+            $table->morphs('dialogable');
         });
     }
 
@@ -29,6 +27,6 @@ class CreateCarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cars');
+        Schema::dropIfExists('dialogable');
     }
 }

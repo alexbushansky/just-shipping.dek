@@ -17,9 +17,12 @@ class CreateAddressesTable extends Migration
             $table->bigIncrements('id');
             $table->string('street_name',50);
             $table->string('house_number',8);
-            $table->integer('city_id')->unsigned();
-            $table->integer('region_id')->unsigned();
-            $table->integer('country_id')->unsigned();
+            $table->Biginteger('city_id')->unsigned();
+            $table->Biginteger('region_id')->unsigned();
+            $table->Biginteger('country_id')->unsigned();
+
+
+
 
         });
     }

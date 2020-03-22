@@ -26,7 +26,7 @@
                 @foreach($carTypes as $item)
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td>{{$item->$locale}}</td>
+                        <td>{{$item->name_car_type}}</td>
                         <td>
                             <a class="btn btn-sm btn-primary" href="{{route('car-types.edit',['carType'=>$item->id])}}">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

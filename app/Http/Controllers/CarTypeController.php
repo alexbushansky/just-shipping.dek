@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -108,6 +109,17 @@ class CarTypeController extends Controller
             'status'=>'Тип транспорта удален успешно',
             'alert'  => 'success',
             ]);
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function getAllCarType(): JsonResponse
+    {
+        $carTypes = CarType::all();
+        return response()->json([
+            'carTypes' => $carTypes,
+        ]);
     }
 
 }

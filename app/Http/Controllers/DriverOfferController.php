@@ -2,17 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
-use App\Models\CustomerOffer;
+
+
+
+use App\Http\Requests\DriverOfferCreateRequest;
+
+use App\Models\Dialog;
+
 use App\Models\DriverOffer;
+use App\Repositories\Interfaces\DriverOfferRepositoryInterface;
+use App\Services\Interfaces\FileServiceInterface;
 use Illuminate\Http\Request;
+
+
 
 class DriverOfferController extends Controller
 {
+
+    protected $driverOfferRepository;
+    protected $fileService;
+
+    public function __construct(DriverOfferRepositoryInterface $driverOfferRepository,FileServiceInterface $fileService)
+    {
+        $this->driverOfferRepository=$driverOfferRepository;
+        $this->fileService = $fileService;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
     {
@@ -22,28 +43,11 @@ class DriverOfferController extends Controller
         $city_id = $request->city_id;
 
 
-
-        $driverOffers = DriverOffer::with('country','region','city')
-            ->when($country_id,function ($query,$country_id) {
-                return $query->where('country_id','=',$country_id);
-            })
-            ->when($region_id,function ($query,$region_id) {
-                return $query->where('region_id','=',$region_id);
-            })->when($city_id,function ($query,$city_id) {
-                return $query->where('city_id','=',$city_id);
-            })->when($title,function ($query,$title) {
-                return $query->where('title','LIKE','%'.$title.'%');
-            })
-            ->paginate(5)
-            ->appends(request()->query());
-
-        $countries = Country::all();
+       $driverOffers = $this->driverOfferRepository->filterDriverOffers($title,$country_id,$region_id,$city_id);
 
 
-
-        return view('driver.driver-offer.index',[
+        return view('driver.driver-offer.index')->with([
             'driverOffers'=>$driverOffers,
-            'countries'=>$countries,
         ]);
     }
 
@@ -54,7 +58,13 @@ class DriverOfferController extends Controller
      */
     public function create()
     {
-        //
+
+        $this->authorize('create',DriverOffer::class);
+        $user=auth()->user();
+
+        return view('driver.driver-offer.create')->with([
+            'driverId'=>$user->driver->id,
+        ]);
     }
 
     /**
@@ -63,9 +73,48 @@ class DriverOfferController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DriverOfferCreateRequest $request)
     {
-        //
+
+
+        $driverOffer = new DriverOffer();
+        $driverOffer->title = $request->nameOfOrder;
+        $driverOffer->description = $request->description;
+        $driverOffer->country_id = $request->country;
+        $driverOffer->region_id = $request->region;
+        $driverOffer->city_id = $request->city;
+        $driverOffer->price_per_km = $request->price_per_km;
+        $driverOffer->internal_width = $request->internal_width;
+        $driverOffer->internal_height = $request->internal_height;
+        $driverOffer->internal_length = $request->internal_length;
+        $driverOffer->capacity = $request->capacity;
+        $driverOffer->max_weight = $request->max_weight;
+        $driverOffer->cars_type_id = $request->carType;
+        $driverOffer->driver_id = $request->driver_id;
+        if ($request->hasFile('photo')) {
+            // проверяем существование дирректорий для изображений
+            // если нет , то создаем дирректории
+            $driverOffer->thumbnail = $this->fileService->makeCarPhoto($request->photo);
+        }
+
+
+        $driverOffer->status_id = 1;
+        $driverOffer->save();
+
+
+
+        $driverOffer->types()->sync($request->types);
+
+
+
+
+
+
+
+
+        return redirect()->route('driver-offers.create')->with([
+            'status' => 'Заявка создана успешно',
+            'alert' => 'success',]);
     }
 
     /**
@@ -74,9 +123,19 @@ class DriverOfferController extends Controller
      * @param  \App\Models\DriverOffer  $driverOffer
      * @return \Illuminate\Http\Response
      */
-    public function show(DriverOffer $driverOffer)
+    public function show($id)
     {
-        //
+        $driverOffer = DriverOffer::with('dialogs')->find($id);
+
+        $dialogs = Dialog::with('user')->where('dialogable_id',$id)->get();
+
+        $offerInfo= ['cityName'=>$driverOffer->city()->get()[0]->name];
+
+
+        return view('driver.driver-offer.show',['driverOffer'=>$driverOffer,
+            'dialogs'=>$dialogs,
+            'offerInfo'=>$offerInfo,
+                            ]);
     }
 
     /**
@@ -122,4 +181,7 @@ class DriverOfferController extends Controller
             'req'=>$request->all(),
         ]);
     }
+
+
+
 }

@@ -15,8 +15,12 @@ class CreateRaitingsTable extends Migration
     {
         Schema::create('raitings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->decimal('mark', 5, 2)->default(0.00);;
-            $table->integer('user_id');
+            $table->decimal('mark', 5, 2)->default(0.00);
+            $table->Biginteger('user_id')->unsigned();
+
+
+
+
             $table->timestamps();
         });
     }

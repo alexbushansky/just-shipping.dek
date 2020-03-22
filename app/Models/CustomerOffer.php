@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Address;
 
 
 class CustomerOffer extends Model
@@ -10,21 +11,20 @@ class CustomerOffer extends Model
     protected $dates=['date_from','date_to'];
 
 
-
-
-    public function country()
+    public function addressFrom()
     {
-        return $this->belongsTo(\App\Models\Country::class);
+        return $this->belongsTo(Address::class,'address_from_id');
     }
 
-    public function region()
+
+    public function addressTo()
     {
-        return $this->belongsTo(\App\Models\Region::class);
+        return $this->belongsTo(Address::class,'address_to_id');
     }
 
-    public function city()
+    public function cargoType()
     {
-        return $this->belongsTo(\App\Models\City::class);
+        return $this->belongsToMany(Type::class);
     }
 
 

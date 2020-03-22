@@ -10,6 +10,9 @@ use App\Models\Role;
 
 class User extends Authenticatable
 {
+    private const USER_CUSTOMER = 'customer';
+    private const USER_DRIVER = 'driver';
+    private const USER_ADMIN = 'admin';
     use Notifiable;
 
     /**
@@ -18,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','phone_number'
     ];
 
     /**
@@ -44,12 +47,22 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
+    }
+
+    public function driver()
+    {
+        return $this->hasOne(Driver::class);
+    }
+
 
     public function isAdmin(): bool
     {
 
         foreach ($this->roles()->get() as $role) {
-            if ($role->slug == 'admin') {
+            if ($role->slug == self::USER_ADMIN) {
 
                 return true;
             }
@@ -58,15 +71,45 @@ class User extends Authenticatable
         return false;
     }
 
-    public function isRole($roleName): bool
+    public function isRole(string $roleName): bool
     {
+
         foreach ($this->roles()->get() as $role) {
+
             if ($role->slug == $roleName) {
-                return true;
+              return true;
             }
+
         }
         return false;
     }
+
+    public function isCustomer(): bool
+    {
+
+        foreach ($this->roles()->get() as $role) {
+            if ($role->slug == self::USER_CUSTOMER) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function isDriver(): bool
+    {
+
+        foreach ($this->roles()->get() as $role) {
+            if ($role->slug == self::USER_DRIVER) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
 
 

@@ -55,15 +55,31 @@
             </div>
 
             <div class="col-md-9">
-    @if($customerOffers->count() > 0 )
+                <div class="orders">
+            @if($customerOffers->count() > 0 )
 
+                @foreach($customerOffers as $offer)
+                        <div class="card">
+                            <img src="{{asset('img/Gruzovik-5-tonn-1.jpg')}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <ul>
+                                    <li><strong>Кратко: </strong> <strong> {{$offer->title}}</strong></li>
+                                    <li><strong>Откуда : </strong> {{$offer->addressFrom->country->name}}:{{$offer->addressFrom->city->name}}</li>
+                                    <li><strong>Куда : </strong>{{$offer->addressTo->country->name}}:{{$offer->addressTo->city->name}}</li>
 
-        {{$customerOffers->links()}}
-        @else
-        <br>
-        <h4>По вашому запросу ничего не найдено</h4>
+                                    <li><strong>Цена за 1 км: </strong>{{$offer->price_per_km}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    @endforeach
+               </div>
+                {{$customerOffers->links()}}
 
-    @endif
+                @else
+                <br>
+                <h4>По вашому запросу ничего не найдено</h4>
+
+            @endif
             </div>
 @endsection
 
@@ -75,97 +91,97 @@
 
     <script src="{{asset('/select2/js/select2.min.js')}}"></script>
     <script src="{{asset('/select2/js/i18n/ru.js')}}"></script>
-    <script>
-        $(function(){
-            var selectRegions, selectCountries, selectCity;
-            // INIT SELECT2 USING  AJAX DATA
-            $.ajax({
-                url: '/geonames/countries',
-                type: 'GET',
-                contentType: 'application/json; charset=utf-8'
-            }).then(function (response) {
+{{--    <script>--}}
+{{--        $(function(){--}}
+{{--            var selectRegions, selectCountries, selectCity;--}}
+{{--            // INIT SELECT2 USING  AJAX DATA--}}
+{{--            $.ajax({--}}
+{{--                url: '/geonames/countries',--}}
+{{--                type: 'GET',--}}
+{{--                contentType: 'application/json; charset=utf-8'--}}
+{{--            }).then(function (response) {--}}
 
 
 
-                var data = response.countries.map(function (item) {
-                    return {id: item.id, text: item.name};
-                });
+{{--                var data = response.countries.map(function (item) {--}}
+{{--                    return {id: item.id, text: item.name};--}}
+{{--                });--}}
 
-                selectCountries = $('#select_countries').select2({
-                    language: "ru",
-                    data: data
-                });
-
-
-
-                $('#select_countries').on("select2:select" ,function (event) {
-                    $("#select_cities").empty();
-
-                    var countryId = event.params.data.id;
-                    console.log(countryId);
-                    // INIT SELECT2 USING  AJAX DATA
-                    $.ajax({
-                        url: '/geonames/regions/' + countryId,
-                        type: 'GET',
-                        contentType: 'application/json; charset=utf-8'
-                    }).then(function (response) {
-
-                        $("#select_regions").empty();
-
-                        var data = response.regions.map(function (item) {
-                            return {id: item.id, text: item.name};
-                        });
+{{--                selectCountries = $('#select_countries').select2({--}}
+{{--                    language: "ru",--}}
+{{--                    data: data--}}
+{{--                });--}}
 
 
 
-                        selectRegions = $('#select_regions').select2({
-                            language: "ru",
-                            data: data,
+{{--                $('#select_countries').on("select2:select" ,function (event) {--}}
+{{--                    $("#select_cities").empty();--}}
 
-                        });
+{{--                    var countryId = event.params.data.id;--}}
+{{--                    console.log(countryId);--}}
+{{--                    // INIT SELECT2 USING  AJAX DATA--}}
+{{--                    $.ajax({--}}
+{{--                        url: '/geonames/regions/' + countryId,--}}
+{{--                        type: 'GET',--}}
+{{--                        contentType: 'application/json; charset=utf-8'--}}
+{{--                    }).then(function (response) {--}}
 
+{{--                        $("#select_regions").empty();--}}
 
-
-
-                        $('#select_regions').on("select2:select", function (event) {
-
-                            var regionId = event.params.data.id;
-                            $.ajax({
-                                url: '/geonames/cities/' + regionId,
-                                type: 'GET',
-                                contentType: 'application/json; charset=utf-8'
-                            }).then(function (response) {
-
-
-                                $("#select_cities").empty();
+{{--                        var data = response.regions.map(function (item) {--}}
+{{--                            return {id: item.id, text: item.name};--}}
+{{--                        });--}}
 
 
-                                var data = response.cities.map(function (item) {
-                                    return {id: item.id, text: item.name};
-                                });
-                                console.log(data);
+
+{{--                        selectRegions = $('#select_regions').select2({--}}
+{{--                            language: "ru",--}}
+{{--                            data: data,--}}
+
+{{--                        });--}}
 
 
-                                selectCity = $('#select_cities').select2({
-                                    language: "ru",
-                                    data: data,
-
-                                });
-
-                            });
 
 
-                        });
+{{--                        $('#select_regions').on("select2:select", function (event) {--}}
+
+{{--                            var regionId = event.params.data.id;--}}
+{{--                            $.ajax({--}}
+{{--                                url: '/geonames/cities/' + regionId,--}}
+{{--                                type: 'GET',--}}
+{{--                                contentType: 'application/json; charset=utf-8'--}}
+{{--                            }).then(function (response) {--}}
 
 
-                    });
-                });
-            });
+{{--                                $("#select_cities").empty();--}}
 
 
-            $('.select2-basic').select2();
-        });
-    </script>
+{{--                                var data = response.cities.map(function (item) {--}}
+{{--                                    return {id: item.id, text: item.name};--}}
+{{--                                });--}}
+{{--                                console.log(data);--}}
+
+
+{{--                                selectCity = $('#select_cities').select2({--}}
+{{--                                    language: "ru",--}}
+{{--                                    data: data,--}}
+
+{{--                                });--}}
+
+{{--                            });--}}
+
+
+{{--                        });--}}
+
+
+{{--                    });--}}
+{{--                });--}}
+{{--            });--}}
+
+
+{{--            $('.select2-basic').select2();--}}
+{{--        });--}}
+{{--    </script>--}}
 @endsection
 
 

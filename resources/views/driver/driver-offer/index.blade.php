@@ -2,6 +2,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/myStyle/range.css')}}">
 @endsection
 
 @section('content')
@@ -10,6 +11,7 @@
 
     <div class="container-fluid">
         <div class="row">
+            {{--Filters --}}
             <div class="col-md-3 filter">
 
                 <br>
@@ -21,26 +23,45 @@
 
                     <fieldset>
                         <legend>Country</legend>
-                        <select id="select_countries" class="form-control" name="country_id">
-                            <option disabled>Выберите страну</option>
+                        <select  class="form-control select-country" name="country_id" >
                         </select>
                     </fieldset>
 
                     <fieldset>
 
                         <legend>Region</legend>
-                        <select id="select_regions" class="form-control" name="region_id">
-                            <option disabled>Выберите регион</option>
+                        <select class="form-control select-region" name="region_id">
+
                         </select>
                     </fieldset>
 
                     <fieldset>
 
                         <legend>City</legend>
-                        <select id="select_cities" class="form-control" name="city_id">
-                            <option disabled>Выберите город</option>
+                        <select class="form-control select-city" name="city_id">
+
                         </select>
                     </fieldset>
+
+                    <fieldset>
+                        <legend>Цена за 1 км</legend>
+                        <div class="slidecontainer">
+                            <div class="showPrice">0</div>
+                            <input type="range" min="1" max="200" value="0" class="slider" name = "price_per_km">
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+
+                        <legend>Тип груза</legend>
+                        <select id="select_regions" class="form-control" name="type_of_cargo">
+                            <option disabled>Выберите груз</option>
+                        </select>
+                    </fieldset>
+
+
+
+
                     <span class="form-group">
                         <button class="btn btn-sm btn-primary" type="submit">{{__('Submit')}}</button>
                     </span>
@@ -52,25 +73,33 @@
 
 
             </div>
-
+        {{--Main Part of Driver Offers --}}
             <div class="col-md-9">
+                <div class="orders">
                     @if($driverOffers->count() > 0 )
 
 
 
-                        @foreach($driverOffers as $offer)
+                        @foreach( $driverOffers as $offer)
 
 
-                                <div class="card">
-                                    <img src="#" class="card-img-top" alt="...">
+
+                                <div class="card" onclick="window.location.href='{{route('driver-offers.show',['driverOffer'=>$offer->id])}}'">
+                                    <img src="{{asset('uploads/cars/'.$offer->thumbnail)}}" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <ul>
-                                            <li><i class="fas fa-map-marker-alt"></i> {{$offer->city->name}}</li>
-                                            <li><i class="fas fa-city"></i>  {{$offer->title}}</li>
-                                            <li><i class="fas fa-user"></i> Заказчик: User123</li>
-                                            <li><i class="fas fa-box-open"></i> Тип груза: Общий</li>
-                                            <li><i class="fas fa-hryvnia"></i> Цена за 1 км: 200 грн</li>
-                                            <button class="btn btn-primary"  onclick="sendMessage({{$offer->id}},{{$offer->driver_id}})">Заказать</button>
+                                            <li><h5><strong>{{$offer->title}}</strong></h5></li>
+                                            <li>Расположение: {{$offer->country->name}}, {{$offer->city->name}}</li>
+                                            <li>Цена за 1 км: {{$offer->price_per_km}} грн</li>
+                                            <li>Грузоподьемность: {{$offer->max_weight}} тонн(ы)</li>
+                                            <li>Тип транспорта: {{$offer->carType->name_car_type}}</li>
+                                            <br>
+                                            <div class="row">
+
+                                                <div class="col-md-6"> <a class="btn btn-success" href="{{route('driver-offers.show',['driverOffer'=>$offer->id])}}">Детальнее</a></div>
+
+                                            </div>
+
 
                                         </ul>
                                     </div>
@@ -78,155 +107,30 @@
 
 
                         @endforeach
-                        {{$driverOffers->links()}}
 
+                         </div>
                     @else
                         <br>
                         <h4>По вашому запросу ничего не найдено</h4>
 
                     @endif
+
+
+                        <div>{{$driverOffers->links()}}</div>
             </div>
 
-            <div id = "sendMessageModal" class="modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form id = "sendMessageForm">
-                        <div class="modal-body">
+        </div>
+    </div>
 
-                            <input type="text" name="offer_id">
-                            <input type="text" name="driver_id">
-                            <div class="form-group">
-                                <label>Описание</label>
-                            <textarea class="form-control" name="description"></textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
 @endsection
-
-
-
 
 
 @section('scripts')
 
     <script src="{{asset('/select2/js/select2.min.js')}}"></script>
     <script src="{{asset('/select2/js/i18n/ru.js')}}"></script>
-    <script>
-        $(function(){
-            var selectRegions, selectCountries, selectCity;
-            // INIT SELECT2 USING  AJAX DATA
-            $.ajax({
-                url: '/geonames/countries',
-                type: 'GET',
-                contentType: 'application/json; charset=utf-8'
-            }).then(function (response) {
-
-
-
-                var data = response.countries.map(function (item) {
-                    return {id: item.id, text: item.name};
-                });
-
-                selectCountries = $('#select_countries').select2({
-                    language: "ru",
-                    data: data
-                });
-
-
-
-                $('#select_countries').on("select2:select" ,function (event) {
-                    $("#select_cities").empty();
-
-                    var countryId = event.params.data.id;
-                    console.log(countryId);
-                    // INIT SELECT2 USING  AJAX DATA
-                    $.ajax({
-                        url: '/geonames/regions/' + countryId,
-                        type: 'GET',
-                        contentType: 'application/json; charset=utf-8'
-                    }).then(function (response) {
-
-                        $("#select_regions").empty();
-
-                        var data = response.regions.map(function (item) {
-                            return {id: item.id, text: item.name};
-                        });
-
-
-
-                        selectRegions = $('#select_regions').select2({
-                            language: "ru",
-                            data: data,
-
-                        });
-
-
-
-
-                        $('#select_regions').on("select2:select", function (event) {
-
-                            var regionId = event.params.data.id;
-                            $.ajax({
-                                url: '/geonames/cities/' + regionId,
-                                type: 'GET',
-                                contentType: 'application/json; charset=utf-8'
-                            }).then(function (response) {
-
-
-                                $("#select_cities").empty();
-
-
-                                var data = response.cities.map(function (item) {
-                                    return {id: item.id, text: item.name};
-                                });
-                                console.log(data);
-
-
-                                selectCity = $('#select_cities').select2({
-                                    language: "ru",
-                                    data: data,
-
-                                });
-
-                            });
-
-
-                        });
-
-
-                    });
-                });
-            });
-
-
-            $('.select2-basic').select2();
-        });
-
-
-        function sendMessage(offerId,driverId) {
-            var form =$('#sendMessageModal');
-            form.find('input[name="driver_id"]').val(driverId);
-            form.find('input[name="offer_id"]').val(offerId);
-            console.log(offerId,driverId);
-
-            $('#sendMessageModal').modal('show');
-
-        }
-    </script>
+    <script src="{{asset('/js/select.js')}}"></script>
+    <script src="{{asset('/js/range.js')}}"></script>
 @endsection
 
 

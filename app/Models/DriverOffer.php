@@ -20,4 +20,24 @@ class DriverOffer extends Model
     {
         return $this->belongsTo(\App\Models\City::class);
     }
+
+
+    public function types()
+    {
+        return $this->belongsToMany(Type::class);
+    }
+
+    public function carType()
+    {
+        return $this->belongsTo(\App\Models\CarType::class,'cars_type_id');
+    }
+
+    public function dialogs()
+    {
+
+        return $this->morphMany(\App\Models\Dialog::class,'dialogable');
+
+    }
+
+
 }

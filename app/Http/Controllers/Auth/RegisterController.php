@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Customer;
+use App\Models\Driver;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Repositories\Interfaces\UserRepositoryInterface;
+use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class RegisterController extends Controller
 {
@@ -29,15 +34,17 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+    private $userRepository;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->middleware('guest');
+        $this->userRepository=$userRepository;
     }
 
     /**
@@ -46,13 +53,18 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
+
         return Validator::make($data, [
+            'role_id'=>['required','numeric'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone'=>['required','regex:/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/'],
+            'captcha'=>['required'],
         ]);
+
     }
 
     /**
@@ -63,10 +75,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return $this->userRepository->createUser($data);
     }
+
 }

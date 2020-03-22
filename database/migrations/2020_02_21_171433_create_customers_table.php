@@ -15,8 +15,11 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->unsigned();
+            $table->Biginteger('user_id')->unsigned();
             $table->string('thumbnail')->nullable();
+
+
+
 
             $table->timestamps();
         });

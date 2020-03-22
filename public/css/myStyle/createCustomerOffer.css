@@ -1,0 +1,83 @@
+.hide {
+    display: none;
+
+}
+
+.select2-search__field
+{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    font-family: Arial;
+
+}
+
+.select2-selection__choice
+{
+    color: black;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.select2-selection--single
+{
+    height: 38px!important;
+    font-size: 1rem;
+    font-weight: 400;
+
+    font-family: Arial;
+    color: #6C757D;
+
+
+
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color:#495057;
+    line-height: 37px;
+}
+
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #757575;
+}
+
+
+.slider::-webkit-slider-thumb {
+    background: white;
+
+}
+
+
+.addressTwo li
+{
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: Arial;
+    color: #6C757D;
+}
+
+.addressOne li
+{
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: Arial;
+    color: #6C757D;
+}
+
+.card-body
+{
+    opacity: 1;
+}
+.card-body a
+{
+    color: white;
+}
+.my-main
+{
+    background-image: url("../../img/map-961700_960_720.png");
+    background-position: center;
+    background-size: 135% 90%;
+}
+

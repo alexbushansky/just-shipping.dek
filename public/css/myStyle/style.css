@@ -7,7 +7,7 @@
 }
 body
 {
-    font-family: "roboto-regular";
+    font-family: "roboto-regular", serif;
 }
 
 
@@ -49,15 +49,21 @@ legend {
 {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+
     flex-wrap: wrap;
     margin-top: 10px;
+
+
 }
 
 .orders > div
 {
-    width: 31% !important;
+    width: 31%!important;
     margin-bottom: 20px;
+    margin-left: 20px;
+
+
+
 }
 
 .page-content
@@ -82,6 +88,7 @@ p.card-text
 {
     opacity: 0.9;
     transition: opacity .3s;
+
 }
 
 .card:hover
@@ -171,4 +178,11 @@ p.card-text
     font-size: 14px;
     box-shadow: 0 0 15px grey;
     opacity: 0;
+}
+
+.special {
+    font-weight: bold !important;
+    color: black!important;
+    background: white !important;
+
 }

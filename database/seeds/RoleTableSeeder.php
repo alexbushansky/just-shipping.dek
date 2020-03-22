@@ -39,7 +39,7 @@ class RoleTableSeeder extends Seeder
                 'en' => 'Driver',
             ],
             [
-                'slug' => 'custromer',
+                'slug' => 'customer',
                 'ru' => 'Заказчик',
                 'en' => 'Customer',
             ],
