@@ -14,6 +14,7 @@ class FileService implements FileServiceInterface
 
     private $carPhotoPath;
     private $carFullPhotoPath;
+    private $customerPhotoPath;
 
 
     public function __construct()
@@ -21,6 +22,7 @@ class FileService implements FileServiceInterface
 
         $this->carPhotoPath = public_path(DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'cars'.DIRECTORY_SEPARATOR);
         $this->carFullPhotoPath = public_path(DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'fullPhotoCars'.DIRECTORY_SEPARATOR);
+        $this->customerPhotoPath = public_path(DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'fullCustomerPhoto'.DIRECTORY_SEPARATOR);
     }
 
     public function makeCarPhoto($file)
@@ -53,6 +55,14 @@ class FileService implements FileServiceInterface
             mkdir($this->carFullPhotoPath, 0777);
         }
     }
+
+    private function makeDirForCustomerOffersFiles()
+    {
+        if (!is_dir($this->customerPhotoPath)) {
+            mkdir($this->customerPhotoPath, 0777);
+        }
+    }
+
 
 
 
