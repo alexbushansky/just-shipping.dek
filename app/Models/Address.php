@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
+
+
     public function city()
     {
         return $this->belongsTo(\App\Models\City::class);

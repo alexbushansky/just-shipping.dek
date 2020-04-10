@@ -1,8 +1,8 @@
-@extends('admin.app')
+@extends('admin.devApp')
 
 @section('title','All City')
 @php
-    $locale=app()->getLocale();
+    $locale=devApp()->getLocale();
 @endphp
 
 @section('content')

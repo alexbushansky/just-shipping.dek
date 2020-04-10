@@ -1,0 +1,13 @@
+.my-main
+{
+    background-image: url("../../../img/renault-renault-trucks-magnum-4x2-chiornyi-gruzovik-sedelnyi.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+
+}
+body
+{
+    background: #202020;
+}

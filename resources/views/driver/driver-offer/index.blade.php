@@ -3,6 +3,7 @@
 @section('styles')
     <link rel="stylesheet" href="{{asset('/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/myStyle/range.css')}}">
+    <link rel="stylesheet" href="{{asset('fancy-box/jquery.fancybox.min.css')}}">
 @endsection
 
 @section('content')
@@ -52,10 +53,29 @@
                     </fieldset>
 
                     <fieldset>
+                        <legend>Вес груза от</legend>
+                        <div class="slidecontainer">
+                            <div class="showPrice">0</div>
+                            <input type="range" min="1" max="{{$max}}" value="0" class="slider" name = "weight">
+                        </div>
+                    </fieldset>
 
+                    <fieldset>
+                        <legend>Объем груза от</legend>
+                        <div class="slidecontainer">
+                            <div class="showPrice">0</div>
+                            <input type="range" min="1" max="200" value="0" class="slider" name = "capacity">
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
                         <legend>Тип груза</legend>
+
                         <select id="select_regions" class="form-control" name="type_of_cargo">
-                            <option disabled>Выберите груз</option>
+                            <option selected value="">Выберите тип</option>
+                            @foreach($types as $type)
+                            <option @if(request()->query('type_of_cargo') == $type->id) selected @endif value="{{$type->id}}">{{$type->type_name}}</option>
+                            @endforeach
                         </select>
                     </fieldset>
 
@@ -84,15 +104,21 @@
 
 
 
-                                <div class="card" onclick="window.location.href='{{route('driver-offers.show',['driverOffer'=>$offer->id])}}'">
-                                    <img src="{{asset('uploads/cars/'.$offer->thumbnail)}}" class="card-img-top" alt="...">
-                                    <div class="card-body">
+                                <div class="card">
+
+
+                                        <img class = 'card-img-top' src="{{'/uploads/fullPhotoCars/'.$offer->thumbnail}}">
+
+                                    <div class="card-body" onclick="window.location.href='{{route('driver-offers.show',['driverOffer'=>$offer->id])}}'">
                                         <ul>
                                             <li><h5><strong>{{$offer->title}}</strong></h5></li>
                                             <li>Расположение: {{$offer->country->name}}, {{$offer->city->name}}</li>
                                             <li>Цена за 1 км: {{$offer->price_per_km}} грн</li>
-                                            <li>Грузоподьемность: {{$offer->max_weight}} тонн(ы)</li>
+                                            <li>Грузоподьемность: {{$offer->weight}} кг</li>
                                             <li>Тип транспорта: {{$offer->carType->name_car_type}}</li>
+                                            <li>Объем: {{$offer->weight}}</li>
+
+
                                             <br>
                                             <div class="row">
 
@@ -127,10 +153,14 @@
 
 @section('scripts')
 
-    <script src="{{asset('/select2/js/select2.min.js')}}"></script>
-    <script src="{{asset('/select2/js/i18n/ru.js')}}"></script>
+
     <script src="{{asset('/js/select.js')}}"></script>
     <script src="{{asset('/js/range.js')}}"></script>
+    <script>
+
+
+    </script>
+
 @endsection
 
 

@@ -2,14 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\DialogMessage;
+use App\Events\TestEvent;
+use App\Models\CustomerOffer;
 use App\Models\Dialog;
 use App\Models\DialogMessage as Message;
+use App\Services\Interfaces\DialogServiceInterface;
 use Illuminate\Http\Request;
+use function Sodium\increment;
 
 class DialogController extends Controller
 {
 
     protected  $nameSpace = '\\App\\Models\\';
+    private $dialogService;
+
+    public function __construct(DialogServiceInterface $dialogService)
+    {
+        $this->dialogService = $dialogService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,6 +51,8 @@ class DialogController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
+
         $this->validate($request,[
             'description'=>'required|max:2000|min:5',
         ]);
@@ -51,7 +65,24 @@ class DialogController extends Controller
         $dialog = new Dialog();
         $dialog->user_id = auth()->user()->id;
         $dialog->status_dialog_id = 1;
+        $dialog->recipient_id = CustomerOffer::find($request->offer_id)->customer->user->id;
+        if($request->customer_offer_id)
+        {
+            $dialog->customer_offer_id=$request->customer_offer_id;
+        }
         $model->dialogs()->save($dialog);
+
+        if ($type == 'DriverOffer') {
+
+        } else {
+            $userCustomer  = $model->customer->user;
+            event(new TestEvent($userCustomer,$dialog));
+        }
+
+        //  Добавляем получателю счетчик новых сообщений
+        $dialog->increment('recipient_new',1);
+
+
 
         //получаем ид диалога и по ид диалога создаем сообщение в таблице messages
         // .user_id dialog_id created_at description
@@ -60,7 +91,10 @@ class DialogController extends Controller
         $message->message_text = $request->description;
         $message->dialog_id = $dialog->id;
         $message->user_id = $request->user()->id;
+
         $message->save();
+
+
 
 
         return response()->json([
@@ -77,13 +111,35 @@ class DialogController extends Controller
      */
     public function show(Dialog $dialog)
     {
-        $messages = $dialog->messages();
+
+        if(policy(Dialog::class)->show($dialog)) {
+            $customerOffer = null;
+
+            if ($dialog->customer_offer_id) {
+
+                $customerOffer = CustomerOffer::with('cargoType')
+                                        ->find($dialog->customer_offer_id);
 
 
-        return view('dialog.show',[
-            'dialog'=>$dialog,
-            'messages'=>$messages,
-        ]);
+            }
+            $messages = Message::where('dialog_id','=',$dialog->id)
+                                ->with('user')
+                                ->get();
+
+
+
+
+
+
+
+            return view('dialog.show', [
+                'dialog' => $dialog,
+                'messages'=>$messages,
+                'customerOffer' => $customerOffer,
+            ]);
+        }
+
+        abort(403);
     }
 
     /**
@@ -95,6 +151,23 @@ class DialogController extends Controller
     public function edit(Dialog $dialog)
     {
         //
+    }
+
+    public function showAllUsersDialogs()
+    {
+       $offers = $this->dialogService->getAllDialogs();
+
+       return view('offers.yourOffer')->with(
+           ['offers' => $offers]
+       );
+    }
+    public function showAllOffersForYou()
+    {
+        $offers = $this->dialogService->getOffersDialogs();
+
+        return view('offers.offersForYou')->with(
+            ['offers' => $offers]
+        );
     }
 
     /**

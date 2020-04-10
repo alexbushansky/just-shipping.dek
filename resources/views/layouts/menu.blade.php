@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', App()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('devApp.name', 'Laravel') }}</title>
 
 
 
@@ -25,6 +25,9 @@
 
 </head>
 <body>
+@php
+    $user = auth()->user();
+@endphp
 
 <nav class="navbar navbar-expand-lg menu">
     <a class="navbar-brand" href="/">Just Shipping</a>
@@ -39,6 +42,20 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('driver-offers.index')}}">Предложения</a>
             </li>
+            @if($user)
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="{{route('driver-offers.index')}}"><span class="badge badge-light" id="offer-count">--}}
+
+{{--                        @php--}}
+{{--                        $count = \App\Models\Dialog::where('recipient_id','=',$user->id)->sum('recipient_new');--}}
+
+{{--                        echo $count--}}
+{{--                        @endphp--}}
+
+{{--                    </span></a>--}}
+{{--            </li>--}}
+            @endif
+
             @auth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="google.com" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,17 +63,23 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="1">Активные заказы</a>
-                        <a class="dropdown-item" href="2">Выполненные заказы</a>
 
+                        <a class="dropdown-item" href="{{route('showActiveOrders',['id'=>$user->id])}}">Активные заказы</a>
+
+                        <a class="dropdown-item" href="{{route('completedOrders',['userId'=>$user->id])}}">Выполненные заказы</a>
+                        <a class="dropdown-item" href="{{route('showDialogs')}}">Предложения</a>
+                        @role('driver')
                         <a class="dropdown-item" href="{{route('driver-offers.create')}}">Добавить заказ</a>
-                        <a class="dropdown-item" href="{{route('customer-offers.create')}}">Добавить заказ2</a>
+                        @endrole
 
+                        @role('customer')
+                        <a class="dropdown-item" href="{{route('customer-offers.create')}}">Добавить заказ</a>
+                        @endrole
 
 {{--                            <a class="dropdown-item" href="{{route('driver-offers.create')}}">Добавить заказ</a>--}}
 
 
-                        <a class="dropdown-item" href="4">Предложения</a>
+
                     </div>
 
                 </li>
@@ -89,10 +112,14 @@
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Выйти') }}
                         </a>
-
+                            @role('admin')
                         <a class="dropdown-item" href="{{route('admin')}}">Админ Панель</a>
+                            @endrole
 
-                        <a class="dropdown-item" href="{{route('users.show',['user'=>auth()->user()->id])}}">Личный кабинет</a>
+
+                        <a class="dropdown-item" href="{{route('users.show',['user'=>$user->id])}}">Личный кабинет</a>
+
+
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -138,8 +165,10 @@
         @yield('content')
     </main>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/bundle.js') }}"></script>
+
     <script src="{{ asset('js/main.js') }}"></script>
+
     @yield('scripts')
 </body>
 

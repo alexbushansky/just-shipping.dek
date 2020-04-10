@@ -61,11 +61,24 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(User $user)
     {
-        return view('user.show',['user'=>$user]);
+        $cars = null;
+        if ($user->hasRole('driver')) {
+            $cars = $user->driver->driverCar;
+
+
+            return view('user.show', [
+                'user' => $user,
+                'cars' => $cars,
+            ]);
+        }
+
+        return view('user.show', [
+            'user' => $user,
+        ]);
     }
 
     /**

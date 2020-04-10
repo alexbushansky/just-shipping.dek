@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', devApp()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,7 +8,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title')-{{config('app.name')}}</title>
+    <title>@yield('title')-{{config('devApp.name')}}</title>
 
     <!-- Styles -->
     <link href="{{asset('adminpanel/vendors/@coreui/icons/css/free.min.css')}}">
@@ -41,7 +41,7 @@
 
     @yield('styles')
 </head>
-<body class="c-app">
+<body class="c-devApp">
       <!--
       Sidebar
      !-->

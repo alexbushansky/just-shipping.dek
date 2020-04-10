@@ -18,7 +18,20 @@
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
 
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Фамилия</label>
+
+                            <div class="col-md-6">
+                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" autocomplete="surname">
+
+                                @error('surname')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -27,12 +40,12 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right margin-right">{{ __('Role') }}</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="role_id" id="roleCustomer" value="6" checked>
+                            <input class="form-check-input" type="radio" name="role_id" id="roleCustomer" value="4" checked>
                             <label class="form-check-label" for="roleCustomer">Customer</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="role_id" id="roleDriver" value="5">
+                            <input class="form-check-input" type="radio" name="role_id" id="roleDriver" value="3">
                             <label class="form-check-label" for="roleDriver">Driver</label>
 
                         </div>

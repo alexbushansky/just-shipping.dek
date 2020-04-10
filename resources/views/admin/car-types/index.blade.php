@@ -1,10 +1,10 @@
-@extends('admin.app')
+@extends('admin.devApp')
 
 @section('title','All Cars types')
 
 @section('content')
 @php
-    $locale=app()->getLocale();
+    $locale=devApp()->getLocale();
 @endphp
 <div class="col-12">
 

@@ -2,6 +2,10 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('fancy-box/jquery.fancybox.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/myStyle/range.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/myStyle/customerOffer.css')}}">
+
 @endsection
 
 @section('content')
@@ -14,33 +18,92 @@
 
                 <br>
 
-                <form method="get" action="{{route('driver-offers.index')}}">
+                <form method="get" action="{{route('customer-offers.index')}}">
                     <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Поиск" name="title">
+                        <input class="form-control" type="text" placeholder="Поиск" name="title" value="{{request()->query('title')}}">
                     </div>
-
+                    <a class="text-decoration-none nav-link my-addOne" href="#">Укажите место отправления</a>
+                <div class="addressOne hide">
                     <fieldset>
                         <legend>Country</legend>
-                        <select id="select_countries" class="form-control" name="country_id">
-                            <option disabled>Выберите страну</option>
+                        <select  class="form-control select-country" name="country_id_from" >
                         </select>
                     </fieldset>
 
                     <fieldset>
 
                         <legend>Region</legend>
-                        <select id="select_regions" class="form-control" name="region_id">
-                            <option disabled>Выберите регион</option>
+                        <select class="form-control select-region" name="region_id_from">
+
                         </select>
                     </fieldset>
 
                     <fieldset>
 
                         <legend>City</legend>
-                        <select id="select_cities" class="form-control" name="city_id">
-                            <option disabled>Выберите город</option>
+                        <select class="form-control select-city" name="city_id_from">
+
                         </select>
                     </fieldset>
+                </div>
+
+                    <a class="text-decoration-none nav-link my-addTwo" href="#">Укажите место прибытия</a>
+
+                <div class="addressTwo hide">
+                    <fieldset>
+                        <legend>Country</legend>
+                        <select  class="form-control select-country-two" name="country_id_to" >
+                        </select>
+                    </fieldset>
+
+                    <fieldset>
+
+                        <legend>Region</legend>
+                        <select class="form-control select-region-two" name="region_id_to">
+
+                        </select>
+                    </fieldset>
+
+                    <fieldset>
+
+                        <legend>City</legend>
+                        <select class="form-control select-city-two" name="city_id_to">
+
+                        </select>
+                    </fieldset>
+                </div>
+                    <hr>
+                    <fieldset>
+                        <legend>Цена за 1 км</legend>
+                        <div class="slidecontainer">
+                            <div class="showPrice">0</div>
+                            <input type="range" min="1" max="200" value="0" class="slider" name = "price_per_km">
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Объем</legend>
+
+                            <input class="form-control" type="number" placeholder="М3"   name = "capacity">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Масса от</legend>
+                        <input class="form-control" type="number" placeholder="Тонны"   name = "weight">
+                    </fieldset>
+
+                    <fieldset>
+
+                        <legend>Тип груза</legend>
+                        <select  class="form-control" name="type_of_cargo">
+                            <option selected value="">Выберите груз</option>
+                            @foreach($typesOfCargo as $type)
+                                <option value="{{$type->id}}">{{$type->type_name}}</option>
+                            @endforeach
+
+                        </select>
+                    </fieldset>
+
+
                     <span class="form-group">
                         <button class="btn btn-sm btn-primary" type="submit">{{__('Submit')}}</button>
                     </span>
@@ -48,6 +111,7 @@
                     <span class="form-group">
                         <button class="btn btn-sm btn-danger" type="reset">{{__('Reset')}}</button>
                     </span>
+
                 </form>
 
 
@@ -60,17 +124,28 @@
 
                 @foreach($customerOffers as $offer)
                         <div class="card">
-                            <img src="{{asset('img/Gruzovik-5-tonn-1.jpg')}}" class="card-img-top" alt="...">
+                            <a data-fancybox="gallery" href="{{'/uploads/fullCustomerPhoto/'.json_decode($offer->gallery)[0]}}">
+                                <img class = 'img-fluid' src="{{'/uploads/fullCustomerPhoto/'.json_decode($offer->gallery)[0]}}">
+                            </a>
                             <div class="card-body">
                                 <ul>
-                                    <li><strong>Кратко: </strong> <strong> {{$offer->title}}</strong></li>
-                                    <li><strong>Откуда : </strong> {{$offer->addressFrom->country->name}}:{{$offer->addressFrom->city->name}}</li>
-                                    <li><strong>Куда : </strong>{{$offer->addressTo->country->name}}:{{$offer->addressTo->city->name}}</li>
+                                    <li><h5><strong> {{$offer->title}}</strong></h5></li>
+                                    <li><strong>Откуда : </strong> {{$offer->fullAddressFrom->country->name}},{{$offer->fullAddressFrom->city->name}}</li>
+                                    <li><strong>Куда : </strong> {{$offer->fullAddressTo->country->name}},{{$offer->fullAddressTo->city->name}}</li>
+
+
+
 
                                     <li><strong>Цена за 1 км: </strong>{{$offer->price_per_km}}</li>
                                 </ul>
+                                <div class="row">
+
+                                    <div class="col-md-6"> <a class="btn btn-success" href="{{route('customer-offers.show',['customerOffer'=>$offer->id])}}">Детальнее</a></div>
+
+                                </div>
                             </div>
                         </div>
+
                     @endforeach
                </div>
                 {{$customerOffers->links()}}
@@ -89,99 +164,24 @@
 
 @section('scripts')
 
-    <script src="{{asset('/select2/js/select2.min.js')}}"></script>
-    <script src="{{asset('/select2/js/i18n/ru.js')}}"></script>
-{{--    <script>--}}
-{{--        $(function(){--}}
-{{--            var selectRegions, selectCountries, selectCity;--}}
-{{--            // INIT SELECT2 USING  AJAX DATA--}}
-{{--            $.ajax({--}}
-{{--                url: '/geonames/countries',--}}
-{{--                type: 'GET',--}}
-{{--                contentType: 'application/json; charset=utf-8'--}}
-{{--            }).then(function (response) {--}}
-
-
-
-{{--                var data = response.countries.map(function (item) {--}}
-{{--                    return {id: item.id, text: item.name};--}}
-{{--                });--}}
-
-{{--                selectCountries = $('#select_countries').select2({--}}
-{{--                    language: "ru",--}}
-{{--                    data: data--}}
-{{--                });--}}
-
-
-
-{{--                $('#select_countries').on("select2:select" ,function (event) {--}}
-{{--                    $("#select_cities").empty();--}}
-
-{{--                    var countryId = event.params.data.id;--}}
-{{--                    console.log(countryId);--}}
-{{--                    // INIT SELECT2 USING  AJAX DATA--}}
-{{--                    $.ajax({--}}
-{{--                        url: '/geonames/regions/' + countryId,--}}
-{{--                        type: 'GET',--}}
-{{--                        contentType: 'application/json; charset=utf-8'--}}
-{{--                    }).then(function (response) {--}}
-
-{{--                        $("#select_regions").empty();--}}
-
-{{--                        var data = response.regions.map(function (item) {--}}
-{{--                            return {id: item.id, text: item.name};--}}
-{{--                        });--}}
-
-
-
-{{--                        selectRegions = $('#select_regions').select2({--}}
-{{--                            language: "ru",--}}
-{{--                            data: data,--}}
-
-{{--                        });--}}
-
-
-
-
-{{--                        $('#select_regions').on("select2:select", function (event) {--}}
-
-{{--                            var regionId = event.params.data.id;--}}
-{{--                            $.ajax({--}}
-{{--                                url: '/geonames/cities/' + regionId,--}}
-{{--                                type: 'GET',--}}
-{{--                                contentType: 'application/json; charset=utf-8'--}}
-{{--                            }).then(function (response) {--}}
-
-
-{{--                                $("#select_cities").empty();--}}
-
-
-{{--                                var data = response.cities.map(function (item) {--}}
-{{--                                    return {id: item.id, text: item.name};--}}
-{{--                                });--}}
-{{--                                console.log(data);--}}
-
-
-{{--                                selectCity = $('#select_cities').select2({--}}
-{{--                                    language: "ru",--}}
-{{--                                    data: data,--}}
-
-{{--                                });--}}
-
-{{--                            });--}}
-
-
-{{--                        });--}}
-
-
-{{--                    });--}}
-{{--                });--}}
-{{--            });--}}
-
-
-{{--            $('.select2-basic').select2();--}}
-{{--        });--}}
-{{--    </script>--}}
+                <script src="{{asset('/js/select.js')}}"></script>
+                <script src="{{asset('/js/range.js')}}"></script>
+                <script src="{{asset('fancy-box/jquery.fancybox.min.js')}}"></script>
+                <script>
+                    $(function() {
+                        $('.my-addOne').on('click', function(e) {
+                            e.preventDefault();
+                            $('.addressOne').toggleClass('hide');
+                        });
+                    });
+                    $(function() {
+                        $('.my-addTwo').on('click', function(e) {
+                            e.preventDefault();
+                            $('.addressTwo').toggleClass('hide');
+                        });
+                    });
+                </script>
 @endsection
+
 
 

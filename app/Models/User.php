@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -14,6 +15,7 @@ class User extends Authenticatable
     private const USER_DRIVER = 'driver';
     private const USER_ADMIN = 'admin';
     use Notifiable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','phone_number'
+        'name', 'email', 'password','phone_number','surname'
     ];
 
     /**
@@ -62,7 +64,7 @@ class User extends Authenticatable
     {
 
         foreach ($this->roles()->get() as $role) {
-            if ($role->slug == self::USER_ADMIN) {
+            if ($role->name == self::USER_ADMIN) {
 
                 return true;
             }
@@ -76,7 +78,7 @@ class User extends Authenticatable
 
         foreach ($this->roles()->get() as $role) {
 
-            if ($role->slug == $roleName) {
+            if ($role->name== $roleName) {
               return true;
             }
 
@@ -88,7 +90,7 @@ class User extends Authenticatable
     {
 
         foreach ($this->roles()->get() as $role) {
-            if ($role->slug == self::USER_CUSTOMER) {
+            if ($role->name == self::USER_CUSTOMER) {
 
                 return true;
             }
@@ -101,7 +103,7 @@ class User extends Authenticatable
     {
 
         foreach ($this->roles()->get() as $role) {
-            if ($role->slug == self::USER_DRIVER) {
+            if ($role->name == self::USER_DRIVER) {
 
                 return true;
             }

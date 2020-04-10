@@ -7,6 +7,7 @@ use App\Models\Driver;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Services\Interfaces\UserServiceInterface;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -34,17 +35,17 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
-    private $userRepository;
+    private $userService;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserServiceInterface $userService)
     {
         $this->middleware('guest');
-        $this->userRepository=$userRepository;
+        $this->userService=$userService;
     }
 
     /**
@@ -58,11 +59,12 @@ class RegisterController extends Controller
 
         return Validator::make($data, [
             'role_id'=>['required','numeric'],
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:100'],
+            'surname' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone'=>['required','regex:/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/'],
-            'captcha'=>['required'],
+            'captcha'=>['required','captcha'],
         ]);
 
     }
@@ -75,7 +77,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return $this->userRepository->createUser($data);
+
+        return $this->userService->createUser($data);
     }
 
 }

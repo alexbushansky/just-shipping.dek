@@ -28,5 +28,43 @@ class CustomerOffer extends Model
     }
 
 
+    public function dialogs()
+    {
+
+        return $this->morphMany(\App\Models\Dialog::class,'dialogable');
+
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(\App\Models\Customer::class,'customer_id');
+    }
+    public function driver()
+    {
+        return $this->belongsTo(\App\Models\Driver::class,'driver_id');
+    }
+
+    public function user()
+    {
+       return $this->customer->user();
+    }
+
+    public function fullAddressFrom()
+    {
+        return  $this->addressFrom()->with('country')
+                            ->with('region')
+                            ->with('city');
+
+    }
+    public function fullAddressTo()
+    {
+        return  $this->addressTo()->with('country')
+                            ->with('region')
+                            ->with('city');
+    }
+
+
+
+
 
 }

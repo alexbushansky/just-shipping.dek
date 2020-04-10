@@ -81,3 +81,34 @@
     background-size: 135% 90%;
 }
 
+
+i {
+    margin: 10px 10px 10px 10px;
+    transition: transform 1s ease-in-out;
+}
+i:hover {
+    transform: scale(2);
+}
+
+.green{color:yellowgreen;}
+
+.red {
+    color: red;
+    position: absolute;
+    left: 168px;
+}
+
+.hide
+{
+    visibility: hidden;
+}
+
+
+.show
+{
+
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}

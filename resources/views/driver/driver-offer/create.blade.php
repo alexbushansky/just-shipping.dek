@@ -20,19 +20,25 @@
                     <h3 class="text-center mb-4">Добавить предложение</h3>
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Название" name="nameOfOrder" type="text">
+                            <input class="form-control" placeholder="Кратко" name="nameOfOrder" type="text">
                         </div>
+
+                        <div class="form-group">
+                            <legend>Веберите средство перевозки</legend>
+                            <select class="form-control" name="driverCar">
+                                @foreach($driverCar as $car)
+                                    <option value="{{$car->car_id}}">
+                                        {{$car->model_of_car}}
+                                    </option>
+                                    @endforeach
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <select id = "types" class="js-example-basic-multiple js-states form-control"  multiple="multiple" name = 'types[]'>
 
                             </select>
                         </div>
-                        <div class="form-group">
-                            <select id = "carTypes" class="form-control js-car-type" name="carType">
-                                <option></option>
-                            </select>
-                        </div>
-
                         <div class="form-group">
                             <select  class="form-control select-country" name="country">
 
@@ -60,37 +66,24 @@
                         </div>
 
                         <div class="form-group">
-                        Параметры средства перевозки
+                        Параметры груза
                         </div>
-                        <div class="row">
 
-                            <div class="col">
-                                <input type="number" class="form-control" min="0" placeholder="Ширина (м)" name = 'internal_width'>
-                            </div>
-                            <div class="col">
-                                <input type="number" class="form-control"  min="0" placeholder="Высота (м)" name = 'internal_height'>
-                            </div>
-                            <div class="col">
-                                <input type="number" class="form-control" min="0" placeholder="Длина (м)" name="internal_length">
-                            </div>
-                        </div>
                         <br>
                         <div class="row">
 
                             <div class="col">
-                                <input type="number" class="form-control"  min="0" placeholder="Вместимость (куб)" name="capacity">
+                                <input type="number" class="form-control"  min="0" placeholder="Макс. куб" name="capacity">
                             </div>
                             <div class="col">
-                                <input type="number" class="form-control"  min="0" placeholder="Макс. вес (кг)" name="max_weight">
+                                <input type="number" class="form-control"  min="0" placeholder="Макс. вес (кг)" name="weight">
                             </div>
 
                         </div>
                         <br>
-                        <div class="form-group custom-file w-100 text-left">
-                            <input type="file" class="custom-file-input" id="customFile" name="photo">
-                            <label class="custom-file-label" for="customFile">Фото транспорта</label>
-                        </div>
-                        <br>
+
+
+
                         <br>
                         <div class="form-group">
                             <label for="describe">Описание:</label>

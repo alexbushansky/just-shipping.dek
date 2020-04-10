@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SayHello;
+use App\Events\TestEvent;
 use App\Models\Dialog;
 use App\Models\DialogMessage as Message;
+use App\Models\User;
+use App\TestModel;
 use Illuminate\Http\Request;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 class TestController extends Controller
 {
     protected  $nameSpace = '\\App\\Models\\';
@@ -48,4 +53,33 @@ class TestController extends Controller
         ]);
 
     }
+
+
+    public function testModel()
+    {
+        $model = new TestModel();
+        $model->name = 'ivan';
+        $model->second_name = 'smirnov';
+        $model->save();
+        $user  = User::find(64);
+        $dialog = Dialog::find(63);
+
+        event(new TestEvent($user,$dialog));
+
+
+
+    }
+
+
+    public function testEvent()
+    {
+        $data = (object)[
+            'offer_count'=>'1',
+            'user_id'=>auth()->user()->id,
+        ];
+
+
+        event(new SayHello($data));
+    }
+
 }

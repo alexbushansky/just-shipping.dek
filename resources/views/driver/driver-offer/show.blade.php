@@ -2,27 +2,14 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('fancy-box/jquery.fancybox.min.css')}}">
 
 
 @endsection
 
-
-
-
-
-
-
-
-
 @section('content')
 
-    @php
 
-        $isAdmin= auth()->user()->isAdmin();
-        $isCustomer= auth()->user()->isCustomer();
-        $isDriver= auth()->user()->isDriver();
-
-    @endphp
     <main>
 
         <div class="container dark-grey-text mt-4">
@@ -36,9 +23,9 @@
 
 
                 <div class="col-md-5">
-
+                <a href="{{asset('uploads/fullPhotoCars/'.$driverOffer->thumbnail)}}" data-fancybox="gallery">
                     <img src="{{asset('uploads/fullPhotoCars/'.$driverOffer->thumbnail)}}" class="img-fluid rounded" alt="" style = "width:475px;">
-{{--                    <img src="{{asset('img/bd4c5cac0b82cac5f99f8097fa1f1a80.jpg')}}" class="img-fluid" alt="">--}}
+                </a>
 
 
 
@@ -63,15 +50,19 @@
 
 
                         <div class="col-md-6">
-                            <div>Телефон</div>
+                            <div>Телефон: {{$offerInfo['phone']}}</div>
                             <div>Цена за 1 км: {{$driverOffer->price_per_km}} грн</div>
-                            <div>Типы грузов</div>
-                            <div>Грузоподъемность:{{$driverOffer->max_weight}} тонн(ы)</div>
+                            <div>Тип грузов:
+                            @foreach($driverOffer->types as $type)
+                                {{$type->type_name}}
+                            @endforeach
+                            </div>
+                            <div>Тип транспорта: {{$driverOffer->carType->name_car_type}}</div>
+                            <div>Грузоподъемность:{{$driverOffer->weight}} тонн(ы)</div>
 
                         </div>
 
                     </div>
-
 
 
 
@@ -81,15 +72,14 @@
             <br>
             <div class="text-right">
 
-                @if($isAdmin || $isCustomer)
+
+                @role('customer')
                     <button class="btn btn-primary"  onclick="sendMessage({{$driverOffer->id}},{{$driverOffer->driver_id}})">Предложить</button>
-                @endif
+                @endrole
             </div>
             <hr>
 
             <div class="row d-flex justify-content-left">
-
-
 
 
                 <div class="col-md-10 text-left">
@@ -104,6 +94,7 @@
 
 
             {{--Modal Window--}}
+            @role('customer')
             <div id = "sendMessageModal" class="modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -118,15 +109,22 @@
                                 <div class="success-message">
 
                                 </div>
-                                <input type="text" name="offer_id">
+                                <input type="hidden" name="offer_id">
 
 
-                                <input type="text" name='type' value="DriverOffer">
-
-
-
+                                <input type="hidden" name='type' value="DriverOffer">
                                 <div class="form-group">
-                                    <label>Написать отклик</label>
+                                <legend>Веберите одно из своих объявлений</legend>
+
+                                <select class="offer form-control" name = 'customer_offer_id'>
+                                    @foreach($customerOffer as $offer)
+                                        <option value="{{$offer->id}}" >{{$offer->title}}</option>
+                                        @endforeach
+                                </select>
+
+                                <br>
+
+                                    <label>Описание</label>
                                     <textarea class="form-control" name="description"></textarea>
 
                                     <span class="invalid-feedback" role="alert">
@@ -151,24 +149,46 @@
                 </div>
             </div>
           {{--Modal Window--}}
+            @endrole
 
-            @if($isAdmin || $isCustomer)
+
             <div>
                 <br>
-                <h3>Все отклики</h3>
 
-                    @if($dialogs)
+                <hr>
+                @if($dialogs->count()>1)
+                    <h3>Все Отклики</h3>
+                    <br>
+                    <div class="row">
+
                         @foreach($dialogs as $dialog)
-                            <div>
-                                {{$dialog->user->name}}
-                                <a href="{{route('dialogs.show',['dialog'=>$dialog->id])}}">Посмотреть отклик</a>
+                            <div class="col-md-6 my-offer">
+                                <div class="card shadow-lg rounded">
+                                    <div class="row">
+                                        <div class="col-md-2 offer-part">
+                                            <img class = 'img-fluid' src="{{'/uploads/thumbnails/'.$dialog->user->thumbnail}}" >
+                                        </div>
+                                        <div class="col-md-5 text-left">
+
+                                            {{$dialog->user->name}}
+                                            <br>
+                                            <a href="{{route('dialogs.show',['dialog'=>$dialog->id])}}">Посмотреть отклик</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
                             </div>
                         @endforeach
-                    @endif
+
+                    </div>
+                @else
+                    <h3>Нет откликов</h3>
+                @endif
 
             </div>
-            @endif
+
         </div>
+
 
 
     </main>
@@ -184,4 +204,5 @@
 @section('scripts')
     <script src="{{asset('/js/main.js')}}"></script>
     <script src="{{asset('/js/sender.js')}}"></script>
+    <script src="{{asset('fancy-box/jquery.fancybox.min.js')}}"></script>
 @endsection

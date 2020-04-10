@@ -45,3 +45,24 @@ input::placeholder {
     font-size: 0.9rem;
     color: #999;
 }
+
+.left-window
+{
+    border-left: 1px solid black;
+}
+.my-block
+{
+   justify-content: center;
+}
+
+.dialog-img
+{
+    width: 90px;
+    height: 90px;
+}
+.text-justify {
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}

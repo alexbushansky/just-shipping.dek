@@ -21,6 +21,11 @@ class DriverOffer extends Model
         return $this->belongsTo(\App\Models\City::class);
     }
 
+    public function driver()
+    {
+        return $this->belongsTo(\App\Models\Driver::class);
+    }
+
 
     public function types()
     {
@@ -29,7 +34,7 @@ class DriverOffer extends Model
 
     public function carType()
     {
-        return $this->belongsTo(\App\Models\CarType::class,'cars_type_id');
+        return $this->belongsTo(\App\Models\CarType::class,'type_of_car');
     }
 
     public function dialogs()

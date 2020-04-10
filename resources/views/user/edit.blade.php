@@ -6,19 +6,6 @@
 
 
     <div class="container emp-profile">
-
-{{--        <form action="{{route('users.update',['user'=>$user->id])}}"  method="POST" enctype="multipart/form-data" novalidate>--}}
-{{--            @csrf--}}
-{{--            @method('PUT')--}}
-{{--            <div class="form-group">--}}
-{{--                <input type="email" name="email" class="form-control" placeholder="email" autocomplete="email">--}}
-{{--            </div>--}}
-{{--            <div class="form-group">--}}
-{{--                <input type="file"  class="form-control" name="photos[]" id="" multiple>--}}
-{{--            </div>--}}
-{{--            <button>Submit</button>--}}
-{{--        </form>--}}
-
         <form id = "deleteAvatar" action="{{route('users.deleteAvatar',['user'=>$user->id])}}" method="POST">
             @csrf
             @if($user->thumbnail)
@@ -64,9 +51,18 @@
                         </h5>
                         <h6>
                             Роль:
-                            @foreach($user->roles as $role)
-                                <li> {{$role->ru}}</li>
-                            @endforeach
+                            @role('driver')
+                            Перевозчик
+                            @endrole
+                            @role('customer')
+                            Заказчик
+                            @endrole
+                            @role('admin')
+                            Администратор
+                            @endrole
+{{--                            @foreach($user->roles as $role)--}}
+{{--                                <li> {{$role->ru}}</li>--}}
+{{--                            @endforeach--}}
                         </h6>
                         <p class="proile-rating">Рейтинг: <span>8/10</span></p>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">

@@ -32,11 +32,11 @@ class DialogMessageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
+
         $this->validate($request,[
             'message_text'=>'required|max:2000|min:1',
         ]);
@@ -44,16 +44,20 @@ class DialogMessageController extends Controller
 
         $message = new DialogMessage();
 
-        $message->message_text= wordwrap($request->message_text, 50, "\n", true);
+        $message->message_text= wordwrap($request->message_text, 30, "\n", true);
         $message->dialog_id = $request->dialog_id;
         $message->user_id = $request->user()->id;
-        $message->save();
-        return redirect()->route('dialogs.show',[
-            'dialog'=>$request->dialog_id,
-        ])->with([
-            'status'=>'Ваше сообщение отправлено успешно',
-            'alert'=>'success',
-        ]);
+        if ($message->save()) {
+
+            event(new \App\Events\DialogMessage($message));
+            return response()->json([
+                'response' => true,
+            ]);
+        }else
+        {
+            return false;
+        }
+
     }
 
     /**

@@ -24,6 +24,7 @@ $(function () {
                 }
             },
             error:function (error) {
+                console.log(error);
                 var errors=error.responseJSON.errors;
                 var element = _self.find('textarea[name="description"]').addClass('is-invalid');
                 element.next().html('<strong>'+errors.description[0]+'</strong>');

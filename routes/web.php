@@ -24,18 +24,33 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+
 Route::group(['prefix'=>'admin','middleware'=>['admin','auth']],function () {
 
     Route::get('/', 'AdminController@index')->name('admin');
     Route::resource('customers','CustomerController');
     Route::resource('car-types','CarTypeController');
 
+
 });
 
 //СarTypes getAll
 Route::get('get-car-types','CarTypeController@getAllCarType')->name('car-type.getAll');
 
+
+
+
+
+Route::post('customer-offers/toCompleteOrder/{id}','CustomerOfferController@toCompleteOrder')->name('completeOrder');
+Route::get('customer-offers/showCompletedOrders/{userId}','CustomerOfferController@showCompletedOrders')->name('completedOrders');
+Route::get('dialogs/all','DialogController@showAllUsersDialogs')->name('showDialogs');
+Route::get('dialogs/all-offers-dialog','DialogController@showAllOffersForYou')->name('showOfferDialogs');
 Route::resource('customer-offers','CustomerOfferController');
+
+
+Route::resource('driver-car','DriverCarController');
+
+
 
 
 //Driver Offers routes
@@ -43,8 +58,18 @@ Route::any('driver-offers/send-message','DriverOfferController@sendMessage')->na
 Route::resource('driver-offers','DriverOfferController');
 //---------------------------------------------------------
 //Dialog routes
-Route::resource('dialogs','DialogController');
-Route::resource('dialog-messages','DialogMessageController');
+
+Route::group(['prefix'=>'user-panel','middleware'=>['auth']],function () {
+    Route::resource('dialogs','DialogController');
+    Route::resource('dialog-messages','DialogMessageController');
+    Route::post('customer-offers/acceptOffer/{id}','CustomerOfferController@acceptOffer')->name('acceptCustomerOffer');
+    Route::get('customer-offers/activeOrders/{id}','CustomerOfferController@activeOrders')->name('showActiveOrders');
+    Route::get('customer-offers/showActiveOrder/{id}','CustomerOfferController@showActiveOrder')->name('showActiveOrder');
+});
+
+
+
+
 //---------------------------------------------------------
 //Account Information
 //Route::get('account-info','UserController@index')->name('account.info');
@@ -70,3 +95,8 @@ Route::group(['prefix'=>'test'],function (){
 
 Route::get('get-cargo-types','TypesController@getTypes')->name('get.cargo.types');
 
+
+Route::get('getTest','TestController@TestModel')->name('testModel');
+
+
+Route::get('getEvent','TestController@testEvent')->name('testEvent');

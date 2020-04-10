@@ -2,7 +2,7 @@
 
 @section('content')
     @php
-        $locale = app()->getLocale();
+        $locale = App()->getLocale();
     @endphp
 <div class="container">
     <div class="row justify-content-center">
