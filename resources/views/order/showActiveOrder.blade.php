@@ -149,10 +149,12 @@
     <script src="{{asset('fancy-box/jquery.fancybox.min.js')}}"></script>
 
             <script type="text/javascript"
-                    src="http://maps.google.com/maps/api/js?key=AIzaSyC4s1F-hDwoeG8bPi4y4OiBMAbZyFeIoYo"></script>
+                    src="http://maps.google.com/maps/api/js?key={{env('REACT_APP_GOOGLE_API_KEY')}}"></script>
 
     <script src="{{asset('js/activeOrder/map.js')}}"></script>
     <script>
+
+
         var latFrom = {{json_decode($latLngFrom)->lat}};
         var lngFrom = {{json_decode($latLngFrom)->lng}};
         var lngTo = {{json_decode($latLngTo)->lng}};
