@@ -61,6 +61,7 @@ legend {
     width: 31%!important;
     margin-bottom: 20px;
     margin-left: 20px;
+    float: left;
 }
 
 .page-content
@@ -113,8 +114,7 @@ p.card-text
     background: var(--dark-blue);
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 8px 8px 0 rgba(0,0,0,0.3);
-    height: 80px;
-
+    min-height: 80px;
 }
 
 .menu a
@@ -197,4 +197,61 @@ p.card-text
     -moz-transition: all 0.5s ease;;
     -o-transition: all 0.5s ease;;
     transition: all 0.5s ease;
+}
+
+
+
+/* tablet album*/
+@media (min-width: 768px) and (max-width: 979px) {
+    .orders >div
+    {
+        margin: 20px auto;
+        width: 48%!important;
+    }
+
+
+
+}
+
+@media (min-width: 978px) and (max-width: 1400px) {
+    .orders >div
+    {
+        margin: 20px auto;
+        width: 48%!important;
+        float: left;
+    }
+
+
+
+}
+
+
+
+
+
+/* tablet portrate*/
+
+@media (max-width: 767px) {
+    .orders >div
+    {
+        margin: 20px auto;
+        width: 90%!important;
+        float: left;
+
+    }
+}
+
+
+
+
+
+/* smartphone*/
+@media (max-width: 480px) {
+
+    .orders >div
+    {
+        margin: 20px auto;
+        width: 90%!important;
+        float: left;
+    }
 }

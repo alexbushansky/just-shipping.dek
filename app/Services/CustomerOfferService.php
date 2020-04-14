@@ -50,14 +50,11 @@ class CustomerOfferService implements CustomerOfferServiceInterface
             foreach ($request->file('photo') as $photo){
                 $filesArr[] = $this->fileService->makeOfferPhoto($photo);
             }
-            $this->customerOffer->createOffer($request->nameOfOrder,$request->description,$addressFirst->id,
+          return  $this->customerOffer->createOffer($request->nameOfOrder,$request->description,$addressFirst->id,
                                              $addressSecond->id,$request->weight,$request->price_per_km,
                                              $request->date_finish,$request->customer_id,$request->types,
                                                 $filesArr,$request->addressOne,$request->addressTwo,$request->capacity);
         }
-
-
-
 
     }
 

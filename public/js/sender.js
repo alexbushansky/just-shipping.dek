@@ -10,21 +10,29 @@ $(function () {
         e.preventDefault();
         var _self=$(this);
         var data = _self.serialize();
-        console.log(data);
+       // console.log(data);
 
         $.ajax({
-            url:"/dialogs",
+            url:"/user-panel/dialogs",
             type:'post',
             data:data,
             success:function (response) {
+                //console.log(response);
                 if(response.success ==true)
                 {
                     _self.find('.success-message').text(response.message);
                     $('#sendMessageModal').modal('hide');
                 }
+                if(response.error ==false)
+                {
+                    var element = _self.find('textarea[name="description"]').addClass('is-invalid');
+                    element.next().html('<strong>'+response.message+'</strong>');
+                }
+
+
             },
             error:function (error) {
-                console.log(error);
+                //console.log(error);
                 var errors=error.responseJSON.errors;
                 var element = _self.find('textarea[name="description"]').addClass('is-invalid');
                 element.next().html('<strong>'+errors.description[0]+'</strong>');

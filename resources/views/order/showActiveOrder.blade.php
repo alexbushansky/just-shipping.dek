@@ -159,6 +159,6 @@
         var latTo = {{json_decode($latLngTo)->lat}};
 
 
-        //window.onload =(direction(latFrom,lngFrom,latTo,lngTo,{{$order->price_per_km}}));
+        window.onload =(direction(latFrom,lngFrom,latTo,lngTo,{{$order->price_per_km}}));
     </script>
 @endsection

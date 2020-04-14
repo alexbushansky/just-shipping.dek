@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{asset('/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/myStyle/range.css')}}">
     <link rel="stylesheet" href="{{asset('fancy-box/jquery.fancybox.min.css')}}">
+
 @endsection
 
 @section('content')
@@ -23,14 +24,14 @@
                     </div>
 
                     <fieldset>
-                        <legend>Country</legend>
+                        <legend>Страна</legend>
                         <select  class="form-control select-country" name="country_id" >
                         </select>
                     </fieldset>
 
                     <fieldset>
 
-                        <legend>Region</legend>
+                        <legend>Регион</legend>
                         <select class="form-control select-region" name="region_id">
 
                         </select>
@@ -38,14 +39,14 @@
 
                     <fieldset>
 
-                        <legend>City</legend>
+                        <legend>Город</legend>
                         <select class="form-control select-city" name="city_id">
 
                         </select>
                     </fieldset>
 
                     <fieldset>
-                        <legend>Цена за 1 км</legend>
+                        <legend>Цена за 1 км от</legend>
                         <div class="slidecontainer">
                             <div class="showPrice">0</div>
                             <input type="range" min="1" max="200" value="0" class="slider" name = "price_per_km">
@@ -83,11 +84,7 @@
 
 
                     <span class="form-group">
-                        <button class="btn btn-sm btn-primary" type="submit">{{__('Submit')}}</button>
-                    </span>
-
-                    <span class="form-group">
-                        <button class="btn btn-sm btn-danger" type="reset">{{__('Reset')}}</button>
+                        <button class="btn btn-sm btn-primary" type="submit">Потвердить</button>
                     </span>
                 </form>
 

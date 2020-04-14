@@ -12,7 +12,7 @@ $(function () {
         console.log(data);
 
         $.ajax({
-            url:"/dialogs",
+            url:"/user-panel/dialogs",
             type:'post',
             data:data,
             success:function (response) {
@@ -21,6 +21,11 @@ $(function () {
                 {
                     _self.find('.success-message').text(response.message);
                     $('#sendMessageModal').modal('hide');
+                }
+                if(response.error ==false)
+                {
+                    var element = _self.find('textarea[name="description"]').addClass('is-invalid');
+                    element.next().html('<strong>'+response.message+'</strong>');
                 }
             },
             error:function (error) {

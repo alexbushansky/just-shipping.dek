@@ -2,7 +2,13 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckActiveOrder;
 use App\Http\Middleware\CheckAdmin;
+use App\Http\Middleware\CheckCreatingOfCustomerOffer;
+use App\Http\Middleware\CheckCreatingOfDriverOffer;
+use App\Http\Middleware\CheckCustomerOffer;
+use App\Http\Middleware\CheckDriverOffer;
+use App\Http\Middleware\CheckListActiveOrders;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -20,6 +26,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
 
     ];
 
@@ -63,6 +70,12 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\CheckAdmin::class,
+        'check.customer.offer'=>CheckCustomerOffer::class,
+        'check.driver.offer'=>CheckDriverOffer::class,
+        'check.creating.driver.offer' => CheckCreatingOfDriverOffer::class,
+        'check.creating.customer.offer' => CheckCreatingOfCustomerOffer::class,
+        'check.active.order' => CheckActiveOrder::class,
+        'check.list.active.orders' => CheckListActiveOrders::class,
     ];
 
     /**

@@ -7,6 +7,7 @@ use App\Events\TestEvent;
 use App\Models\CustomerOffer;
 use App\Models\Dialog;
 use App\Models\DialogMessage as Message;
+use App\Models\DriverOffer;
 use App\Services\Interfaces\DialogServiceInterface;
 use Illuminate\Http\Request;
 use function Sodium\increment;
@@ -57,50 +58,61 @@ class DialogController extends Controller
             'description'=>'required|max:2000|min:5',
         ]);
 
+        $userId = auth()->user()->id;
 
-        $type = $request->type;
-        $nameSpace = $this->nameSpace . $type;
-        $model = $nameSpace::find($request->offer_id);
+        if(policy(Dialog::class)->create($userId,$request->offer_id)) {
 
-        $dialog = new Dialog();
-        $dialog->user_id = auth()->user()->id;
-        $dialog->status_dialog_id = 1;
-        $dialog->recipient_id = CustomerOffer::find($request->offer_id)->customer->user->id;
-        if($request->customer_offer_id)
+            $type = $request->type;
+            $nameSpace = $this->nameSpace . $type;
+            $model = $nameSpace::find($request->offer_id);
+
+            $dialog = new Dialog();
+            $dialog->user_id = $userId;
+            $dialog->status_dialog_id = 1;
+            if ($type == 'CustomerOffer')
+                $dialog->recipient_id = CustomerOffer::find($request->offer_id)->customer->user->id;
+            else {
+                $dialog->recipient_id = DriverOffer::find($request->offer_id)->driver->user->id;
+            }
+            if ($request->customer_offer_id) {
+                $dialog->customer_offer_id = $request->customer_offer_id;
+            }
+            $model->dialogs()->save($dialog);
+
+            if ($type == 'DriverOffer') {
+                $driverCustomer = $model->driver->user;
+                event(new TestEvent($driverCustomer, $dialog));
+            } else {
+                $userCustomer = $model->customer->user;
+                event(new TestEvent($userCustomer, $dialog));
+            }
+
+            //  Добавляем получателю счетчик новых сообщений
+            $dialog->increment('recipient_new', 1);
+
+
+            //получаем ид диалога и по ид диалога создаем сообщение в таблице messages
+            // .user_id dialog_id created_at description
+
+            $message = new Message();
+            $message->message_text = $request->description;
+            $message->dialog_id = $dialog->id;
+            $message->user_id = $request->user()->id;
+
+            $message->save();
+
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Ваш отклик отправлен успешно'
+            ]);
+        }else
         {
-            $dialog->customer_offer_id=$request->customer_offer_id;
+            return response()->json([
+                'error' => false,
+                'message' => 'Вы уже отправляли отклик!'
+            ]);
         }
-        $model->dialogs()->save($dialog);
-
-        if ($type == 'DriverOffer') {
-
-        } else {
-            $userCustomer  = $model->customer->user;
-            event(new TestEvent($userCustomer,$dialog));
-        }
-
-        //  Добавляем получателю счетчик новых сообщений
-        $dialog->increment('recipient_new',1);
-
-
-
-        //получаем ид диалога и по ид диалога создаем сообщение в таблице messages
-        // .user_id dialog_id created_at description
-
-        $message = new Message();
-        $message->message_text = $request->description;
-        $message->dialog_id = $dialog->id;
-        $message->user_id = $request->user()->id;
-
-        $message->save();
-
-
-
-
-        return response()->json([
-            'success'=>true,
-            'message'=>'Ваш отклик отправлен успешно'
-        ]);
     }
 
     /**

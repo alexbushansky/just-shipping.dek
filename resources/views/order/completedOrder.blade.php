@@ -8,7 +8,7 @@
 
     <div class="container">
         @if($orders->count()>0)
-            <h2>Выполненные <заказы></заказы></h2>
+            <h2>Выполненные заказы</h2>
             <div class="row">
 
                 @foreach($orders as $order)

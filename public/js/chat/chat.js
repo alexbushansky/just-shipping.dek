@@ -9,7 +9,7 @@ function sendMessage(data) {
 
 
     $.ajax({
-        url:"/dialog-messages",
+        url:"/user-panel/dialog-messages",
         type:"POST",
         dataType: 'JSON',
         data:data,
@@ -31,7 +31,7 @@ function showMessages(dialogId,user) {
 
     window.Echo.private('dialog.'+dialogId)
         .listen('DialogMessage', (data) => {
-            console.log(data);
+
             if(user.id == data.message.user_id)
             {
                 addMessageSender(data.message.message_text,data.message.created_at,data.message.user);

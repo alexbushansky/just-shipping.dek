@@ -63,8 +63,8 @@ Route::group(['prefix'=>'user-panel','middleware'=>['auth']],function () {
     Route::resource('dialogs','DialogController');
     Route::resource('dialog-messages','DialogMessageController');
     Route::post('customer-offers/acceptOffer/{id}','CustomerOfferController@acceptOffer')->name('acceptCustomerOffer');
-    Route::get('customer-offers/activeOrders/{id}','CustomerOfferController@activeOrders')->name('showActiveOrders');
-    Route::get('customer-offers/showActiveOrder/{id}','CustomerOfferController@showActiveOrder')->name('showActiveOrder');
+    Route::get('customer-offers/activeOrders/{id}','CustomerOfferController@activeOrders')->name('showActiveOrders')->middleware('check.list.active.orders');
+    Route::get('customer-offers/showActiveOrder/{id}','CustomerOfferController@showActiveOrder')->name('showActiveOrder')->middleware('check.active.order');
 });
 
 

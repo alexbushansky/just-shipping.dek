@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{asset('css/myStyle/fonts.css')}}">
 
 
+
     <!-- Styles -->
 
     @yield('styles')
@@ -31,18 +32,18 @@
 
 <nav class="navbar navbar-expand-lg menu">
     <a class="navbar-brand" href="/">Just Shipping</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><img src="https://img.icons8.com/color/30/000000/menu.png"/></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('customer-offers.index')}}">Заказы <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('driver-offers.index')}}">Предложения</a>
+                <a class="nav-link" href="{{route('driver-offers.index')}}">Перевозчики</a>
             </li>
-            @if($user)
+{{--            @if($user)--}}
 {{--            <li class="nav-item">--}}
 {{--                <a class="nav-link" href="{{route('driver-offers.index')}}"><span class="badge badge-light" id="offer-count">--}}
 
@@ -54,7 +55,7 @@
 
 {{--                    </span></a>--}}
 {{--            </li>--}}
-            @endif
+{{--            @endif--}}
 
             @auth
                 <li class="nav-item dropdown">
@@ -133,6 +134,7 @@
 
     </div>
 </nav>
+
 
     <main class="py-4">
         @if (session('status'))

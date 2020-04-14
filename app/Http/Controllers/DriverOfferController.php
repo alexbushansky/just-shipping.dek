@@ -34,6 +34,8 @@ class DriverOfferController extends Controller
         $this->driverOfferRepository=$driverOfferRepository;
         $this->fileService = $fileService;
         $this->driverOfferService = $driverOfferService;
+        $this->middleware('check.driver.offer', ['only' => ['show']]);
+        $this->middleware('check.creating.driver.offer',['only'=>['create','store']]);
     }
 
 
@@ -156,7 +158,7 @@ class DriverOfferController extends Controller
                        ->get();
 
                }
-           } else if ($user->isAdmin() || !$user) {
+           } else if ($user->hasRole('admin') || !$user) {
                $customerOffer = CustomerOffer::select('id', 'title', 'customer_id')
                    ->where('status_id', 1)
                    ->get();

@@ -15,8 +15,9 @@
 
 @endsection
 
-
-
+@php
+    $user = auth()->user();
+@endphp
 @section('content')
 
 
@@ -85,9 +86,14 @@
                     </div>
 
 
-
+                    @guest
+                        <br>
+                        <br>
+                        <p class="font-weight-light">Чтобы откликнуться на объявление, &nbsp;<a href="{{route('register')}}"> зарегестрируйтесь </a>, &nbsp;как перевозчик</p>
+                    @endguest
 
                 </div>
+
 
             </div>
             <div class="text-right">
@@ -159,13 +165,19 @@
                 <br>
 
             <hr>
-            @auth
+
+
+
+
                 @if($dialogs->count()>0)
-                    <h3>Все Отклики</h3>
+
+            <h3>Всего откликов: <strong>{{$dialogs->count()}}</strong></h3>
+
                 <br>
                 <div class="row">
-
+                    @auth
                     @foreach($dialogs as $dialog)
+                        @if($dialog->user_id==$user->id || $dialog->recipient_id==$user->id)
                         <div class="col-md-6 my-offer">
                         <div class="card shadow-lg rounded">
                             <div class="row">
@@ -183,13 +195,15 @@
                         </div>
                         <br>
                         </div>
+                        @endif
                     @endforeach
-
+                    @endauth
                 </div>
                 @else
                     <h3>Нет откликов</h3>
                 @endif
-            @endauth
+
+
             </div>
         </div>
 

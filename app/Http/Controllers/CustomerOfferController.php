@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Repositories\Interfaces\CustomerOfferRepositoryInterface;
 use App\Services\Interfaces\CustomerOfferServiceInterface;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
@@ -29,6 +30,9 @@ class CustomerOfferController extends Controller
     {
         $this->customerOfferRepository = $customerOffer;
         $this->customerOfferService = $customerOfferService;
+        $this->middleware('check.customer.offer', ['only' => ['show']]);
+        $this->middleware('check.creating.customer.offer',['only'=>['create','store']]);
+
     }
 
     /**
@@ -69,12 +73,19 @@ class CustomerOfferController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return RedirectResponse
      */
     public function store(CustomerOfferCreateRequest $request)
     {
-        $this->customerOfferService->createOffer($request);
-
+        if($this->customerOfferService->createOffer($request))
+        {
+            return redirect()->route('customer-offers.create')->with([
+                'status' => 'Заказ создана успешно',
+                'alert' => 'success',]);
+        }
+        return redirect()->route('customer-offers.create')->with([
+            'status' => 'Ошибка создания',
+            'alert' => 'error',]);
     }
 
     /**

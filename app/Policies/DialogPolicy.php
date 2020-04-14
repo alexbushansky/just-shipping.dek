@@ -39,11 +39,25 @@ class DialogPolicy
     /**
      * Determine whether the user can create dialogs.
      *
-     * @param  \App\Models\User  $user
+     * @param int $userId
+     * @param int $offerId
      * @return mixed
      */
-    public function create(User $user)
+    public function create(int $userId, int $offerId)
     {
+        $dialogs = Dialog::select('dialogable_id')
+                            ->groupBy('user_id','dialogable_id')
+                            ->where('user_id','=',$userId)
+                            ->where('dialogable_id','=', $offerId)
+                            ->get()->count();
+        if($dialogs>=1)
+        {
+            return false;
+        }else
+        {
+            return true;
+        }
+
 
     }
 

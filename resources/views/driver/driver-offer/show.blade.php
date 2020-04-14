@@ -6,7 +6,9 @@
 
 
 @endsection
-
+@php
+    $user = auth()->user();
+@endphp
 @section('content')
 
 
@@ -64,7 +66,11 @@
 
                     </div>
 
-
+                    @guest
+                        <br>
+                        <br>
+                        <p class="font-weight-light">Чтобы откликнуться на объявление, &nbsp;<a href="{{route('register')}}"> зарегестрируйтесь </a>, &nbsp;как заказчик</p>
+                    @endguest
 
                 </div>
 
@@ -156,30 +162,35 @@
                 <br>
 
                 <hr>
-                @if($dialogs->count()>1)
-                    <h3>Все Отклики</h3>
+                @if($dialogs->count()>0)
+
+                    <h3>Всего откликов: <strong>{{$dialogs->count()}}</strong></h3>
+
                     <br>
                     <div class="row">
+                        @auth
+                            @foreach($dialogs as $dialog)
+                                @if($dialog->user_id==$user->id || $dialog->recipient_id==$user->id)
+                                    <div class="col-md-6 my-offer">
+                                        <div class="card shadow-lg rounded">
+                                            <div class="row">
+                                                <div class="col-md-2 offer-part">
+                                                    <img class = 'img-fluid' src="{{'/uploads/thumbnails/'.$dialog->user->thumbnail}}" >
+                                                </div>
+                                                <div class="col-md-5 text-left">
 
-                        @foreach($dialogs as $dialog)
-                            <div class="col-md-6 my-offer">
-                                <div class="card shadow-lg rounded">
-                                    <div class="row">
-                                        <div class="col-md-2 offer-part">
-                                            <img class = 'img-fluid' src="{{'/uploads/thumbnails/'.$dialog->user->thumbnail}}" >
+                                                    {{$dialog->user->name}}
+                                                    <a class="small text-muted">{{$dialog->created_at->format('Y-m-d | h:m')}}</a>
+                                                    <br>
+                                                    <a href="{{route('dialogs.show',['dialog'=>$dialog->id])}}">Посмотреть отклик</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-5 text-left">
-
-                                            {{$dialog->user->name}}
-                                            <br>
-                                            <a href="{{route('dialogs.show',['dialog'=>$dialog->id])}}">Посмотреть отклик</a>
-                                        </div>
+                                        <br>
                                     </div>
-                                </div>
-                                <br>
-                            </div>
-                        @endforeach
-
+                                @endif
+                            @endforeach
+                        @endauth
                     </div>
                 @else
                     <h3>Нет откликов</h3>

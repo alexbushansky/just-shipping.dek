@@ -119,7 +119,7 @@
                             </div>
                             </div>
                             <br>
-                            @if($customerOffer->status_id = 1)
+                            @if($customerOffer->status_id == 1)
                            @role('driver')
                             <div class="row">
 

@@ -17,7 +17,8 @@ directionsDisplay.setMap(map);
 var options = {
     enableHighAccuracy: true,
     timeout: 5000,
-    maximumAge: 0
+    maximumAge: 0,
+    transit_mode: bus,
 };
 
 
@@ -37,7 +38,8 @@ function direction(latFrom,lngFrom,latTo,lngTo,price) {
     var request = {
         origin: st,
         destination:en,
-        travelMode: google.maps.DirectionsTravelMode.DRIVING
+        travelMode: google.maps.DirectionsTravelMode.DRIVING,
+        transit_mode: bus,
     };
 
     directionsService.route(request, function(response, status) {

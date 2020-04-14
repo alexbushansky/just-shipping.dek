@@ -25,14 +25,14 @@
                     <a class="text-decoration-none nav-link my-addOne" href="#">Укажите место отправления</a>
                 <div class="addressOne hide">
                     <fieldset>
-                        <legend>Country</legend>
+                        <legend>Страна</legend>
                         <select  class="form-control select-country" name="country_id_from" >
                         </select>
                     </fieldset>
 
                     <fieldset>
 
-                        <legend>Region</legend>
+                        <legend>Регион</legend>
                         <select class="form-control select-region" name="region_id_from">
 
                         </select>
@@ -40,7 +40,7 @@
 
                     <fieldset>
 
-                        <legend>City</legend>
+                        <legend>Город</legend>
                         <select class="form-control select-city" name="city_id_from">
 
                         </select>
@@ -51,14 +51,14 @@
 
                 <div class="addressTwo hide">
                     <fieldset>
-                        <legend>Country</legend>
+                        <legend>Страна</legend>
                         <select  class="form-control select-country-two" name="country_id_to" >
                         </select>
                     </fieldset>
 
                     <fieldset>
 
-                        <legend>Region</legend>
+                        <legend>Регион</legend>
                         <select class="form-control select-region-two" name="region_id_to">
 
                         </select>
@@ -66,7 +66,7 @@
 
                     <fieldset>
 
-                        <legend>City</legend>
+                        <legend>Город</legend>
                         <select class="form-control select-city-two" name="city_id_to">
 
                         </select>
@@ -74,14 +74,14 @@
                 </div>
                     <hr>
                     <fieldset>
-                        <legend>Цена за 1 км</legend>
+                        <legend>Цена за 1 км от</legend>
                         <div class="slidecontainer">
                             <div class="showPrice">0</div>
                             <input type="range" min="1" max="200" value="0" class="slider" name = "price_per_km">
                         </div>
                     </fieldset>
                     <fieldset>
-                        <legend>Объем</legend>
+                        <legend>Объем от</legend>
 
                             <input class="form-control" type="number" placeholder="М3"   name = "capacity">
                     </fieldset>
@@ -105,12 +105,10 @@
 
 
                     <span class="form-group">
-                        <button class="btn btn-sm btn-primary" type="submit">{{__('Submit')}}</button>
+                        <button class="btn btn-sm btn-primary" type="submit">Потвердить</button>
                     </span>
 
-                    <span class="form-group">
-                        <button class="btn btn-sm btn-danger" type="reset">{{__('Reset')}}</button>
-                    </span>
+
 
                 </form>
 
@@ -119,14 +117,15 @@
             </div>
 
             <div class="col-md-9">
-                <div class="orders">
+            <div class="orders">
             @if($customerOffers->count() > 0 )
 
                 @foreach($customerOffers as $offer)
+
                         <div class="card">
-                            <a data-fancybox="gallery" href="{{'/uploads/fullCustomerPhoto/'.json_decode($offer->gallery)[0]}}">
+
                                 <img class = 'img-fluid' src="{{'/uploads/fullCustomerPhoto/'.json_decode($offer->gallery)[0]}}">
-                            </a>
+
                             <div class="card-body">
                                 <ul>
                                     <li><h5><strong> {{$offer->title}}</strong></h5></li>
@@ -146,8 +145,11 @@
                             </div>
                         </div>
 
+
                     @endforeach
-               </div>
+
+                </div>
+
                 {{$customerOffers->links()}}
 
                 @else
@@ -155,6 +157,7 @@
                 <h4>По вашому запросу ничего не найдено</h4>
 
             @endif
+            </div>
             </div>
 @endsection
 

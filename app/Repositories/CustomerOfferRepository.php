@@ -118,9 +118,9 @@ class CustomerOfferRepository implements CustomerOfferRepositoryInterface
        if( $this->customerOffer->save())
        {
            $this->customerOffer->cargoType()->sync($types);
-
+            return true;
        }
-
+        return false;
 
     }
 
