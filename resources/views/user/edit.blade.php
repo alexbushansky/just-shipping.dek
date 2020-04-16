@@ -60,9 +60,7 @@
                             @role('admin')
                             Администратор
                             @endrole
-{{--                            @foreach($user->roles as $role)--}}
-{{--                                <li> {{$role->ru}}</li>--}}
-{{--                            @endforeach--}}
+
                         </h6>
                         <p class="proile-rating">Рейтинг: <span>8/10</span></p>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -75,10 +73,17 @@
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="form-group row">
-                                    <label  class="col-md-3 col-form-label">Name</label>
+                                    <label  class="col-md-3 col-form-label">Имя</label>
 
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="name" value="{{$user->name}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label  class="col-md-3 col-form-label">Фамилия</label>
+
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="surname" value="{{$user->surname}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -94,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label  class="col-md-3 col-form-label">Phone</label>
+                                    <label  class="col-md-3 col-form-label">Телефон</label>
                                     <div class="col-md-9">
                                         <input  type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $user->phone_number }}">
 
@@ -109,7 +114,7 @@
 
 
                                 <div class="form-group row">
-                                    <label for="password" class="col-md-3 col-form-label">{{ __('Password') }}</label>
+                                    <label for="password" class="col-md-3 col-form-label">Пароль</label>
 
                                     <div class="col-md-9">
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
@@ -122,7 +127,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="password" class="col-md-3 col-form-label">Confirm Password</label>
+                                    <label for="password" class="col-md-3 col-form-label">Потвердить пароль</label>
 
                                     <div class="col-md-9">
 

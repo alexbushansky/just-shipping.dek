@@ -82,6 +82,10 @@ class UserRepository implements UserRepositoryInterface
         {
             $user->name= $request->name;
         }
+        if($request->surname)
+        {
+            $user->surname= $request->surname;
+        }
 
 
             if($user->save()) {

@@ -10,7 +10,7 @@
     <div class="container-fluid">
 
     <div class="row">
-        <div class="col-md-6 rectangle text-center">
+        <div class="col-md-5 rectangle text-center">
 
                 <br>
                <h1>Добро пожаловать</h1>

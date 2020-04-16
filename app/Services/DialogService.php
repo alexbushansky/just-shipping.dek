@@ -33,4 +33,8 @@ class DialogService implements DialogServiceInterface
         $user = auth()->user();
         return $this->dialogRepository->showOffersDialog($user->id);
     }
+    public function changeStatusDialogCustomerOffer($id)
+    {
+
+    }
 }

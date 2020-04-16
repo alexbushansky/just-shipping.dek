@@ -9,6 +9,7 @@ use App\Http\Middleware\CheckCreatingOfDriverOffer;
 use App\Http\Middleware\CheckCustomerOffer;
 use App\Http\Middleware\CheckDriverOffer;
 use App\Http\Middleware\CheckListActiveOrders;
+use App\Http\Middleware\CheckUserCabinet;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -76,6 +77,7 @@ class Kernel extends HttpKernel
         'check.creating.customer.offer' => CheckCreatingOfCustomerOffer::class,
         'check.active.order' => CheckActiveOrder::class,
         'check.list.active.orders' => CheckListActiveOrders::class,
+        'check.user.cabinet' => CheckUserCabinet::class,
     ];
 
     /**

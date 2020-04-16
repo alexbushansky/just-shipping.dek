@@ -48,7 +48,7 @@ class DialogPolicy
         $dialogs = Dialog::select('dialogable_id')
                             ->groupBy('user_id','dialogable_id')
                             ->where('user_id','=',$userId)
-                            ->where('dialogable_id','=', $offerId)
+                            ->where('offer_id','=', $offerId)
                             ->get()->count();
         if($dialogs>=1)
         {

@@ -23,28 +23,10 @@ class UserController extends Controller
     {
         $this->avatarService = $avatarService;
         $this->userRepository = $userRepository;
+        $this->middleware('check.user.cabinet',['only'=>['edit']]);
     }
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -65,20 +47,27 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $cars = null;
-        if ($user->hasRole('driver')) {
-            $cars = $user->driver->driverCar;
+
+     $protectUser = User::find($user->id);
 
 
-            return view('user.show', [
-                'user' => $user,
-                'cars' => $cars,
-            ]);
-        }
+            if ($user->hasRole('driver') && $protectUser->id  == auth()->user()->id) {
+                $cars = $user->driver->driverCar;
 
-        return view('user.show', [
-            'user' => $user,
-        ]);
+
+                return view('user.show', [
+                    'user' => $user,
+                    'cars' => $cars,
+                ]);
+            }
+            if($user->hasRole('customer') && $protectUser->id  == auth()->user()->id) {
+                return view('user.show', [
+                    'user' => $user,
+                ]);
+            }
+
+            return abort(403);
+
     }
 
     /**

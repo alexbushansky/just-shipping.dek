@@ -70,7 +70,7 @@
                                 <li><strong>Куда : </strong> {{$customerOffer->fullAddressTo->country->name}}, {{$customerOffer->fullAddressTo->city->name}}</li>
 
                                 <li><strong>Цена за 1 км: </strong>{{$customerOffer->price_per_km}} грн</li>
-                                <li><strong>Объем: </strong>{{$customerOffer->capacity}} м3</li>
+                                <li><strong>Объем: </strong>{{$customerOffer->capacity}} м<sup><small>3</small></sup></li>
                             </ul>
                         </div>
                         <div class="col-md-6">

@@ -20,7 +20,7 @@ class DialogRepository implements DialogRepositoryInterface
 
         $dialog = Dialog::with('recipient')
             ->where('user_id','=',$id)
-            ->where('dialogable_type','=','App\Models\CustomerOffer')
+            ->where('offer_type','=','App\Models\CustomerOffer')
             ->with('driverOffer')
             ->get();
 
@@ -34,7 +34,7 @@ class DialogRepository implements DialogRepositoryInterface
 
         $dialog = Dialog::with('recipient')
             ->where('user_id','=',$id)
-            ->where('dialogable_type','=','App\Models\DriverOffer')
+            ->where('offer_type','=','App\Models\DriverOffer')
             ->with('customerOffer')
             ->get();
 

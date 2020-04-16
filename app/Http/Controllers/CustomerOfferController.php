@@ -31,7 +31,7 @@ class CustomerOfferController extends Controller
         $this->customerOfferRepository = $customerOffer;
         $this->customerOfferService = $customerOfferService;
         $this->middleware('check.customer.offer', ['only' => ['show']]);
-        $this->middleware('check.creating.customer.offer',['only'=>['create','store']]);
+        $this->middleware(['check.creating.customer.offer','auth'],['only'=>['create','store']]);
 
     }
 
@@ -103,8 +103,8 @@ class CustomerOfferController extends Controller
         $photos = json_decode($customerOffer->gallery);
 
         $dialogs = Dialog::with('user')
-            ->where('dialogable_type', 'App\Models\CustomerOffer')
-            ->where('dialogable_id', $id)
+            ->where('offer_type', 'App\Models\CustomerOffer')
+            ->where('offer_id', $id)
             ->get();
 
         return view('customer.customer-offer.show')->with(

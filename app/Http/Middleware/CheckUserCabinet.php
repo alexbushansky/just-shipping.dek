@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckCreatingOfCustomerOffer
+class CheckUserCabinet
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,10 @@ class CheckCreatingOfCustomerOffer
      */
     public function handle($request, Closure $next)
     {
-
-        if (auth()) {
-            if ($request->user()->hasRole('customer')) {
-                return $next($request);
-            }
+        $mNext =$next($request);
+        if($mNext->original->user->id == auth()->user()->id)
+        {
+            return $mNext;
         }
         return redirect()->back();
     }

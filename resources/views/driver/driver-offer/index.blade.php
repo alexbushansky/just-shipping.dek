@@ -113,7 +113,7 @@
                                             <li>Цена за 1 км: {{$offer->price_per_km}} грн</li>
                                             <li>Грузоподьемность: {{$offer->weight}} кг</li>
                                             <li>Тип транспорта: {{$offer->carType->name_car_type}}</li>
-                                            <li>Объем: {{$offer->weight}}</li>
+                                            <li>Объем: {{$offer->weight}} м<sup><small>3</small></sup></li>
 
 
                                             <br>

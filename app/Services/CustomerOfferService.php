@@ -64,6 +64,7 @@ class CustomerOfferService implements CustomerOfferServiceInterface
         {
             if(is_numeric($customerOfferId) && is_numeric($driverOfferId)&& is_numeric($driverId)) {
                 $offer = $this->customerOffer->acceptedOffer($customerOfferId, $driverId);
+
                 $user = $offer->customer->user;
                 //Mail::to($user)->send(new ChangeCustomerOfferStatus($offer));
                 $this->driverOfferService->changeStatus($driverOfferId);

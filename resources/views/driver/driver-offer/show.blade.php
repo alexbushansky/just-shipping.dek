@@ -38,12 +38,13 @@
                     <div class="row">
 
                         <div class="col-md-6">
-                            <div ><strong>Город: </strong>{{$offerInfo['cityName']}}</div>
+                            <div ><strong>Город: </strong> {{$offerInfo['cityName']}}</div>
 
 
-                            <div><strong>Длина:</strong>{{$driverOffer->internal_length}} м.</div>
-                            <div><strong>Ширина:</strong>{{$driverOffer->internal_width}} м.</div>
-                            <div><strong>Высота:</strong>{{$driverOffer->internal_height}} м.</div>
+                            <div><strong>Длина кузова:</strong> {{$driverOffer->internal_length}} м.</div>
+                            <div><strong>Ширина кузова:</strong> {{$driverOffer->internal_width}} м.</div>
+                            <div><strong>Высота кузова:</strong> {{$driverOffer->internal_height}} м.</div>
+                            <div><strong>Макс. объем:</strong> {{$driverOffer->capacity}} м<sup><small>3</small></sup></div>
 
                             <div><strong>Дата:</strong> {{$driverOffer->created_at->format('Y-m-d')}}</div>
 

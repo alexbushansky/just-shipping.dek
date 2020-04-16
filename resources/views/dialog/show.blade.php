@@ -146,7 +146,7 @@
                 @role('customer')
                         <div class="col-2 bg-white left-window text-justify">
                             <div>
-                                <form action="{{route('acceptCustomerOffer',['id'=>$dialog->dialogable_id])}}" method="POST">
+                                <form action="{{route('acceptCustomerOffer',['id'=>$dialog->offer_id])}}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-lg btn-primary">Сделать перевозчиком</button>
                                     <input type="hidden" value="{{$dialog->getDriver($dialog->user_id)->id}}" name="driverId">

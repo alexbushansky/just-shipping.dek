@@ -31,7 +31,7 @@ class CustomerOffer extends Model
     public function dialogs()
     {
 
-        return $this->morphMany(\App\Models\Dialog::class,'dialogable');
+        return $this->morphMany(\App\Models\Dialog::class,'offer');
 
     }
 

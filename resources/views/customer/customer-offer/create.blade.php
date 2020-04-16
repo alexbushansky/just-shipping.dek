@@ -200,7 +200,7 @@
     <script src = "{{asset('/js/select.js')}}"></script>
     <script src="{{asset('/js/range.js')}}"></script>
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{env('REACT_APP_GOOGLE_API_KEY')}}=places">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{env('REACT_APP_GOOGLE_API_KEY')}}&libraries=places">
     </script>
     <script>
         // Add the following code if you want the name of the file appear on select

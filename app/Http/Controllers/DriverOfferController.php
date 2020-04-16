@@ -35,7 +35,7 @@ class DriverOfferController extends Controller
         $this->fileService = $fileService;
         $this->driverOfferService = $driverOfferService;
         $this->middleware('check.driver.offer', ['only' => ['show']]);
-        $this->middleware('check.creating.driver.offer',['only'=>['create','store']]);
+        $this->middleware(['check.creating.driver.offer','auth'],['only'=>['create','store']]);
     }
 
 
@@ -133,8 +133,8 @@ class DriverOfferController extends Controller
                         'phone'=>$driverOffer->driver->user->phone_number];
 
         $dialogs = Dialog::with('user')
-            ->where('dialogable_type','App\Models\DriverOffer')
-            ->where('dialogable_id',$id)
+            ->where('offer_type','App\Models\DriverOffer')
+            ->where('offer_id',$id)
             ->get();
 
 

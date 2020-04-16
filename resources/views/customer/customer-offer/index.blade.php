@@ -131,11 +131,12 @@
                                     <li><h5><strong> {{$offer->title}}</strong></h5></li>
                                     <li><strong>Откуда : </strong> {{$offer->fullAddressFrom->country->name}},{{$offer->fullAddressFrom->city->name}}</li>
                                     <li><strong>Куда : </strong> {{$offer->fullAddressTo->country->name}},{{$offer->fullAddressTo->city->name}}</li>
+                                    <li><strong>Объем: </strong> {{$offer->capacity}} м<sup><small>3</small></sup></li>
 
 
 
 
-                                    <li><strong>Цена за 1 км: </strong>{{$offer->price_per_km}}</li>
+                                    <li><strong>Цена за 1 км: </strong>{{$offer->price_per_km}} грн</li>
                                 </ul>
                                 <div class="row">
 

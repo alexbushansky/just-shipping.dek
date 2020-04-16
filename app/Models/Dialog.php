@@ -12,12 +12,12 @@ class Dialog extends Model
     {
         //return $this->morphMany(CustomerOffer::class, 'dialogable');
 
-        return $this->belongsTo(CustomerOffer::class,'dialogable_id');
+        return $this->belongsTo(CustomerOffer::class,'offer_id');
     }
 
     public function driverOffer()
     {
-        return $this->belongsTo(DriverOffer::class,'dialogable_id');
+        return $this->belongsTo(DriverOffer::class,'offer_id');
     }
 
     public function user()

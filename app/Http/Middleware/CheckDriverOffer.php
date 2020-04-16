@@ -16,6 +16,7 @@ class CheckDriverOffer
     public function handle($request, Closure $next)
     {
         $mNext =$next($request);
+
         if($mNext->original->driverOffer->status_id==1)
         {
             return $mNext;
