@@ -38,29 +38,32 @@
                     <div class="row">
 
                         <div class="col-md-6">
-                            <div >Город: {{$offerInfo['cityName']}}</div>
+                            <div ><strong>Город: </strong>{{$offerInfo['cityName']}}</div>
 
 
-                            <div>Длина:{{$driverOffer->internal_length}} м.</div>
-                            <div>Ширина:{{$driverOffer->internal_width}} м.</div>
-                            <div>Высота:{{$driverOffer->internal_height}} м.</div>
+                            <div><strong>Длина:</strong>{{$driverOffer->internal_length}} м.</div>
+                            <div><strong>Ширина:</strong>{{$driverOffer->internal_width}} м.</div>
+                            <div><strong>Высота:</strong>{{$driverOffer->internal_height}} м.</div>
 
-                            <div>Дата: {{$driverOffer->created_at->format('Y-m-d')}}</div>
+                            <div><strong>Дата:</strong> {{$driverOffer->created_at->format('Y-m-d')}}</div>
+
 
 
                         </div>
 
 
                         <div class="col-md-6">
-                            <div>Телефон: {{$offerInfo['phone']}}</div>
-                            <div>Цена за 1 км: {{$driverOffer->price_per_km}} грн</div>
-                            <div>Тип грузов:
+                            <div><strong>Телефон:</strong> {{$offerInfo['phone']}}</div>
+                            <div><strong>Цена за 1 км:</strong> {{$driverOffer->price_per_km}} грн</div>
+                            <div><strong>Тип грузов:</strong>
                             @foreach($driverOffer->types as $type)
                                 {{$type->type_name}}
                             @endforeach
                             </div>
-                            <div>Тип транспорта: {{$driverOffer->carType->name_car_type}}</div>
-                            <div>Грузоподъемность:{{$driverOffer->weight}} тонн(ы)</div>
+                            <div><strong>Тип транспорта: </strong>{{$driverOffer->carType->name_car_type}}</div>
+                            <div><strong>Грузоподъемность:</strong>{{$driverOffer->weight}} кг</div>
+                            <div><strong>Перевозчик: </strong> <a href="{{route('guest-room',['id'=>$driverOffer->driver->user->id])}}">
+                                    {{$driverOffer->driver->user->name}} {{$driverOffer->driver->user->surname}}  </a></div>
 
                         </div>
 

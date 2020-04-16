@@ -44,7 +44,7 @@
                                     <div class="media-body ml-3">
                                         <div class="bg-light rounded py-2 px-3 mb-2">
                                             <p class="text-small mb-0 text-muted">{{$message->message_text}}</p>
-                                            <p class="small text-muted"> <strong>{{$message->user->name}}</strong></p>
+                                            <p class="small text-muted"> <strong><a href="{{route('guest-room',['id'=>$message->user->id])}}">{{$message->user->name}}</a></strong></p>
                                         </div>
 
                                         <p class="small text-muted">{{$message->created_at->format('Y-m-d | H:i')}}</p>

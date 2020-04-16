@@ -45,10 +45,10 @@
                                     </div>
                                     <div class="col-md-3">
                                         @role('driver')
-                                        <div>Заказчик: <a href="{{route('users.show',['id'=>$order->customer->user->id])}}">{{$order->customer->user->name}}</a></div>
+                                        <div>Заказчик: <a href="{{route('guest-room',['id'=>$order->customer->user->id])}}">{{$order->customer->user->name}}</a></div>
                                         @endrole
                                         @role('customer')
-                                        <div>Перевозчик: <a href="{{route('users.show',['id'=>$order->driver->user->id])}}">{{$order->driver->user->name}}</a></div>
+                                        <div>Перевозчик: <a href="{{route('guest-room',['id'=>$order->driver->user->id])}}">{{$order->driver->user->name}}</a></div>
                                         @endrole
                                         <div>Дата: {{$order->date_finish}} </div>
                                         <br>

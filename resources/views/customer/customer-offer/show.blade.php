@@ -81,6 +81,9 @@
                                         {{$type->type_name}}
                                     @endforeach</li>
                                 <li><strong>Вес: </strong>{{$customerOffer->weight}} кг</li>
+                                <li><strong>Заказчик: </strong> <a href="{{route('guest-room',['id'=>$customerOffer->customer->user->id])}}">
+                                        {{$customerOffer->customer->user->name}} {{$customerOffer->customer->user->surname}}  </a></li>
+
                             </ul>
                         </div>
                     </div>

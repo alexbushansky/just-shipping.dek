@@ -75,7 +75,10 @@ Route::group(['prefix'=>'user-panel','middleware'=>['auth']],function () {
 //Route::get('account-info','UserController@index')->name('account.info');
 //Route::put('account-update','UserController@update')->name('account.update');
 Route::post('users/delete-avatar/{user}','UserController@deleteAvatar')->name('users.deleteAvatar')->middleware('auth');
+Route::get('user/guest-page/{user}','UserController@getGuestRoom')->name('guest-room');
 Route::resource('users','UserController')->middleware('auth');
+
+
 
 //---------------------------------------------------------
 Route::group(['prefix' => 'geonames'],function (){

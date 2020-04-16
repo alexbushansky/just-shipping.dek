@@ -152,26 +152,26 @@ class UserController extends Controller
 
     }
 
-//    public function makeFile($file)
-//    {
-//        // создаем название файла
-//        $filename = time() . '-' . str_random(4) . '.jpg';
-//        // большой файл
-//        // изменить размер изображения до ширины 1200 и ограничить пропорции (автоматическая высота)
-//        Image::make($file)->resize(1200, null,function ($constraint) {
-//
-//            $constraint->aspectRatio();
-//            // предотвратить увеличение
-//            $constraint->upsize();
-//        })->save( $this->fullWidthPath . $filename);
-//
-//        // миниатюра
-//        //fit - поместиться
-//        Image::make($file)->fit(495, 300, function ($constraint) {
-//            $constraint->upsize();
-//        })->save( $this->thumbnailsPath. $filename );
-//        return $filename;
-//
-//    }
+    public function getGuestRoom($id)
+    {
+
+        $user = User::find($id);
+
+        if($user->hasRole('customer'))
+        {
+            return view('user.user-customer-guest-page')->with(['user'=>$user]);
+        }
+
+        if($user->hasRole('driver'))
+        {
+            $cars = $user->driver->driverCar;
+            return view('user.user-driver-guest-page')->with([
+                'user'=>$user,
+                'cars'=>$cars,
+            ]);
+        }
+
+        return abort(403);
+    }
 
 }
