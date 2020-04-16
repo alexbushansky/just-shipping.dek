@@ -8,6 +8,7 @@ namespace App\Services;
 use App\Models\User;
 use App\Repositories\Interfaces\AddressRepositoryInterface;
 use App\Repositories\Interfaces\CustomerOfferRepositoryInterface;
+use App\Repositories\Interfaces\DialogRepositoryInterface;
 use App\Services\Interfaces\CustomerOfferServiceInterface;
 use App\Services\Interfaces\DriverOfferServiceInterface;
 use App\Services\Interfaces\FileServiceInterface;
@@ -22,17 +23,20 @@ class CustomerOfferService implements CustomerOfferServiceInterface
     private $address;
     private $fileService;
     private $driverOfferService;
+    private $dialogRepo;
 
 
     public function __construct(CustomerOfferRepositoryInterface $customerOffer,
                                 AddressRepositoryInterface $address,
                                 FileServiceInterface $fileService,
-                                DriverOfferServiceInterface $driverOfferService)
+                                DriverOfferServiceInterface $driverOfferService,
+                                DialogRepositoryInterface $dialogRepo)
     {
         $this->customerOffer = $customerOffer;
         $this->address = $address;
         $this->fileService = $fileService;
         $this->driverOfferService = $driverOfferService;
+        $this->dialogRepo=$dialogRepo;
 
     }
     public function createOffer(Request $request)
@@ -58,12 +62,18 @@ class CustomerOfferService implements CustomerOfferServiceInterface
 
     }
 
-    public function acceptOffer($customerOfferId,$driverOfferId,$driverId)
+    public function acceptOffer($customerOfferId,$driverOfferId,$driverId,$dialogId)
     {
+
         if(isset($customerOfferId) && isset($driverOfferId) && isset($driverId))
         {
+
+
             if(is_numeric($customerOfferId) && is_numeric($driverOfferId)&& is_numeric($driverId)) {
+
                 $offer = $this->customerOffer->acceptedOffer($customerOfferId, $driverId);
+
+                $this->dialogRepo->changeStatusToAccepted($dialogId);
 
                 $user = $offer->customer->user;
                 //Mail::to($user)->send(new ChangeCustomerOfferStatus($offer));
@@ -72,11 +82,13 @@ class CustomerOfferService implements CustomerOfferServiceInterface
         }
     }
 
-    public function acceptOfferFomCustomer($customerOfferId,$driverId)
+    public function acceptOfferFomCustomer($customerOfferId,$driverId,$dialogId)
     {
         if(isset($customerOfferId)  && isset($driverId))
         {
             $offer = $this->customerOffer->acceptedOffer($customerOfferId, $driverId);
+
+            $this->dialogRepo->changeStatusToAccepted($dialogId);
             $user = $offer->customer->user;
             //Mail::to($user)->send(new ChangeCustomerOfferStatus($offer));
         }

@@ -137,7 +137,7 @@ class CustomerOfferRepository implements CustomerOfferRepositoryInterface
                 return $this->customerOffer;
             }
 
-        return false;
+        throw new \Exception('changed error');
     }
 
     public function completeOffer($id)

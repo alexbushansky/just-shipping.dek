@@ -10,9 +10,9 @@ interface CustomerOfferServiceInterface
 {
 
     public function createOffer(Request $request);
-    public function acceptOffer($customerOfferId,$driverOfferId,$driverId);
+    public function acceptOffer($customerOfferId,$driverOfferId,$driverId,$dialogId);
     public function getOffers(Request $request);
-    public function acceptOfferFomCustomer($customerOfferId,$driverId);
+    public function acceptOfferFomCustomer($customerOfferId,$driverId,$dialogId);
     public function toCompleteOrder(int $id);
     public function showCompletedOrders(int $userId);
 

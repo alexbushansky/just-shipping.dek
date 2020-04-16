@@ -114,7 +114,7 @@
                                 @foreach($customerOffer->cargoType as $type)
                                     {{$type->type_name}}
                                     @endforeach</li>
-                                    <li><strong>Вес: </strong>{{$customerOffer->weight}} тонн(ы)</li>
+                                    <li><strong>Вес: </strong>{{$customerOffer->weight}} кг</li>
                                 </ul>
                             </div>
                             </div>
@@ -130,8 +130,9 @@
                                         @csrf
                                     <button type="submit" class="btn btn-success" href="">Принять заказ</button>
 
-                                    <input type="hidden" value="{{$dialog->dialogable_id}}" name="driverOfferId">
+                                    <input type="hidden" value="{{$dialog->offer_id}}" name="driverOfferId">
                                     <input type="hidden" value="{{$user->driver->id}}" name="driverId">
+                                    <input type="hidden" value="{{$dialog->id}}" name="dialogId">
 
                                  </form>
                                 </div>
@@ -150,6 +151,7 @@
                                     @csrf
                                     <button type="submit" class="btn btn-lg btn-primary">Сделать перевозчиком</button>
                                     <input type="hidden" value="{{$dialog->getDriver($dialog->user_id)->id}}" name="driverId">
+                                    <input type="hidden" value="{{$dialog->id}}" name="dialogId">
                                 </form>
                             </div>
                         </div>

@@ -129,17 +129,25 @@ class CustomerOfferController extends Controller
     }
 
 
-    public function acceptOffer($id, Request $request): void
+    public function acceptOffer($id, Request $request)
     {
+
         $driverId = $request->driverId;
+        $dialogId = $request->dialogId;
         if(isset($request->driverOfferId)) {
             $driverOfferId = $request->driverOfferId;
 
-            $this->customerOfferService->acceptOffer($id, $driverOfferId, $driverId);
+            $this->customerOfferService->acceptOffer($id, $driverOfferId, $driverId,$dialogId);
         }else
         {
-            $this->customerOfferService->acceptOfferFomCustomer($id, $driverId);
+
+            $this->customerOfferService->acceptOfferFomCustomer($id, $driverId,$dialogId);
         }
+
+        return redirect()->route('showActiveOrder',['id'=>$id])->with([
+            'status'=>'Предложение принято',
+            'alert'=>'success'
+        ]);
 
     }
 

@@ -9,11 +9,18 @@ use App\Repositories\Interfaces\DialogRepositoryInterface;
 
 class DialogRepository implements DialogRepositoryInterface
 {
+    private const IN_PROGRESS_STATUS = 2;
 
-    public function changeStatus($id)
+
+    public function changeStatusToAccepted(int $dialogId)
     {
-        // TODO: Implement changeStatus() method.
+
+        $dialog  = Dialog::find($dialogId);
+        $dialog->status_dialog_id =self::IN_PROGRESS_STATUS;
+        $dialog->save();
     }
+
+
 
     public function showDriverDialogs(int $id)
     {

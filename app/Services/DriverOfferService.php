@@ -19,6 +19,7 @@ class DriverOfferService implements DriverOfferServiceInterface
 
     public function changeStatus($id)
     {
+
         if($id>0 && is_numeric($id) && isset($id)) {
             $this->driverRepository->acceptedOffer($id);
         }

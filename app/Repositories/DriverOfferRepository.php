@@ -67,6 +67,7 @@ class DriverOfferRepository implements DriverOfferRepositoryInterface
         $this->driverOffer = $this->driverOffer->find($driverOfferId);
         $this->driverOffer->status_id = self::ACCEPTED_OFFER;
         $this->driverOffer->save();
+
     }
 
     public function createOffer(Request $request)

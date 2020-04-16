@@ -45,8 +45,8 @@ class DialogPolicy
      */
     public function create(int $userId, int $offerId)
     {
-        $dialogs = Dialog::select('dialogable_id')
-                            ->groupBy('user_id','dialogable_id')
+        $dialogs = Dialog::select('offer_id')
+                            ->groupBy('user_id','offer_id')
                             ->where('user_id','=',$userId)
                             ->where('offer_id','=', $offerId)
                             ->get()->count();
