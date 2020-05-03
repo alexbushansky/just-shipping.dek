@@ -95,7 +95,7 @@
 
                             <div class="col-md-6 ">
 
-                                <input type='tel' id="phone" pattern='[0-9]{8}([0-9]{2})?' placeholder='(09_) ___ __ __' class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone"/>
+                                <input type='tel' id="phone"  placeholder='(0__) ___ __ __' class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone"/>
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -128,9 +128,15 @@
 @endsection
 
 @section('scripts')
-    <script>
-    $("#phone").mask("+38 (999) 999-99-99")
+    <script src="{{asset('js/maskphone/maskinput.js')}}"></script>
+
+
+        <script type="text/javascript">
+            jQuery(function($){
+                $("#phone").mask("999 999 9999");
+            });
     </script>
+
     @endsection
 
 

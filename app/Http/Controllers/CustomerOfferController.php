@@ -47,10 +47,11 @@ class CustomerOfferController extends Controller
         $customerOffers = $this->customerOfferService->getOffers($request);
         $typesOfCargo = Type::all();
 
+
         return view('customer.customer-offer.index')->with(
             [
                 'customerOffers' => $customerOffers,
-                'typesOfCargo' => $typesOfCargo,
+                'typesOfCargo'=>$typesOfCargo,
             ]
         );
 
@@ -152,9 +153,10 @@ class CustomerOfferController extends Controller
     }
 
 
-    public function activeOrders($id)
+    public function activeOrders()
     {
-        $user = User::find($id);
+        $user = auth()->user();
+
 
         if($user->hasRole('customer'))
         {
@@ -198,6 +200,9 @@ class CustomerOfferController extends Controller
         $latLngFrom = $order->lat_lng_from;
         $latLngTo = $order->lat_lng_to;
         $photos = json_decode($order->gallery);
+        $dialogId = Dialog::where('offer_id','=',$order->id)
+            ->first()->id;
+
 
 
         return \view('order.showActiveOrder')->with(
@@ -206,26 +211,69 @@ class CustomerOfferController extends Controller
                 'latLngTo'=>$latLngTo,
                 'order'=>$order,
                 'photos'=>$photos,
-
+                'dialogId'=>$dialogId,
             ]
         );
     }
 
     public function toCompleteOrder($id)
     {
-
-     $this->customerOfferService->toCompleteOrder($id);
-
+        $this->customerOfferService->toCompleteOrder($id);
+        return redirect()->route('completedOrders')->with([
+            'status'=>'Заказ выполен!',
+            'alert'=>'success'
+        ]);
     }
 
-    public function showCompletedOrders($userId)
+    public function showCompletedOrders()
     {
+        $userId = auth()->user()->id;
         $orders = $this->customerOfferService->showCompletedOrders($userId);
 
-        return \view('order.completedOrder')->with(
+        return \view('order.list-completed-orders')->with(
             ['orders'=>$orders]
         );
     }
+
+
+    public function getOneCompletedOrder($id)
+    {
+        $userId = auth()->user()->id;
+        $order = $this->customerOfferService->getCompletedOffer($id);
+        $latLngFrom = $order->lat_lng_from;
+        $latLngTo = $order->lat_lng_to;
+        $photos = json_decode($order->gallery);
+        $mark=0;
+        $marks = $order->marks;
+
+
+        foreach ($marks as $item)
+        {
+            if($item->user_id == $userId)
+            {
+                 $mark = $item->mark;
+            }
+        }
+
+
+        $rolesArray = $marks->pluck('user_id')->toArray();
+
+
+        return view('order.show-complited-order')->with(
+            [
+                'latLngFrom'=>$latLngFrom,
+                'latLngTo'=>$latLngTo,
+                'order'=>$order,
+                'photos'=>$photos,
+                'userId'=>$userId,
+                'rolesArray'=>$rolesArray,
+                'mark'=>$mark,
+
+            ]
+        );
+    }
+
+
     /**
      * Update the specified resource in storage.
      *

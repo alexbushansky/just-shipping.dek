@@ -64,7 +64,9 @@ class CustomerOffer extends Model
     }
 
 
-
-
+    public function marks()
+    {
+        return $this->hasMany(Mark::class,'order_id');
+    }
 
 }

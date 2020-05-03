@@ -44,6 +44,7 @@
 
             </div>
 
+
             <div class="col-md-7">
 
                 <div class="row">
@@ -95,7 +96,8 @@
 
                         </ul>
                         <div>
-                            <a class="btn btn-info">Диалог</a>
+
+                       <a href="{{route('dialogs.show',['dialog'=>$dialogId])}}" class="btn btn-info">Диалог</a>
                         </div>
                     </div>
 
@@ -113,29 +115,27 @@
                     <a href="#" style="margin-top: 20px;margin-bottom: 20px" class="btn btn-sm btn-primary">Отказаться</a>
                 </form>
             </div>
+            @role('customer')
             <div class="col-md-6 text-right">
                 <form action="{{route('completeOrder',['id'=>$order->id])}}" method="POST">
                     @csrf
-                    <button type="submit" style="margin-top: 20px;margin-bottom: 20px" class="btn btn-sm btn-primary">Завершить</button>
-
+                    <button type="submit" style="margin-top: 20px;margin-bottom: 20px" class="btn btn-sm btn-primary" >Завершить</button>
                 </form>
             </div>
+            @endrole
+        </div>
 
 
 
 
-
-        <div class="row d-flex justify-content-left">
-
+        <div class="row">
 
             <div class="col-md-12 text-left">
 
                 <hr>
                 <h4 class="h4">Описание</h4>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
-                    voluptates,
-                    quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+                <p>{{$order->description}}</p>
                 <hr>
             </div>
 
@@ -161,6 +161,20 @@
         var latTo = {{json_decode($latLngTo)->lat}};
 
 
-        window.onload =(direction(latFrom,lngFrom,latTo,lngTo,{{$order->price_per_km}}));
+        //window.onload =(direction(latFrom,lngFrom,latTo,lngTo,{{$order->price_per_km}}));
     </script>
+
+            <script>
+                $(function () {
+                    $('.star').click(function () {
+                        var raiting = $(this).data('raiting');
+                        console.log(raiting);
+                        var bgHeight = parseInt(raiting) * 20;
+                        var bg = $('.star-raiting-bg');
+
+                        bg.css('width', bgHeight + '%')
+                        $('input[name="raiting"]').val(bgHeight);
+                    })
+                })
+            </script>
 @endsection

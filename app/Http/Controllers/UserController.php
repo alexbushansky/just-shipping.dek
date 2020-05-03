@@ -52,12 +52,16 @@ class UserController extends Controller
 
 
             if ($user->hasRole('driver') && $protectUser->id  == auth()->user()->id) {
-                $cars = $user->driver->driverCar;
 
-
+                if(isset($user->driver->driverCar)) {
+                    $cars = $user->driver->driverCar;
+                    return view('user.show', [
+                        'user' => $user,
+                        'cars' => $cars,
+                    ]);
+                }
                 return view('user.show', [
                     'user' => $user,
-                    'cars' => $cars,
                 ]);
             }
             if($user->hasRole('customer') && $protectUser->id  == auth()->user()->id) {

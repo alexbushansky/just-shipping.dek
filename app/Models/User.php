@@ -113,6 +113,15 @@ class User extends Authenticatable
     }
 
 
+    public function marks()
+    {
+        return $this->hasMany(Mark::class,'user_id');
+    }
+
+    public function avgMark()
+    {
+        return $this->marks()->average('mark');
+    }
 
 
 

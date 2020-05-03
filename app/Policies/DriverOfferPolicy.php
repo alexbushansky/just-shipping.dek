@@ -65,7 +65,7 @@ class DriverOfferPolicy
      */
     public function delete(User $user, DriverOffer $driverOffer)
     {
-        //
+
     }
 
     /**

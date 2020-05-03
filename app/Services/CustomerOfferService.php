@@ -19,7 +19,7 @@ class CustomerOfferService implements CustomerOfferServiceInterface
 {
 
 
-    private $customerOffer;
+    private $customerOfferRepository;
     private $address;
     private $fileService;
     private $driverOfferService;
@@ -32,7 +32,7 @@ class CustomerOfferService implements CustomerOfferServiceInterface
                                 DriverOfferServiceInterface $driverOfferService,
                                 DialogRepositoryInterface $dialogRepo)
     {
-        $this->customerOffer = $customerOffer;
+        $this->customerOfferRepository = $customerOffer;
         $this->address = $address;
         $this->fileService = $fileService;
         $this->driverOfferService = $driverOfferService;
@@ -54,7 +54,7 @@ class CustomerOfferService implements CustomerOfferServiceInterface
             foreach ($request->file('photo') as $photo){
                 $filesArr[] = $this->fileService->makeOfferPhoto($photo);
             }
-          return  $this->customerOffer->createOffer($request->nameOfOrder,$request->description,$addressFirst->id,
+          return  $this->customerOfferRepository->createOffer($request->nameOfOrder,$request->description,$addressFirst->id,
                                              $addressSecond->id,$request->weight,$request->price_per_km,
                                              $request->date_finish,$request->customer_id,$request->types,
                                                 $filesArr,$request->addressOne,$request->addressTwo,$request->capacity);
@@ -71,7 +71,7 @@ class CustomerOfferService implements CustomerOfferServiceInterface
 
             if(is_numeric($customerOfferId) && is_numeric($driverOfferId)&& is_numeric($driverId)) {
 
-                $offer = $this->customerOffer->acceptedOffer($customerOfferId, $driverId);
+                $offer = $this->customerOfferRepository->acceptedOffer($customerOfferId, $driverId);
 
                 $this->dialogRepo->changeStatusToAccepted($dialogId);
 
@@ -86,7 +86,7 @@ class CustomerOfferService implements CustomerOfferServiceInterface
     {
         if(isset($customerOfferId)  && isset($driverId))
         {
-            $offer = $this->customerOffer->acceptedOffer($customerOfferId, $driverId);
+            $offer = $this->customerOfferRepository->acceptedOffer($customerOfferId, $driverId);
 
             $this->dialogRepo->changeStatusToAccepted($dialogId);
             $user = $offer->customer->user;
@@ -96,9 +96,12 @@ class CustomerOfferService implements CustomerOfferServiceInterface
 
     public function getOffers(Request $request)
     {
-       return $this->customerOffer->getAllOffers($request->title,$request->country_id_from,$request->region_id_from,$request->city_id_from,
-            $request->country_id_to,$request->region_id_to,$request->city_id_to,$request->price_per_km,$request->capacity,
-            $request->weight,$request->type_of_cargo);
+       return $this
+           ->customerOfferRepository
+           ->getAllOffers($request->title,$request->country_id_from,
+           $request->region_id_from, $request->city_id_from, $request->country_id_to,
+           $request->region_id_to,$request->city_id_to,$request->price_per_km,
+           $request->capacity, $request->weight,$request->type_of_cargo);
 
     }
 
@@ -107,7 +110,8 @@ class CustomerOfferService implements CustomerOfferServiceInterface
     {
      if(auth()->user()->hasRole('customer')) {
          if (isset($id) && is_numeric($id)) {
-             return $this->customerOffer->completeOffer($id);
+             $this->dialogRepo->completedDialog($id);
+             return $this->customerOfferRepository->completeOffer($id);
          }
 
          throw new \Exception('Search Error');
@@ -125,16 +129,24 @@ class CustomerOfferService implements CustomerOfferServiceInterface
 
             $customer = $user->customer;
 
-            return $this->customerOffer->showCompletedCustomerOrders($customer);
+            return $this->customerOfferRepository->showCompletedCustomerOrders($customer);
 
         }else if($user->hasRole('driver'))
         {
             $driver = $user->driver;
-            return $this->customerOffer->showCompletedDriverOrders($driver);
+            return $this->customerOfferRepository->showCompletedDriverOrders($driver);
         }
         else
         {
             abort(404);
+        }
+    }
+
+    public function getCompletedOffer(int $id)
+    {
+        if(isset($id) && is_numeric($id)) {
+
+            return  $this->customerOfferRepository->getCompletedOrder($id);
         }
     }
 

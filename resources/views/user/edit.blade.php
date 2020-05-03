@@ -101,7 +101,7 @@
                                 <div class="form-group row">
                                     <label  class="col-md-3 col-form-label">Телефон</label>
                                     <div class="col-md-9">
-                                        <input  type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $user->phone_number }}">
+                                        <input  id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $user->phone_number }}">
 
                                         @error('phone')
                                         <span class="invalid-feedback" role="alert">
@@ -152,11 +152,18 @@
 
 @endsection
 @section('scripts')
+    <script src="{{asset('js/maskphone/maskinput.js')}}"></script>
     <script>
         // Add the following code if you want the name of the file appear on select
         $(".custom-file-input").on("change", function() {
             var fileName = $(this).val().split("\\").pop();
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName.slice(0,20));
+        });
+
+    </script>
+    <script type="text/javascript">
+        jQuery(function($){
+            $("#phone").mask("099 999 9999");
         });
     </script>
     @endsection

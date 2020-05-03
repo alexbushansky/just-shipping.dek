@@ -7,7 +7,7 @@ use App\Models\CustomerOffer;
 
 class Dialog extends Model
 {
-
+    protected $fillable = ['status_dialog_id'];
     public function customerOffer()
     {
         //return $this->morphMany(CustomerOffer::class, 'dialogable');

@@ -11,4 +11,5 @@ interface DialogRepositoryInterface
     public function showDriverDialogs(int $id);
     public function showCustomerDialogs(int $id);
     public function showOffersDialog(int $id);
+    public function completedDialog(int $offerId);
 }

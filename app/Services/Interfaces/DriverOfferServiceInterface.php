@@ -10,4 +10,5 @@ interface DriverOfferServiceInterface
 {
     public function changeStatus($id);
     public function createOffer(Request $request);
+    public function deleteDriverOffer(int $id);
 }

@@ -29,5 +29,9 @@ class DriverOfferService implements DriverOfferServiceInterface
     {
         return $this->driverRepository->createOffer($request);
     }
+    public function deleteDriverOffer(int $id)
+    {
+        $this->driverRepository->deleteDriverOffer($id);
+    }
 
 }

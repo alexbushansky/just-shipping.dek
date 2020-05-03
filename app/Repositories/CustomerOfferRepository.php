@@ -177,5 +177,10 @@ class CustomerOfferRepository implements CustomerOfferRepositoryInterface
         return $orders;
     }
 
+    public function getCompletedOrder(int $id)
+    {
+        return CustomerOffer::find($id);
+    }
+
 
 }

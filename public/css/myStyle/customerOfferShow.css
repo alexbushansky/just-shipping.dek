@@ -25,3 +25,56 @@
 }
 
 
+.star-raiting
+{
+    position: relative;
+    height: 30px;
+    z-index: 10;
+    width: 131px;
+    display: flex;
+}
+.star-raiting img
+{
+    display: inline-block;
+
+}
+.star-raiting-bg
+{
+    background-color: orange;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+
+
+}
+
+.star
+{
+    background: url("/img/star-invert.svg") center center no-repeat;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    z-index: 100;
+    margin-right: -4px;
+
+}
+
+.star-show
+{
+    background: url("/img/star-invert.svg") center center no-repeat;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    z-index: 100;
+    margin-right: -4px;
+}
+
+.star:hover,.star.active
+{
+    background-color: orange;
+    transition: 0.5s all ease;
+    cursor: pointer;
+}
+

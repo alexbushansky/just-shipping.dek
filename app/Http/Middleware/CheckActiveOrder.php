@@ -17,17 +17,8 @@ class CheckActiveOrder
     {
         $mNext =$next($request);
 
-        if($mNext->original->order->customer->user->id == $request->user()->id)
-        {
-            return $mNext;
 
-        }
 
-        if($mNext->original->order->driver->user->id == $request->user()->id)
-        {
-            return $mNext;
-        }
-
-        return redirect()->back();
+        return $mNext;
     }
 }

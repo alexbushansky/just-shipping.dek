@@ -16,6 +16,7 @@ interface CustomerOfferRepositoryInterface
     public function completeOffer($id);
     public function showCompletedDriverOrders($driver);
     public function showCompletedCustomerOrders($customer);
+    public function getCompletedOrder(int $id);
 
 
 }

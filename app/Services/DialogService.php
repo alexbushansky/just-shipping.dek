@@ -4,8 +4,10 @@
 namespace App\Services;
 
 
+use App\Models\Dialog;
 use App\Repositories\Interfaces\DialogRepositoryInterface;
 use App\Services\Interfaces\DialogServiceInterface;
+use Illuminate\Http\Request;
 
 class DialogService implements DialogServiceInterface
 {
@@ -13,6 +15,17 @@ class DialogService implements DialogServiceInterface
     public function __construct(DialogRepositoryInterface $dialogRepository)
     {
         $this->dialogRepository = $dialogRepository;
+    }
+
+    public function storeDialog(Request $request)
+    {
+        $userId = auth()->user()->id;
+
+        if(policy(Dialog::class)->create($userId,$request->offer_id)) {
+
+        }
+
+
     }
 
     public function getAllDialogs()

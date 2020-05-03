@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\DialogMessage;
 use App\Events\TestEvent;
+use App\Http\Requests\DialogRequest;
 use App\Models\CustomerOffer;
 use App\Models\Dialog;
 use App\Models\DialogMessage as Message;
@@ -50,13 +51,11 @@ class DialogController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(DialogRequest $request)
     {
-        //dd($request);
 
-        $this->validate($request,[
-            'description'=>'required|max:2000|min:5',
-        ]);
+
+
 
         $userId = auth()->user()->id;
 
@@ -73,10 +72,17 @@ class DialogController extends Controller
                 $dialog->recipient_id = CustomerOffer::find($request->offer_id)->customer->user->id;
             else {
                 $dialog->recipient_id = DriverOffer::find($request->offer_id)->driver->user->id;
-            }
-            if ($request->customer_offer_id) {
+
+                if (!isset($request->customer_offer_id))
+                {
+                    return response()->json([
+                        'error' => false,
+                        'message' => 'Укажите объявление!'
+                    ]);
+                }
                 $dialog->customer_offer_id = $request->customer_offer_id;
             }
+
             $model->dialogs()->save($dialog);
 
             if ($type == 'DriverOffer') {
@@ -137,12 +143,6 @@ class DialogController extends Controller
             $messages = Message::where('dialog_id','=',$dialog->id)
                                 ->with('user')
                                 ->get();
-
-
-
-
-
-
 
             return view('dialog.show', [
                 'dialog' => $dialog,

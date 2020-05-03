@@ -118,7 +118,7 @@ class DriverOfferController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DriverOffer  $driverOffer
+     * @param DriverOffer $driverOffer
      * @return Factory|View
      */
     public function show($id)
@@ -184,7 +184,7 @@ class DriverOfferController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DriverOffer  $driverOffer
+     * @param DriverOffer $driverOffer
      * @return \Illuminate\Http\Response
      */
     public function edit(DriverOffer $driverOffer)
@@ -196,7 +196,7 @@ class DriverOfferController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  \App\Models\DriverOffer  $driverOffer
+     * @param DriverOffer $driverOffer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, DriverOffer $driverOffer)
@@ -207,12 +207,16 @@ class DriverOfferController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DriverOffer  $driverOffer
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return RedirectResponse
      */
-    public function destroy(DriverOffer $driverOffer)
+    public function destroy($id): RedirectResponse
     {
-        //
+
+        $this->driverOfferService->deleteDriverOffer($id);
+        return redirect()->route('driver-offers.index')->with([
+            'status' => 'Удалено успешно',
+            'alert' => 'success',]);
     }
 
 

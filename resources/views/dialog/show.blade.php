@@ -144,6 +144,7 @@
                 </div>
                 @else
 
+                @if($dialog->dialog_status_id == 1)
                 @role('customer')
                         <div class="col-2 bg-white left-window text-justify">
                             <div>
@@ -156,7 +157,7 @@
                             </div>
                         </div>
                 @endrole
-
+                @endif
         @endif
         </div>
     </div>

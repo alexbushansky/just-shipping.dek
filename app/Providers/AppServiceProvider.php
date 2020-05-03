@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Dialog;
+use App\Observers\DialogOfferObserver;
 use App\Repositories\Interfaces\CustomerOfferRepositoryInterface;
 use App\Services\CustomerOfferService;
 use App\Services\DialogService;
@@ -46,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        Dialog::observe(DialogOfferObserver::class);
     }
 
 

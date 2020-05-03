@@ -93,4 +93,8 @@ class DriverOfferRepository implements DriverOfferRepositoryInterface
         }
 
     }
+    public function deleteDriverOffer(int $id)
+    {
+        DriverOffer::destroy($id);
+    }
 }

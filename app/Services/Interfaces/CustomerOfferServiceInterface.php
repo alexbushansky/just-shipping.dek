@@ -15,5 +15,6 @@ interface CustomerOfferServiceInterface
     public function acceptOfferFomCustomer($customerOfferId,$driverId,$dialogId);
     public function toCompleteOrder(int $id);
     public function showCompletedOrders(int $userId);
+    public function getCompletedOffer(int $id);
 
 }

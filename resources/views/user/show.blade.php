@@ -36,11 +36,9 @@
                             @role('admin')
                             Администратор
                             @endrole
-{{--                            @foreach($user->roles as $role)--}}
-{{--                               <li> {{$role->ru}}</li>--}}
-{{--                                @endforeach--}}
+
                         </h6>
-                        <p class="proile-rating">Рейтинг: <span>8/10</span></p>
+                        <p class="proile-rating">Рейтинг: <span>{{floor($user->avgMark())}}/100</span></p>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">О вас</a>
@@ -108,6 +106,8 @@
                             <div class="row">
 
                                 <div class="orders">
+                                    @if($cars->count()>0)
+
                                     @foreach($cars as $car)
                                     <div class="card">
                                         <img src="{{asset('uploads/cars/'.$car->thumbnail)}}" class="card-img-top" alt="...">
@@ -118,6 +118,10 @@
                                         </div>
                                     </div>
                                     @endforeach
+
+                                    @else
+                                        <h4>Список пуст</h4>
+                                    @endif
                             </div>
                         </div>
 

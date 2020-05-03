@@ -80,13 +80,29 @@
 
             </div>
             <br>
+
             <div class="text-right">
 
 
                 @role('customer')
-                    <button class="btn btn-primary"  onclick="sendMessage({{$driverOffer->id}},{{$driverOffer->driver_id}})">Предложить</button>
+                <button class="btn btn-primary"  onclick="sendMessage({{$driverOffer->id}},{{$driverOffer->driver_id}})">Предложить</button>
                 @endrole
+
+
+                @if($driverOffer->driver->user->id == $user->id)
+
+                    <form action="{{route('driver-offers.destroy',$driverOffer)}}" method="POST">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-danger"  value="delete">Удалить</button>
+                    </form>
+
+                @endif
             </div>
+
+
+
+
             <hr>
 
             <div class="row d-flex justify-content-left">
@@ -124,13 +140,21 @@
 
                                 <input type="hidden" name='type' value="DriverOffer">
                                 <div class="form-group">
+                                    @if($customerOffer->count()>0)
                                 <legend>Веберите одно из своих объявлений</legend>
+
 
                                 <select class="offer form-control" name = 'customer_offer_id'>
                                     @foreach($customerOffer as $offer)
                                         <option value="{{$offer->id}}" >{{$offer->title}}</option>
-                                        @endforeach
+                                    @endforeach
                                 </select>
+                                    @else
+
+                                        <a href="{{route('customer-offers.create')}}">Добавить объявление</a>
+                                        <br>
+
+                                    @endif
 
                                 <br>
 
@@ -151,7 +175,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Отправить</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
 
                             </div>
                         </form>

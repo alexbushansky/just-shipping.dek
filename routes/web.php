@@ -41,9 +41,10 @@ Route::get('get-car-types','CarTypeController@getAllCarType')->name('car-type.ge
 
 
 
-Route::post('customer-offers/toCompleteOrder/{id}','CustomerOfferController@toCompleteOrder')->name('completeOrder');
-Route::get('customer-offers/showCompletedOrders/{userId}','CustomerOfferController@showCompletedOrders')->name('completedOrders');
+Route::post('orders/toCompleteOrder/{id}','CustomerOfferController@toCompleteOrder')->name('completeOrder');
+Route::get('orders/showCompletedOrders/','CustomerOfferController@showCompletedOrders')->name('completedOrders');
 Route::get('dialogs/all','DialogController@showAllUsersDialogs')->name('showDialogs');
+Route::get('orders/show-one-completed-order/{id}','CustomerOfferController@getOneCompletedOrder')->name('oneCompletedOrder');
 Route::get('dialogs/all-offers-dialog','DialogController@showAllOffersForYou')->name('showOfferDialogs');
 Route::resource('customer-offers','CustomerOfferController');
 
@@ -62,9 +63,9 @@ Route::resource('driver-offers','DriverOfferController');
 Route::group(['prefix'=>'user-panel','middleware'=>['auth']],function () {
     Route::resource('dialogs','DialogController');
     Route::resource('dialog-messages','DialogMessageController');
-    Route::post('customer-offers/acceptOffer/{id}','CustomerOfferController@acceptOffer')->name('acceptCustomerOffer');
-    Route::get('customer-offers/activeOrders/{id}','CustomerOfferController@activeOrders')->name('showActiveOrders')->middleware('check.list.active.orders');
-    Route::get('customer-offers/showActiveOrder/{id}','CustomerOfferController@showActiveOrder')->name('showActiveOrder')->middleware('check.active.order');
+    Route::post('offers/acceptOffer/{id}','CustomerOfferController@acceptOffer')->name('acceptCustomerOffer');
+    Route::get('offers/activeOrders/','CustomerOfferController@activeOrders')->name('showActiveOrders')->middleware('check.list.active.orders');
+    Route::get('offers/showActiveOrder/{id}','CustomerOfferController@showActiveOrder')->name('showActiveOrder')->middleware('check.active.order');
 });
 
 
@@ -103,3 +104,5 @@ Route::get('getTest','TestController@TestModel')->name('testModel');
 
 
 Route::get('getEvent','TestController@testEvent')->name('testEvent');
+
+Route::post('post-mark','MarkController@putMark')->name('postMark');

@@ -65,9 +65,9 @@
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                        <a class="dropdown-item" href="{{route('showActiveOrders',['id'=>$user->id])}}">Активные заказы</a>
+                        <a class="dropdown-item" href="{{route('showActiveOrders')}}">Активные заказы</a>
 
-                        <a class="dropdown-item" href="{{route('completedOrders',['userId'=>$user->id])}}">Выполненные заказы</a>
+                        <a class="dropdown-item" href="{{route('completedOrders')}}">Выполненные заказы</a>
                         <a class="dropdown-item" href="{{route('showDialogs')}}">Предложения</a>
                         @role('driver')
                         <a class="dropdown-item" href="{{route('driver-offers.create')}}">Добавить заказ</a>
