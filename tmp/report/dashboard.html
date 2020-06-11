@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for D:\phpstudy\OSPanel\domains\just-shipping.dek\app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href=".css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href=".css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href=".css/style.css" rel="stylesheet" type="text/css">
+  <link href=".css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">D:\phpstudy\OSPanel\domains\just-shipping.dek\app</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/AdminController.php.html#7">App\Http\Controllers\AdminController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/DialogRequest.php.html#7">App\Http\Requests\DialogRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCreatingOfDriverOffer.php.html#7">App\Http\Middleware\CheckCreatingOfDriverOffer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCustomerOffer.php.html#7">App\Http\Middleware\CheckCustomerOffer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckDriverOffer.php.html#7">App\Http\Middleware\CheckDriverOffer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckListActiveOrders.php.html#7">App\Http\Middleware\CheckListActiveOrders</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckUserCabinet.php.html#7">App\Http\Middleware\CheckUserCabinet</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#8">App\Http\Middleware\RedirectIfAuthenticated</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CustomerOfferCreateRequest.php.html#7">App\Http\Requests\CustomerOfferCreateRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/DriverOfferCreateRequest.php.html#7">App\Http\Requests\DriverOfferCreateRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckAdmin.php.html#7">App\Http\Middleware\CheckAdmin</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UserUpdateRequest.php.html#7">App\Http\Requests\UserUpdateRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/AvatarService.php.html#12">App\Services\AvatarService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#18">App\Services\CustomerOfferService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DialogMessageService.php.html#9">App\Services\DialogMessageService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DialogService.php.html#15">App\Services\DialogService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DriverCarService.php.html#11">App\Services\DriverCarService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DriverOfferService.php.html#11">App\Services\DriverOfferService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/FileService.php.html#10">App\Services\FileService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCreatingOfCustomerOffer.php.html#7">App\Http\Middleware\CheckCreatingOfCustomerOffer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckActiveOrder.php.html#7">App\Http\Middleware\CheckActiveOrder</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/ForgotPasswordController.php.html#8">App\Http\Controllers\Auth\ForgotPasswordController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogMessageController.php.html#8">App\Http\Controllers\DialogMessageController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/LoginController.php.html#8">App\Http\Controllers\Auth\LoginController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/RegisterController.php.html#17">App\Http\Controllers\Auth\RegisterController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/ResetPasswordController.php.html#8">App\Http\Controllers\Auth\ResetPasswordController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/VerificationController.php.html#8">App\Http\Controllers\Auth\VerificationController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CarTypeController.php.html#16">App\Http\Controllers\CarTypeController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerController.php.html#8">App\Http\Controllers\CustomerController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#21">App\Http\Controllers\CustomerOfferController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#17">App\Http\Controllers\DialogController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverCarController.php.html#9">App\Http\Controllers\DriverCarController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#8">App\Http\Middleware\Authenticate</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverController.php.html#9">App\Http\Controllers\DriverController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#25">App\Http\Controllers\DriverOfferController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/GeoNameController.php.html#8">App\Http\Controllers\GeoNameController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/HomeController.php.html#9">App\Http\Controllers\HomeController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MarkController.php.html#11">App\Http\Controllers\MarkController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/TestController.php.html#14">App\Http\Controllers\TestController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/TypesController.php.html#11">App\Http\Controllers\TypesController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#14">App\Http\Controllers\UserController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/UserService.php.html#12">App\Services\UserService</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Services/CustomerOfferService.php.html#18">App\Services\CustomerOfferService</a></td><td class="text-right">702</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#21">App\Http\Controllers\CustomerOfferController</a></td><td class="text-right">420</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#14">App\Http\Controllers\UserController</a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#25">App\Http\Controllers\DriverOfferController</a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#17">App\Http\Controllers\DialogController</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Services/DialogService.php.html#15">App\Services\DialogService</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Services/AvatarService.php.html#12">App\Services\AvatarService</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Services/FileService.php.html#10">App\Services\FileService</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Http/Controllers/DialogMessageController.php.html#8">App\Http\Controllers\DialogMessageController</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Services/DriverOfferService.php.html#11">App\Services\DriverOfferService</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Services/DialogMessageService.php.html#9">App\Services\DialogMessageService</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Http/Middleware/CheckListActiveOrders.php.html#7">App\Http\Middleware\CheckListActiveOrders</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Services/DriverCarService.php.html#11">App\Services\DriverCarService</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCreatingOfCustomerOffer.php.html#7">App\Http\Middleware\CheckCreatingOfCustomerOffer</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCreatingOfDriverOffer.php.html#7">App\Http\Middleware\CheckCreatingOfDriverOffer</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCustomerOffer.php.html#7">App\Http\Middleware\CheckCustomerOffer</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/CheckUserCabinet.php.html#7">App\Http\Middleware\CheckUserCabinet</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#8">App\Http\Middleware\RedirectIfAuthenticated</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/CheckAdmin.php.html#7">App\Http\Middleware\CheckAdmin</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#8">App\Http\Middleware\Authenticate</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/CheckDriverOffer.php.html#7">App\Http\Middleware\CheckDriverOffer</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/AdminController.php.html#9"><abbr title="App\Http\Controllers\AdminController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCustomerOffer.php.html#16"><abbr title="App\Http\Middleware\CheckCustomerOffer::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#148"><abbr title="App\Http\Controllers\UserController::getGuestRoom">getGuestRoom</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#16"><abbr title="App\Http\Middleware\Authenticate::redirectTo">redirectTo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckActiveOrder.php.html#16"><abbr title="App\Http\Middleware\CheckActiveOrder::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckAdmin.php.html#16"><abbr title="App\Http\Middleware\CheckAdmin::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCreatingOfCustomerOffer.php.html#16"><abbr title="App\Http\Middleware\CheckCreatingOfCustomerOffer::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCreatingOfDriverOffer.php.html#16"><abbr title="App\Http\Middleware\CheckCreatingOfDriverOffer::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckDriverOffer.php.html#16"><abbr title="App\Http\Middleware\CheckDriverOffer::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#119"><abbr title="App\Http\Controllers\UserController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckListActiveOrders.php.html#16"><abbr title="App\Http\Middleware\CheckListActiveOrders::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/CheckUserCabinet.php.html#16"><abbr title="App\Http\Middleware\CheckUserCabinet::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="App\Http\Middleware\RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CustomerOfferCreateRequest.php.html#14"><abbr title="App\Http\Requests\CustomerOfferCreateRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/CustomerOfferCreateRequest.php.html#24"><abbr title="App\Http\Requests\CustomerOfferCreateRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/DialogRequest.php.html#14"><abbr title="App\Http\Requests\DialogRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#130"><abbr title="App\Http\Controllers\UserController::deleteAvatar">deleteAvatar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#98"><abbr title="App\Http\Controllers\UserController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/DialogRequest.php.html#32"><abbr title="App\Http\Requests\DialogRequest::messages">messages</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MarkController.php.html#14"><abbr title="App\Http\Controllers\MarkController::putMark">putMark</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#224"><abbr title="App\Http\Controllers\DriverOfferController::sendMessage">sendMessage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/GeoNameController.php.html#10"><abbr title="App\Http\Controllers\GeoNameController::getCities">getCities</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/GeoNameController.php.html#18"><abbr title="App\Http\Controllers\GeoNameController::getRegions">getRegions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/GeoNameController.php.html#26"><abbr title="App\Http\Controllers\GeoNameController::getCountries">getCountries</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/HomeController.php.html#16"><abbr title="App\Http\Controllers\HomeController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/HomeController.php.html#27"><abbr title="App\Http\Controllers\HomeController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/TestController.php.html#18"><abbr title="App\Http\Controllers\TestController::testSinc">testSinc</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#83"><abbr title="App\Http\Controllers\UserController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/TestController.php.html#26"><abbr title="App\Http\Controllers\TestController::testDialog">testDialog</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/TestController.php.html#58"><abbr title="App\Http\Controllers\TestController::testModel">testModel</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/TestController.php.html#74"><abbr title="App\Http\Controllers\TestController::testEvent">testEvent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/TypesController.php.html#17"><abbr title="App\Http\Controllers\TypesController::getTypes">getTypes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#22"><abbr title="App\Http\Controllers\UserController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#37"><abbr title="App\Http\Controllers\UserController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#48"><abbr title="App\Http\Controllers\UserController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/DialogRequest.php.html#24"><abbr title="App\Http\Requests\DialogRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/DriverOfferCreateRequest.php.html#14"><abbr title="App\Http\Requests\DriverOfferCreateRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#203"><abbr title="App\Http\Controllers\DriverOfferController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DriverOfferService.php.html#28"><abbr title="App\Services\DriverOfferService::createOffer">createOffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DialogService.php.html#76"><abbr title="App\Services\DialogService::getOffersDialogs">getOffersDialogs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DialogService.php.html#81"><abbr title="App\Services\DialogService::changeStatusDialogCustomerOffer">changeStatusDialogCustomerOffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DriverCarService.php.html#17"><abbr title="App\Services\DriverCarService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DriverCarService.php.html#23"><abbr title="App\Services\DriverCarService::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DriverOfferService.php.html#15"><abbr title="App\Services\DriverOfferService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DriverOfferService.php.html#20"><abbr title="App\Services\DriverOfferService::changeStatus">changeStatus</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DriverOfferService.php.html#32"><abbr title="App\Services\DriverOfferService::deleteDriverOffer">deleteDriverOffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DialogService.php.html#27"><abbr title="App\Services\DialogService::storeDialog">storeDialog</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/FileService.php.html#22"><abbr title="App\Services\FileService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/FileService.php.html#31"><abbr title="App\Services\FileService::makeCarPhoto">makeCarPhoto</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/FileService.php.html#52"><abbr title="App\Services\FileService::makeOfferPhoto">makeOfferPhoto</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/FileService.php.html#70"><abbr title="App\Services\FileService::makeDirForCarPhoto">makeDirForCarPhoto</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/FileService.php.html#82"><abbr title="App\Services\FileService::makeDirForCustomerOffersFiles">makeDirForCustomerOffersFiles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/UserService.php.html#15"><abbr title="App\Services\UserService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DialogService.php.html#63"><abbr title="App\Services\DialogService::getAllDialogs">getAllDialogs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DialogService.php.html#20"><abbr title="App\Services\DialogService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/DriverOfferCreateRequest.php.html#24"><abbr title="App\Http\Requests\DriverOfferCreateRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#29"><abbr title="App\Services\CustomerOfferService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UserUpdateRequest.php.html#14"><abbr title="App\Http\Requests\UserUpdateRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UserUpdateRequest.php.html#24"><abbr title="App\Http\Requests\UserUpdateRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/AvatarService.php.html#20"><abbr title="App\Services\AvatarService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/AvatarService.php.html#27"><abbr title="App\Services\AvatarService::makeAvatar">makeAvatar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/AvatarService.php.html#57"><abbr title="App\Services\AvatarService::deleteOldPicture">deleteOldPicture</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/AvatarService.php.html#74"><abbr title="App\Services\AvatarService::createDirForPicture">createDirForPicture</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#42"><abbr title="App\Services\CustomerOfferService::createOffer">createOffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DialogMessageService.php.html#18"><abbr title="App\Services\DialogMessageService::createMessage">createMessage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#65"><abbr title="App\Services\CustomerOfferService::acceptOffer">acceptOffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#85"><abbr title="App\Services\CustomerOfferService::acceptOfferFomCustomer">acceptOfferFomCustomer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#97"><abbr title="App\Services\CustomerOfferService::getOffers">getOffers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#109"><abbr title="App\Services\CustomerOfferService::toCompleteOrder">toCompleteOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#124"><abbr title="App\Services\CustomerOfferService::showCompletedOrders">showCompletedOrders</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#145"><abbr title="App\Services\CustomerOfferService::getCompletedOffer">getCompletedOffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/DialogMessageService.php.html#12"><abbr title="App\Services\DialogMessageService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#214"><abbr title="App\Http\Controllers\DriverOfferController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#191"><abbr title="App\Http\Controllers\DriverOfferController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/ForgotPasswordController.php.html#28"><abbr title="App\Http\Controllers\Auth\ForgotPasswordController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#98"><abbr title="App\Http\Controllers\CustomerOfferController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerController.php.html#70"><abbr title="App\Http\Controllers\CustomerController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerController.php.html#81"><abbr title="App\Http\Controllers\CustomerController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#29"><abbr title="App\Http\Controllers\CustomerOfferController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#44"><abbr title="App\Http\Controllers\CustomerOfferController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#65"><abbr title="App\Http\Controllers\CustomerOfferController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#79"><abbr title="App\Http\Controllers\CustomerOfferController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#127"><abbr title="App\Http\Controllers\CustomerOfferController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerController.php.html#47"><abbr title="App\Http\Controllers\CustomerController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#133"><abbr title="App\Http\Controllers\CustomerOfferController::acceptOffer">acceptOffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#156"><abbr title="App\Http\Controllers\CustomerOfferController::activeOrders">activeOrders</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#197"><abbr title="App\Http\Controllers\CustomerOfferController::showActiveOrder">showActiveOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#219"><abbr title="App\Http\Controllers\CustomerOfferController::toCompleteOrder">toCompleteOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#228"><abbr title="App\Http\Controllers\CustomerOfferController::showCompletedOrders">showCompletedOrders</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#239"><abbr title="App\Http\Controllers\CustomerOfferController::getOneCompletedOrder">getOneCompletedOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerController.php.html#58"><abbr title="App\Http\Controllers\CustomerController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerController.php.html#36"><abbr title="App\Http\Controllers\CustomerController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#295"><abbr title="App\Http\Controllers\CustomerOfferController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CarTypeController.php.html#23"><abbr title="App\Http\Controllers\CarTypeController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/LoginController.php.html#35"><abbr title="App\Http\Controllers\Auth\LoginController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/RegisterController.php.html#45"><abbr title="App\Http\Controllers\Auth\RegisterController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/RegisterController.php.html#57"><abbr title="App\Http\Controllers\Auth\RegisterController::validator">validator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/RegisterController.php.html#78"><abbr title="App\Http\Controllers\Auth\RegisterController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/ResetPasswordController.php.html#35"><abbr title="App\Http\Controllers\Auth\ResetPasswordController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/VerificationController.php.html#35"><abbr title="App\Http\Controllers\Auth\VerificationController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CarTypeController.php.html#36"><abbr title="App\Http\Controllers\CarTypeController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerController.php.html#25"><abbr title="App\Http\Controllers\CustomerController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CarTypeController.php.html#47"><abbr title="App\Http\Controllers\CarTypeController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CarTypeController.php.html#58"><abbr title="App\Http\Controllers\CarTypeController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CarTypeController.php.html#70"><abbr title="App\Http\Controllers\CarTypeController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CarTypeController.php.html#86"><abbr title="App\Http\Controllers\CarTypeController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CarTypeController.php.html#99"><abbr title="App\Http\Controllers\CarTypeController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CarTypeController.php.html#117"><abbr title="App\Http\Controllers\CarTypeController::getAllCarType">getAllCarType</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerController.php.html#15"><abbr title="App\Http\Controllers\CustomerController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#284"><abbr title="App\Http\Controllers\CustomerOfferController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#23"><abbr title="App\Http\Controllers\DialogController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#125"><abbr title="App\Http\Controllers\DriverOfferController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverController.php.html#48"><abbr title="App\Http\Controllers\DriverController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverCarController.php.html#77"><abbr title="App\Http\Controllers\DriverCarController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverCarController.php.html#89"><abbr title="App\Http\Controllers\DriverCarController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverCarController.php.html#100"><abbr title="App\Http\Controllers\DriverCarController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverController.php.html#16"><abbr title="App\Http\Controllers\DriverController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverController.php.html#26"><abbr title="App\Http\Controllers\DriverController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverController.php.html#37"><abbr title="App\Http\Controllers\DriverController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverController.php.html#59"><abbr title="App\Http\Controllers\DriverController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverCarController.php.html#47"><abbr title="App\Http\Controllers\DriverCarController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverController.php.html#71"><abbr title="App\Http\Controllers\DriverController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverController.php.html#82"><abbr title="App\Http\Controllers\DriverController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#32"><abbr title="App\Http\Controllers\DriverOfferController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#48"><abbr title="App\Http\Controllers\DriverOfferController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#82"><abbr title="App\Http\Controllers\DriverOfferController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#102"><abbr title="App\Http\Controllers\DriverOfferController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverCarController.php.html#66"><abbr title="App\Http\Controllers\DriverCarController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverCarController.php.html#35"><abbr title="App\Http\Controllers\DriverCarController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#33"><abbr title="App\Http\Controllers\DialogController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#131"><abbr title="App\Http\Controllers\DialogController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#45"><abbr title="App\Http\Controllers\DialogController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#58"><abbr title="App\Http\Controllers\DialogController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#91"><abbr title="App\Http\Controllers\DialogController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#96"><abbr title="App\Http\Controllers\DialogController::showAllUsersDialogs">showAllUsersDialogs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#104"><abbr title="App\Http\Controllers\DialogController::showAllOffersForYou">showAllOffersForYou</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#120"><abbr title="App\Http\Controllers\DialogController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogMessageController.php.html#17"><abbr title="App\Http\Controllers\DialogMessageController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverCarController.php.html#25"><abbr title="App\Http\Controllers\DriverCarController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogMessageController.php.html#27"><abbr title="App\Http\Controllers\DialogMessageController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogMessageController.php.html#37"><abbr title="App\Http\Controllers\DialogMessageController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogMessageController.php.html#69"><abbr title="App\Http\Controllers\DialogMessageController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogMessageController.php.html#80"><abbr title="App\Http\Controllers\DialogMessageController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogMessageController.php.html#92"><abbr title="App\Http\Controllers\DialogMessageController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DialogMessageController.php.html#103"><abbr title="App\Http\Controllers\DialogMessageController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/DriverCarController.php.html#14"><abbr title="App\Http\Controllers\DriverCarController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/UserService.php.html#20"><abbr title="App\Services\UserService::createUser">createUser</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#125"><abbr title="App\Http\Controllers\DriverOfferController::show">show</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#65"><abbr title="App\Services\CustomerOfferService::acceptOffer">acceptOffer</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#48"><abbr title="App\Http\Controllers\UserController::show">show</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Services/DialogService.php.html#27"><abbr title="App\Services\DialogService::storeDialog">storeDialog</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#42"><abbr title="App\Services\CustomerOfferService::createOffer">createOffer</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#109"><abbr title="App\Services\CustomerOfferService::toCompleteOrder">toCompleteOrder</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Services/DialogMessageService.php.html#18"><abbr title="App\Services\DialogMessageService::createMessage">createMessage</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Middleware/CheckListActiveOrders.php.html#16"><abbr title="App\Http\Middleware\CheckListActiveOrders::handle">handle</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Services/DriverOfferService.php.html#20"><abbr title="App\Services\DriverOfferService::changeStatus">changeStatus</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Services/AvatarService.php.html#57"><abbr title="App\Services\AvatarService::deleteOldPicture">deleteOldPicture</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Services/DialogService.php.html#63"><abbr title="App\Services\DialogService::getAllDialogs">getAllDialogs</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#145"><abbr title="App\Services\CustomerOfferService::getCompletedOffer">getCompletedOffer</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#124"><abbr title="App\Services\CustomerOfferService::showCompletedOrders">showCompletedOrders</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/DriverCarService.php.html#23"><abbr title="App\Services\DriverCarService::create">create</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/CustomerOfferService.php.html#85"><abbr title="App\Services\CustomerOfferService::acceptOfferFomCustomer">acceptOfferFomCustomer</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/FileService.php.html#70"><abbr title="App\Services\FileService::makeDirForCarPhoto">makeDirForCarPhoto</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/AvatarService.php.html#74"><abbr title="App\Services\AvatarService::createDirForPicture">createDirForPicture</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/FileService.php.html#82"><abbr title="App\Services\FileService::makeDirForCustomerOffersFiles">makeDirForCustomerOffersFiles</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#148"><abbr title="App\Http\Controllers\UserController::getGuestRoom">getGuestRoom</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#156"><abbr title="App\Http\Controllers\CustomerOfferController::activeOrders">activeOrders</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#239"><abbr title="App\Http\Controllers\CustomerOfferController::getOneCompletedOrder">getOneCompletedOrder</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/DialogController.php.html#58"><abbr title="App\Http\Controllers\DialogController::show">show</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCreatingOfCustomerOffer.php.html#16"><abbr title="App\Http\Middleware\CheckCreatingOfCustomerOffer::handle">handle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#130"><abbr title="App\Http\Controllers\UserController::deleteAvatar">deleteAvatar</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#133"><abbr title="App\Http\Controllers\CustomerOfferController::acceptOffer">acceptOffer</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/DialogMessageController.php.html#37"><abbr title="App\Http\Controllers\DialogMessageController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/DriverOfferController.php.html#102"><abbr title="App\Http\Controllers\DriverOfferController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#98"><abbr title="App\Http\Controllers\UserController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#16"><abbr title="App\Http\Middleware\Authenticate::redirectTo">redirectTo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/CheckUserCabinet.php.html#16"><abbr title="App\Http\Middleware\CheckUserCabinet::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/CheckAdmin.php.html#16"><abbr title="App\Http\Middleware\CheckAdmin::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCreatingOfDriverOffer.php.html#16"><abbr title="App\Http\Middleware\CheckCreatingOfDriverOffer::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/CheckCustomerOffer.php.html#16"><abbr title="App\Http\Middleware\CheckCustomerOffer::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/CheckDriverOffer.php.html#16"><abbr title="App\Http\Middleware\CheckDriverOffer::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/AvatarService.php.html#27"><abbr title="App\Services\AvatarService::makeAvatar">makeAvatar</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="App\Http\Middleware\RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/CustomerOfferController.php.html#79"><abbr title="App\Http\Controllers\CustomerOfferController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.2.22</a> with <a href="https://xdebug.org/">Xdebug 2.7.2</a> and <a href="https://phpunit.de/">PHPUnit 7.5.20</a> at Fri May 8 15:06:58 UTC 2020.</small>
+    </p>
+   </footer>
+  </div>
+  <script src=".js/jquery.min.js" type="text/javascript"></script>
+  <script src=".js/d3.min.js" type="text/javascript"></script>
+  <script src=".js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([42,0,0,0,0,0,0,0,0,0,0,7], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([147,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Http\/Controllers\/AdminController.php.html#7\">App\\Http\\Controllers\\AdminController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/ForgotPasswordController.php.html#8\">App\\Http\\Controllers\\Auth\\ForgotPasswordController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/LoginController.php.html#8\">App\\Http\\Controllers\\Auth\\LoginController<\/a>"],[0,3,"<a href=\"Http\/Controllers\/Auth\/RegisterController.php.html#17\">App\\Http\\Controllers\\Auth\\RegisterController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/ResetPasswordController.php.html#8\">App\\Http\\Controllers\\Auth\\ResetPasswordController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/VerificationController.php.html#8\">App\\Http\\Controllers\\Auth\\VerificationController<\/a>"],[0,8,"<a href=\"Http\/Controllers\/CarTypeController.php.html#16\">App\\Http\\Controllers\\CarTypeController<\/a>"],[100,0,"<a href=\"Http\/Controllers\/Controller.php.html#10\">App\\Http\\Controllers\\Controller<\/a>"],[0,7,"<a href=\"Http\/Controllers\/CustomerController.php.html#8\">App\\Http\\Controllers\\CustomerController<\/a>"],[0,20,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#21\">App\\Http\\Controllers\\CustomerOfferController<\/a>"],[0,11,"<a href=\"Http\/Controllers\/DialogController.php.html#17\">App\\Http\\Controllers\\DialogController<\/a>"],[0,8,"<a href=\"Http\/Controllers\/DialogMessageController.php.html#8\">App\\Http\\Controllers\\DialogMessageController<\/a>"],[0,8,"<a href=\"Http\/Controllers\/DriverCarController.php.html#9\">App\\Http\\Controllers\\DriverCarController<\/a>"],[0,7,"<a href=\"Http\/Controllers\/DriverController.php.html#9\">App\\Http\\Controllers\\DriverController<\/a>"],[0,17,"<a href=\"Http\/Controllers\/DriverOfferController.php.html#25\">App\\Http\\Controllers\\DriverOfferController<\/a>"],[0,3,"<a href=\"Http\/Controllers\/GeoNameController.php.html#8\">App\\Http\\Controllers\\GeoNameController<\/a>"],[0,2,"<a href=\"Http\/Controllers\/HomeController.php.html#9\">App\\Http\\Controllers\\HomeController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/MarkController.php.html#11\">App\\Http\\Controllers\\MarkController<\/a>"],[0,4,"<a href=\"Http\/Controllers\/TestController.php.html#14\">App\\Http\\Controllers\\TestController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/TypesController.php.html#11\">App\\Http\\Controllers\\TypesController<\/a>"],[0,18,"<a href=\"Http\/Controllers\/UserController.php.html#14\">App\\Http\\Controllers\\UserController<\/a>"],[100,0,"<a href=\"Http\/Kernel.php.html#15\">App\\Http\\Kernel<\/a>"],[0,2,"<a href=\"Http\/Middleware\/Authenticate.php.html#8\">App\\Http\\Middleware\\Authenticate<\/a>"],[0,1,"<a href=\"Http\/Middleware\/CheckActiveOrder.php.html#7\">App\\Http\\Middleware\\CheckActiveOrder<\/a>"],[0,2,"<a href=\"Http\/Middleware\/CheckAdmin.php.html#7\">App\\Http\\Middleware\\CheckAdmin<\/a>"],[0,3,"<a href=\"Http\/Middleware\/CheckCreatingOfCustomerOffer.php.html#7\">App\\Http\\Middleware\\CheckCreatingOfCustomerOffer<\/a>"],[0,2,"<a href=\"Http\/Middleware\/CheckCreatingOfDriverOffer.php.html#7\">App\\Http\\Middleware\\CheckCreatingOfDriverOffer<\/a>"],[0,2,"<a href=\"Http\/Middleware\/CheckCustomerOffer.php.html#7\">App\\Http\\Middleware\\CheckCustomerOffer<\/a>"],[0,2,"<a href=\"Http\/Middleware\/CheckDriverOffer.php.html#7\">App\\Http\\Middleware\\CheckDriverOffer<\/a>"],[100,0,"<a href=\"Http\/Middleware\/CheckForMaintenanceMode.php.html#7\">App\\Http\\Middleware\\CheckForMaintenanceMode<\/a>"],[0,4,"<a href=\"Http\/Middleware\/CheckListActiveOrders.php.html#7\">App\\Http\\Middleware\\CheckListActiveOrders<\/a>"],[0,2,"<a href=\"Http\/Middleware\/CheckUserCabinet.php.html#7\">App\\Http\\Middleware\\CheckUserCabinet<\/a>"],[100,0,"<a href=\"Http\/Middleware\/EncryptCookies.php.html#7\">App\\Http\\Middleware\\EncryptCookies<\/a>"],[0,2,"<a href=\"Http\/Middleware\/RedirectIfAuthenticated.php.html#8\">App\\Http\\Middleware\\RedirectIfAuthenticated<\/a>"],[100,0,"<a href=\"Http\/Middleware\/TrimStrings.php.html#7\">App\\Http\\Middleware\\TrimStrings<\/a>"],[100,0,"<a href=\"Http\/Middleware\/TrustProxies.php.html#8\">App\\Http\\Middleware\\TrustProxies<\/a>"],[100,0,"<a href=\"Http\/Middleware\/VerifyCsrfToken.php.html#7\">App\\Http\\Middleware\\VerifyCsrfToken<\/a>"],[0,2,"<a href=\"Http\/Requests\/CustomerOfferCreateRequest.php.html#7\">App\\Http\\Requests\\CustomerOfferCreateRequest<\/a>"],[0,3,"<a href=\"Http\/Requests\/DialogRequest.php.html#7\">App\\Http\\Requests\\DialogRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/DriverOfferCreateRequest.php.html#7\">App\\Http\\Requests\\DriverOfferCreateRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/UserUpdateRequest.php.html#7\">App\\Http\\Requests\\UserUpdateRequest<\/a>"],[0,10,"<a href=\"Services\/AvatarService.php.html#12\">App\\Services\\AvatarService<\/a>"],[0,26,"<a href=\"Services\/CustomerOfferService.php.html#18\">App\\Services\\CustomerOfferService<\/a>"],[0,5,"<a href=\"Services\/DialogMessageService.php.html#9\">App\\Services\\DialogMessageService<\/a>"],[0,11,"<a href=\"Services\/DialogService.php.html#15\">App\\Services\\DialogService<\/a>"],[0,4,"<a href=\"Services\/DriverCarService.php.html#11\">App\\Services\\DriverCarService<\/a>"],[0,7,"<a href=\"Services\/DriverOfferService.php.html#11\">App\\Services\\DriverOfferService<\/a>"],[0,9,"<a href=\"Services\/FileService.php.html#10\">App\\Services\\FileService<\/a>"],[0,2,"<a href=\"Services\/UserService.php.html#12\">App\\Services\\UserService<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Http\/Controllers\/AdminController.php.html#9\">App\\Http\\Controllers\\AdminController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/ForgotPasswordController.php.html#28\">App\\Http\\Controllers\\Auth\\ForgotPasswordController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/LoginController.php.html#35\">App\\Http\\Controllers\\Auth\\LoginController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/RegisterController.php.html#45\">App\\Http\\Controllers\\Auth\\RegisterController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/RegisterController.php.html#57\">App\\Http\\Controllers\\Auth\\RegisterController::validator<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/RegisterController.php.html#78\">App\\Http\\Controllers\\Auth\\RegisterController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/ResetPasswordController.php.html#35\">App\\Http\\Controllers\\Auth\\ResetPasswordController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/VerificationController.php.html#35\">App\\Http\\Controllers\\Auth\\VerificationController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CarTypeController.php.html#23\">App\\Http\\Controllers\\CarTypeController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CarTypeController.php.html#36\">App\\Http\\Controllers\\CarTypeController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CarTypeController.php.html#47\">App\\Http\\Controllers\\CarTypeController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CarTypeController.php.html#58\">App\\Http\\Controllers\\CarTypeController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CarTypeController.php.html#70\">App\\Http\\Controllers\\CarTypeController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CarTypeController.php.html#86\">App\\Http\\Controllers\\CarTypeController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CarTypeController.php.html#99\">App\\Http\\Controllers\\CarTypeController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CarTypeController.php.html#117\">App\\Http\\Controllers\\CarTypeController::getAllCarType<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerController.php.html#15\">App\\Http\\Controllers\\CustomerController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerController.php.html#25\">App\\Http\\Controllers\\CustomerController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerController.php.html#36\">App\\Http\\Controllers\\CustomerController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerController.php.html#47\">App\\Http\\Controllers\\CustomerController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerController.php.html#58\">App\\Http\\Controllers\\CustomerController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerController.php.html#70\">App\\Http\\Controllers\\CustomerController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerController.php.html#81\">App\\Http\\Controllers\\CustomerController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#29\">App\\Http\\Controllers\\CustomerOfferController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#44\">App\\Http\\Controllers\\CustomerOfferController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#65\">App\\Http\\Controllers\\CustomerOfferController::create<\/a>"],[0,2,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#79\">App\\Http\\Controllers\\CustomerOfferController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#98\">App\\Http\\Controllers\\CustomerOfferController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#127\">App\\Http\\Controllers\\CustomerOfferController::edit<\/a>"],[0,2,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#133\">App\\Http\\Controllers\\CustomerOfferController::acceptOffer<\/a>"],[0,3,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#156\">App\\Http\\Controllers\\CustomerOfferController::activeOrders<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#197\">App\\Http\\Controllers\\CustomerOfferController::showActiveOrder<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#219\">App\\Http\\Controllers\\CustomerOfferController::toCompleteOrder<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#228\">App\\Http\\Controllers\\CustomerOfferController::showCompletedOrders<\/a>"],[0,3,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#239\">App\\Http\\Controllers\\CustomerOfferController::getOneCompletedOrder<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#284\">App\\Http\\Controllers\\CustomerOfferController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/CustomerOfferController.php.html#295\">App\\Http\\Controllers\\CustomerOfferController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogController.php.html#23\">App\\Http\\Controllers\\DialogController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogController.php.html#33\">App\\Http\\Controllers\\DialogController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogController.php.html#45\">App\\Http\\Controllers\\DialogController::store<\/a>"],[0,3,"<a href=\"Http\/Controllers\/DialogController.php.html#58\">App\\Http\\Controllers\\DialogController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogController.php.html#91\">App\\Http\\Controllers\\DialogController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogController.php.html#96\">App\\Http\\Controllers\\DialogController::showAllUsersDialogs<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogController.php.html#104\">App\\Http\\Controllers\\DialogController::showAllOffersForYou<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogController.php.html#120\">App\\Http\\Controllers\\DialogController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogController.php.html#131\">App\\Http\\Controllers\\DialogController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogMessageController.php.html#17\">App\\Http\\Controllers\\DialogMessageController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogMessageController.php.html#27\">App\\Http\\Controllers\\DialogMessageController::create<\/a>"],[0,2,"<a href=\"Http\/Controllers\/DialogMessageController.php.html#37\">App\\Http\\Controllers\\DialogMessageController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogMessageController.php.html#69\">App\\Http\\Controllers\\DialogMessageController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogMessageController.php.html#80\">App\\Http\\Controllers\\DialogMessageController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogMessageController.php.html#92\">App\\Http\\Controllers\\DialogMessageController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DialogMessageController.php.html#103\">App\\Http\\Controllers\\DialogMessageController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverCarController.php.html#14\">App\\Http\\Controllers\\DriverCarController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverCarController.php.html#25\">App\\Http\\Controllers\\DriverCarController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverCarController.php.html#35\">App\\Http\\Controllers\\DriverCarController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverCarController.php.html#47\">App\\Http\\Controllers\\DriverCarController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverCarController.php.html#66\">App\\Http\\Controllers\\DriverCarController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverCarController.php.html#77\">App\\Http\\Controllers\\DriverCarController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverCarController.php.html#89\">App\\Http\\Controllers\\DriverCarController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverCarController.php.html#100\">App\\Http\\Controllers\\DriverCarController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverController.php.html#16\">App\\Http\\Controllers\\DriverController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverController.php.html#26\">App\\Http\\Controllers\\DriverController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverController.php.html#37\">App\\Http\\Controllers\\DriverController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverController.php.html#48\">App\\Http\\Controllers\\DriverController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverController.php.html#59\">App\\Http\\Controllers\\DriverController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverController.php.html#71\">App\\Http\\Controllers\\DriverController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverController.php.html#82\">App\\Http\\Controllers\\DriverController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverOfferController.php.html#32\">App\\Http\\Controllers\\DriverOfferController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverOfferController.php.html#48\">App\\Http\\Controllers\\DriverOfferController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverOfferController.php.html#82\">App\\Http\\Controllers\\DriverOfferController::create<\/a>"],[0,2,"<a href=\"Http\/Controllers\/DriverOfferController.php.html#102\">App\\Http\\Controllers\\DriverOfferController::store<\/a>"],[0,8,"<a href=\"Http\/Controllers\/DriverOfferController.php.html#125\">App\\Http\\Controllers\\DriverOfferController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverOfferController.php.html#191\">App\\Http\\Controllers\\DriverOfferController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverOfferController.php.html#203\">App\\Http\\Controllers\\DriverOfferController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverOfferController.php.html#214\">App\\Http\\Controllers\\DriverOfferController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/DriverOfferController.php.html#224\">App\\Http\\Controllers\\DriverOfferController::sendMessage<\/a>"],[0,1,"<a href=\"Http\/Controllers\/GeoNameController.php.html#10\">App\\Http\\Controllers\\GeoNameController::getCities<\/a>"],[0,1,"<a href=\"Http\/Controllers\/GeoNameController.php.html#18\">App\\Http\\Controllers\\GeoNameController::getRegions<\/a>"],[0,1,"<a href=\"Http\/Controllers\/GeoNameController.php.html#26\">App\\Http\\Controllers\\GeoNameController::getCountries<\/a>"],[0,1,"<a href=\"Http\/Controllers\/HomeController.php.html#16\">App\\Http\\Controllers\\HomeController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/HomeController.php.html#27\">App\\Http\\Controllers\\HomeController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/MarkController.php.html#14\">App\\Http\\Controllers\\MarkController::putMark<\/a>"],[0,1,"<a href=\"Http\/Controllers\/TestController.php.html#18\">App\\Http\\Controllers\\TestController::testSinc<\/a>"],[0,1,"<a href=\"Http\/Controllers\/TestController.php.html#26\">App\\Http\\Controllers\\TestController::testDialog<\/a>"],[0,1,"<a href=\"Http\/Controllers\/TestController.php.html#58\">App\\Http\\Controllers\\TestController::testModel<\/a>"],[0,1,"<a href=\"Http\/Controllers\/TestController.php.html#74\">App\\Http\\Controllers\\TestController::testEvent<\/a>"],[0,1,"<a href=\"Http\/Controllers\/TypesController.php.html#17\">App\\Http\\Controllers\\TypesController::getTypes<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#22\">App\\Http\\Controllers\\UserController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#37\">App\\Http\\Controllers\\UserController::store<\/a>"],[0,6,"<a href=\"Http\/Controllers\/UserController.php.html#48\">App\\Http\\Controllers\\UserController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#83\">App\\Http\\Controllers\\UserController::edit<\/a>"],[0,2,"<a href=\"Http\/Controllers\/UserController.php.html#98\">App\\Http\\Controllers\\UserController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#119\">App\\Http\\Controllers\\UserController::destroy<\/a>"],[0,3,"<a href=\"Http\/Controllers\/UserController.php.html#130\">App\\Http\\Controllers\\UserController::deleteAvatar<\/a>"],[0,3,"<a href=\"Http\/Controllers\/UserController.php.html#148\">App\\Http\\Controllers\\UserController::getGuestRoom<\/a>"],[0,2,"<a href=\"Http\/Middleware\/Authenticate.php.html#16\">App\\Http\\Middleware\\Authenticate::redirectTo<\/a>"],[0,1,"<a href=\"Http\/Middleware\/CheckActiveOrder.php.html#16\">App\\Http\\Middleware\\CheckActiveOrder::handle<\/a>"],[0,2,"<a href=\"Http\/Middleware\/CheckAdmin.php.html#16\">App\\Http\\Middleware\\CheckAdmin::handle<\/a>"],[0,3,"<a href=\"Http\/Middleware\/CheckCreatingOfCustomerOffer.php.html#16\">App\\Http\\Middleware\\CheckCreatingOfCustomerOffer::handle<\/a>"],[0,2,"<a href=\"Http\/Middleware\/CheckCreatingOfDriverOffer.php.html#16\">App\\Http\\Middleware\\CheckCreatingOfDriverOffer::handle<\/a>"],[0,2,"<a href=\"Http\/Middleware\/CheckCustomerOffer.php.html#16\">App\\Http\\Middleware\\CheckCustomerOffer::handle<\/a>"],[0,2,"<a href=\"Http\/Middleware\/CheckDriverOffer.php.html#16\">App\\Http\\Middleware\\CheckDriverOffer::handle<\/a>"],[0,4,"<a href=\"Http\/Middleware\/CheckListActiveOrders.php.html#16\">App\\Http\\Middleware\\CheckListActiveOrders::handle<\/a>"],[0,2,"<a href=\"Http\/Middleware\/CheckUserCabinet.php.html#16\">App\\Http\\Middleware\\CheckUserCabinet::handle<\/a>"],[0,2,"<a href=\"Http\/Middleware\/RedirectIfAuthenticated.php.html#18\">App\\Http\\Middleware\\RedirectIfAuthenticated::handle<\/a>"],[0,1,"<a href=\"Http\/Requests\/CustomerOfferCreateRequest.php.html#14\">App\\Http\\Requests\\CustomerOfferCreateRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/CustomerOfferCreateRequest.php.html#24\">App\\Http\\Requests\\CustomerOfferCreateRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/DialogRequest.php.html#14\">App\\Http\\Requests\\DialogRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/DialogRequest.php.html#24\">App\\Http\\Requests\\DialogRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/DialogRequest.php.html#32\">App\\Http\\Requests\\DialogRequest::messages<\/a>"],[0,1,"<a href=\"Http\/Requests\/DriverOfferCreateRequest.php.html#14\">App\\Http\\Requests\\DriverOfferCreateRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/DriverOfferCreateRequest.php.html#24\">App\\Http\\Requests\\DriverOfferCreateRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/UserUpdateRequest.php.html#14\">App\\Http\\Requests\\UserUpdateRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/UserUpdateRequest.php.html#24\">App\\Http\\Requests\\UserUpdateRequest::rules<\/a>"],[0,1,"<a href=\"Services\/AvatarService.php.html#20\">App\\Services\\AvatarService::__construct<\/a>"],[0,2,"<a href=\"Services\/AvatarService.php.html#27\">App\\Services\\AvatarService::makeAvatar<\/a>"],[0,4,"<a href=\"Services\/AvatarService.php.html#57\">App\\Services\\AvatarService::deleteOldPicture<\/a>"],[0,3,"<a href=\"Services\/AvatarService.php.html#74\">App\\Services\\AvatarService::createDirForPicture<\/a>"],[0,1,"<a href=\"Services\/CustomerOfferService.php.html#29\">App\\Services\\CustomerOfferService::__construct<\/a>"],[0,4,"<a href=\"Services\/CustomerOfferService.php.html#42\">App\\Services\\CustomerOfferService::createOffer<\/a>"],[0,7,"<a href=\"Services\/CustomerOfferService.php.html#65\">App\\Services\\CustomerOfferService::acceptOffer<\/a>"],[0,3,"<a href=\"Services\/CustomerOfferService.php.html#85\">App\\Services\\CustomerOfferService::acceptOfferFomCustomer<\/a>"],[0,1,"<a href=\"Services\/CustomerOfferService.php.html#97\">App\\Services\\CustomerOfferService::getOffers<\/a>"],[0,4,"<a href=\"Services\/CustomerOfferService.php.html#109\">App\\Services\\CustomerOfferService::toCompleteOrder<\/a>"],[0,3,"<a href=\"Services\/CustomerOfferService.php.html#124\">App\\Services\\CustomerOfferService::showCompletedOrders<\/a>"],[0,3,"<a href=\"Services\/CustomerOfferService.php.html#145\">App\\Services\\CustomerOfferService::getCompletedOffer<\/a>"],[0,1,"<a href=\"Services\/DialogMessageService.php.html#12\">App\\Services\\DialogMessageService::__construct<\/a>"],[0,4,"<a href=\"Services\/DialogMessageService.php.html#18\">App\\Services\\DialogMessageService::createMessage<\/a>"],[0,1,"<a href=\"Services\/DialogService.php.html#20\">App\\Services\\DialogService::__construct<\/a>"],[0,5,"<a href=\"Services\/DialogService.php.html#27\">App\\Services\\DialogService::storeDialog<\/a>"],[0,3,"<a href=\"Services\/DialogService.php.html#63\">App\\Services\\DialogService::getAllDialogs<\/a>"],[0,1,"<a href=\"Services\/DialogService.php.html#76\">App\\Services\\DialogService::getOffersDialogs<\/a>"],[0,1,"<a href=\"Services\/DialogService.php.html#81\">App\\Services\\DialogService::changeStatusDialogCustomerOffer<\/a>"],[0,1,"<a href=\"Services\/DriverCarService.php.html#17\">App\\Services\\DriverCarService::__construct<\/a>"],[0,3,"<a href=\"Services\/DriverCarService.php.html#23\">App\\Services\\DriverCarService::create<\/a>"],[0,1,"<a href=\"Services\/DriverOfferService.php.html#15\">App\\Services\\DriverOfferService::__construct<\/a>"],[0,4,"<a href=\"Services\/DriverOfferService.php.html#20\">App\\Services\\DriverOfferService::changeStatus<\/a>"],[0,1,"<a href=\"Services\/DriverOfferService.php.html#28\">App\\Services\\DriverOfferService::createOffer<\/a>"],[0,1,"<a href=\"Services\/DriverOfferService.php.html#32\">App\\Services\\DriverOfferService::deleteDriverOffer<\/a>"],[0,1,"<a href=\"Services\/FileService.php.html#22\">App\\Services\\FileService::__construct<\/a>"],[0,1,"<a href=\"Services\/FileService.php.html#31\">App\\Services\\FileService::makeCarPhoto<\/a>"],[0,1,"<a href=\"Services\/FileService.php.html#52\">App\\Services\\FileService::makeOfferPhoto<\/a>"],[0,3,"<a href=\"Services\/FileService.php.html#70\">App\\Services\\FileService::makeDirForCarPhoto<\/a>"],[0,3,"<a href=\"Services\/FileService.php.html#82\">App\\Services\\FileService::makeDirForCustomerOffersFiles<\/a>"],[0,1,"<a href=\"Services\/UserService.php.html#15\">App\\Services\\UserService::__construct<\/a>"],[0,1,"<a href=\"Services\/UserService.php.html#20\">App\\Services\\UserService::createUser<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

@@ -41,11 +41,11 @@ Route::get('get-car-types','CarTypeController@getAllCarType')->name('car-type.ge
 
 
 
-Route::post('orders/toCompleteOrder/{id}','CustomerOfferController@toCompleteOrder')->name('completeOrder');
-Route::get('orders/showCompletedOrders/','CustomerOfferController@showCompletedOrders')->name('completedOrders');
-Route::get('dialogs/all','DialogController@showAllUsersDialogs')->name('showDialogs');
-Route::get('orders/show-one-completed-order/{id}','CustomerOfferController@getOneCompletedOrder')->name('oneCompletedOrder');
-Route::get('dialogs/all-offers-dialog','DialogController@showAllOffersForYou')->name('showOfferDialogs');
+Route::post('orders/toCompleteOrder/{id}','CustomerOfferController@toCompleteOrder')->name('completeOrder')->middleware(['auth','verified']);
+Route::get('orders/showCompletedOrders/','CustomerOfferController@showCompletedOrders')->name('completedOrders')->middleware(['auth','verified']);
+Route::get('dialogs/all','DialogController@showAllUsersDialogs')->name('showDialogs')->middleware(['auth','verified']);
+Route::get('orders/show-one-completed-order/{id}','CustomerOfferController@getOneCompletedOrder')->name('oneCompletedOrder')->middleware(['auth','verified']);
+Route::get('dialogs/all-offers-dialog','DialogController@showAllOffersForYou')->name('showOfferDialogs')->middleware(['auth','verified']);
 Route::resource('customer-offers','CustomerOfferController');
 
 
@@ -60,11 +60,11 @@ Route::resource('driver-offers','DriverOfferController');
 //---------------------------------------------------------
 //Dialog routes
 
-Route::group(['prefix'=>'user-panel','middleware'=>['auth']],function () {
+Route::group(['prefix'=>'user-panel','middleware'=>['auth','verified']],function () {
     Route::resource('dialogs','DialogController');
     Route::resource('dialog-messages','DialogMessageController');
     Route::post('offers/acceptOffer/{id}','CustomerOfferController@acceptOffer')->name('acceptCustomerOffer');
-    Route::get('offers/activeOrders/','CustomerOfferController@activeOrders')->name('showActiveOrders')->middleware('check.list.active.orders');
+    Route::get('offers/activeOrders/','CustomerOfferController@activeOrders')->name('showActiveOrders');
     Route::get('offers/showActiveOrder/{id}','CustomerOfferController@showActiveOrder')->name('showActiveOrder')->middleware('check.active.order');
 });
 
@@ -75,9 +75,9 @@ Route::group(['prefix'=>'user-panel','middleware'=>['auth']],function () {
 //Account Information
 //Route::get('account-info','UserController@index')->name('account.info');
 //Route::put('account-update','UserController@update')->name('account.update');
-Route::post('users/delete-avatar/{user}','UserController@deleteAvatar')->name('users.deleteAvatar')->middleware('auth');
+Route::post('users/delete-avatar/{user}','UserController@deleteAvatar')->name('users.deleteAvatar')->middleware(['auth','verified']);
 Route::get('user/guest-page/{user}','UserController@getGuestRoom')->name('guest-room');
-Route::resource('users','UserController')->middleware('auth');
+Route::resource('users','UserController')->middleware(['auth','verified']);
 
 
 

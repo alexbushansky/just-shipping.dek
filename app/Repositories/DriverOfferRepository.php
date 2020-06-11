@@ -24,15 +24,25 @@ class DriverOfferRepository implements DriverOfferRepositoryInterface
 
 
 
-    public function filterDriverOffers($title, $country_id ,$region_id, $city_id,$weight,$capacity,$type): LengthAwarePaginator
+    public function filterDriverOffers($title, $country_id ,$region_id, $city_id,$weight,$capacity,$type,$price_per_km): LengthAwarePaginator
     {
 
         $weight=(int)$weight;
         $capacity = (int)$capacity;
+        $price_per_km = (int)$price_per_km;
+
 
         return $this->driverOffer::with('country','region','city','types')
             ->where('status_id','=',self::ACTIVE_ORDER)
             ->when($country_id,function ($query,$country_id) {
+                return $query->where('country_id','=',$country_id);
+            })
+            ->when($price_per_km,function ($query,$price_per_km)
+            {
+                return $query->where('price_per_km','>=',$price_per_km);
+            })
+            ->when($country_id,function ($query,$country_id)
+            {
                 return $query->where('country_id','=',$country_id);
             })
             ->when($region_id,function ($query,$region_id) {

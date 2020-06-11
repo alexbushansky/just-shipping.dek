@@ -79,6 +79,7 @@
                     </div>
                 </form>
             </div>
+
             @if($customerOffer)
                 <div class="col-6 bg-white left-window">
                     <br>
@@ -119,6 +120,7 @@
                             </div>
                             </div>
                             <br>
+
                             @if($customerOffer->status_id == 1)
                            @role('driver')
                             <div class="row">
@@ -144,7 +146,7 @@
                 </div>
                 @else
 
-                @if($dialog->dialog_status_id == 1)
+                @if($dialog->status_dialog_id == 1)
                 @role('customer')
                         <div class="col-2 bg-white left-window text-justify">
                             <div>

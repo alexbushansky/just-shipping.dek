@@ -12,4 +12,5 @@ interface DialogRepositoryInterface
     public function showCustomerDialogs(int $id);
     public function showOffersDialog(int $id);
     public function completedDialog(int $offerId);
+    public function create(int $userId, int $customerOfferId, String $type, int $offerId,$model);
 }

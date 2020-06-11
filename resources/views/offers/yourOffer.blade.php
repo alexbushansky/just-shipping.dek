@@ -41,7 +41,8 @@
 
                             <div class="row">
                                 <div class="col-md-2">ID:   <strong>{{$offer->id}}</strong></div>
-                                <div class="col-md-5"> @if($offer->dialogable_type == 'App\Models\DriverOffer')
+                                <div class="col-md-5">
+                                    @if($offer->offer_type == 'App\Models\DriverOffer')
                                         Посмотреть <a href="{{route('driver-offers.show',['driverOffer'=>$offer->offer_id])}}">заказ</a>
                                     @else
                                         Посмотреть <a href="{{route('customer-offers.show',['customerOffer'=>$offer->offer_id])}}">заказ</a>
@@ -66,7 +67,14 @@
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-md-2">ID:   <strong>{{$offer->id}}</strong></div>
-                                    <div class="col-md-5">Посмотреть <a href="{{route('showActiveOrder',['id'=>$offer->offer_id])}}">заказ</a></div>
+
+                                    @if($offer->offer_type == 'App\Models\DriverOffer')
+                                        <div class="col-md-5">Посмотреть <a href="{{route('showActiveOrder',['id'=>$offer->customer_offer_id])}}">заказ</a></div>
+                                    @else
+                                        <div class="col-md-5">Посмотреть <a href="{{route('showActiveOrder',['id'=>$offer->offer_id])}}">заказ</a></div>
+                                        <br>
+                                    @endif
+
                                     <div class="col-md-5">Посмотреть<a  href="{{route('dialogs.show',['dialog'=>$offer->id])}}"> диалог</a></div>
 
 

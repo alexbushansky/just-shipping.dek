@@ -4,11 +4,14 @@
 namespace App\Repositories;
 
 
+use App\Models\CustomerOffer;
 use App\Models\Dialog;
+use App\Models\DriverOffer;
 use App\Repositories\Interfaces\DialogRepositoryInterface;
 
 class DialogRepository implements DialogRepositoryInterface
 {
+    private const IN_ACTIVE_STATUS = 1;
     private const IN_PROGRESS_STATUS = 2;
     private const COMPLETED_STATUS = 3;
 
@@ -61,4 +64,23 @@ class DialogRepository implements DialogRepositoryInterface
                 ->update(['status_dialog_id' => self::COMPLETED_STATUS]);
 
     }
+
+    public function create(int $userId, int $customerOfferId, String $type, int $offerId,$model)
+    {
+            $dialog = new Dialog();
+            $dialog->user_id = $userId;
+            $dialog->status_dialog_id = self::IN_ACTIVE_STATUS;
+
+         if ($type == 'CustomerOffer')
+             $dialog->recipient_id = CustomerOffer::find($offerId)->customer->user->id;
+         else {
+                 $dialog->recipient_id = DriverOffer::find($offerId)->driver->user->id;
+                 $dialog->customer_offer_id = $customerOfferId;
+             }
+             $model->dialogs()->save($dialog);
+
+            $dialog->increment('recipient_new', 1);
+            return $dialog;
+         }
+
 }

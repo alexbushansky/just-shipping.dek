@@ -73,7 +73,7 @@
                     @guest
                         <br>
                         <br>
-                        <p class="font-weight-light">Чтобы откликнуться на объявление, &nbsp;<a href="{{route('register')}}"> зарегестрируйтесь </a>, &nbsp;как заказчик</p>
+                        <p class="font-weight-light">Чтобы откликнуться на объявление, &nbsp;<a href="{{route('register')}}"> зарегистрируйтесь </a>, &nbsp;как заказчик</p>
                     @endguest
 
                 </div>
@@ -88,7 +88,7 @@
                 <button class="btn btn-primary"  onclick="sendMessage({{$driverOffer->id}},{{$driverOffer->driver_id}})">Предложить</button>
                 @endrole
 
-
+                @auth
                 @if($driverOffer->driver->user->id == $user->id)
 
                     <form action="{{route('driver-offers.destroy',$driverOffer)}}" method="POST">
@@ -98,6 +98,7 @@
                     </form>
 
                 @endif
+                @endauth
             </div>
 
 

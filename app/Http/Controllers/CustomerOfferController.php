@@ -31,7 +31,8 @@ class CustomerOfferController extends Controller
         $this->customerOfferRepository = $customerOffer;
         $this->customerOfferService = $customerOfferService;
         $this->middleware('check.customer.offer', ['only' => ['show']]);
-        $this->middleware(['check.creating.customer.offer','auth'],['only'=>['create','store']]);
+        $this->middleware(['check.creating.customer.offer','auth','verified'],['only'=>['create','store']]);
+
 
     }
 
@@ -100,6 +101,11 @@ class CustomerOfferController extends Controller
 
         $customerOffer = CustomerOffer::with('cargoType','fullAddressFrom','fullAddressTo')
             ->find($id);
+
+        if (empty($customerOffer ) || $customerOffer->status_id != 1 )
+        {
+            return abort(403);
+        }
 
         $photos = json_decode($customerOffer->gallery);
 
@@ -200,8 +206,19 @@ class CustomerOfferController extends Controller
         $latLngFrom = $order->lat_lng_from;
         $latLngTo = $order->lat_lng_to;
         $photos = json_decode($order->gallery);
-        $dialogId = Dialog::where('offer_id','=',$order->id)
-            ->first()->id;
+
+
+        $dialog = Dialog::where('offer_id','=',$order->id)
+            ->first();
+
+        if ($dialog==null)
+        {
+            $dialog = Dialog::where('customer_offer_id','=',$order->id)
+                ->first();
+        }
+
+
+
 
 
 
@@ -211,7 +228,7 @@ class CustomerOfferController extends Controller
                 'latLngTo'=>$latLngTo,
                 'order'=>$order,
                 'photos'=>$photos,
-                'dialogId'=>$dialogId,
+                'dialogId'=>$dialog->id,
             ]
         );
     }

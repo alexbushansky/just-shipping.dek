@@ -37,7 +37,8 @@
 
                                     <div class="row">
                                         <div class="col-md-2">ID:   <strong>{{$offer->id}}</strong></div>
-                                        <div class="col-md-5"> @if($offer->dialogable_type == 'App\Models\DriverOffer')
+                                        <div class="col-md-5">
+                                            @if($offer->offer_type == 'App\Models\DriverOffer')
                                                 Посмотреть <a href="{{route('driver-offers.show',['driverOffer'=>$offer->offer_id])}}">заказ</a>
                                             @else
                                                 Посмотреть <a href="{{route('customer-offers.show',['customerOffer'=>$offer->offer_id])}}">заказ</a>

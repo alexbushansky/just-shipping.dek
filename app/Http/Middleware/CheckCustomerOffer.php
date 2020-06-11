@@ -17,11 +17,10 @@ class CheckCustomerOffer
     {
 
         $mNext =$next($request);
-        if($mNext->original->customerOffer->status_id==1)
-        {
+
             return $mNext;
-        }
-        return redirect()->back();
+
+
 
     }
 }

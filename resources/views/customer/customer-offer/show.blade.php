@@ -92,7 +92,7 @@
                     @guest
                         <br>
                         <br>
-                        <p class="font-weight-light">Чтобы откликнуться на объявление, &nbsp;<a href="{{route('register')}}"> зарегестрируйтесь </a>, &nbsp;как перевозчик</p>
+                        <p class="font-weight-light">Чтобы откликнуться на объявление, &nbsp;<a href="{{route('register')}}"> зарегистрируйтесь </a>, &nbsp;как перевозчик</p>
                     @endguest
 
                 </div>
@@ -126,7 +126,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Предложить работу</h5>
+                            <h5 class="modal-title">Предложить перевозку</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -155,7 +155,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Отправить</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
 
                             </div>
                         </form>

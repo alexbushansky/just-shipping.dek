@@ -35,7 +35,7 @@ class DriverOfferController extends Controller
         $this->fileService = $fileService;
         $this->driverOfferService = $driverOfferService;
         $this->middleware('check.driver.offer', ['only' => ['show']]);
-        $this->middleware(['check.creating.driver.offer','auth'],['only'=>['create','store']]);
+        $this->middleware(['check.creating.driver.offer','auth', 'verified'],['only'=>['create','store']]);
     }
 
 
@@ -56,10 +56,11 @@ class DriverOfferController extends Controller
         $weight = $request->weight;
         $capacity = $request->capacity;
         $type = $request->type_of_cargo;
+        $pricePerkm = (int)$request->price_per_km;
 
         $types = Type::all();
 
-       $driverOffers = $this->driverOfferRepository->filterDriverOffers($title,$country_id,$region_id,$city_id,$weight,$capacity,$type);
+       $driverOffers = $this->driverOfferRepository->filterDriverOffers($title,$country_id,$region_id,$city_id,$weight,$capacity,$type,$pricePerkm );
         $max = $driverOffers->max('weight');
 
 
@@ -125,9 +126,16 @@ class DriverOfferController extends Controller
     {
 
 
+
+
         $driverOffer = DriverOffer::with('dialogs','driver')
                                     ->leftJoin('driver_cars','driver_car_id','=','driver_cars.car_id')
                                     ->find($id);
+
+        if (empty($driverOffer ) || $driverOffer->status_id != 1 )
+        {
+            return abort(403);
+        }
 
         $offerInfo= ['cityName'=>$driverOffer->city->name,
                         'phone'=>$driverOffer->driver->user->phone_number];
@@ -181,28 +189,6 @@ class DriverOfferController extends Controller
 
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param DriverOffer $driverOffer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(DriverOffer $driverOffer)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param DriverOffer $driverOffer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, DriverOffer $driverOffer)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

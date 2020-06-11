@@ -21,6 +21,7 @@ $(function () {
                 {
                     _self.find('.success-message').text(response.message);
                     $('#sendMessageModal').modal('hide');
+                    location.reload();
                 }
                 if(response.error ==false)
                 {

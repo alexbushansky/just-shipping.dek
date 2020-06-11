@@ -17,11 +17,10 @@ class CheckDriverOffer
     {
         $mNext =$next($request);
 
-        if($mNext->original->driverOffer->status_id==1)
-        {
-            return $mNext;
-        }
-        return redirect()->back();
+
+                return $mNext;
+
+
 
     }
 }
